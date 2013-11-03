@@ -1,0 +1,20 @@
+extend layout
+
+block content
+  form(name="postForm", action="/post/add", method="POST")
+    div
+      lable.addPostLabel Title
+      input.postTitle(name="title", class="formControl", size="60", required="required")
+
+    div
+      label.addPostLabel Tags
+      input.postTags(name="tags", class="formControl", size="60", required="required")
+      
+    div
+      label.addPostLabel Content
+      textarea.postContent(name="content", class="formControl postContentField", required="required")
+
+    div
+      input.postSubmit(type="submit", value="Submit")
+    
+    div.divider

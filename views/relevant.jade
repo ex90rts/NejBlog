@@ -1,0 +1,14 @@
+.tags
+  h1 Tags
+  - for(var k in tagList)
+    a(href='/tag/view/#{k}') #{k}<span>#{tagList[k]}</span>
+.aboutme
+  h1 About Me
+  ul
+    li
+      a(href='/post/view/1', target='_blank') 关于我
+.links
+  h1 Links
+  ul
+    li
+      a(href='/user/login') Login

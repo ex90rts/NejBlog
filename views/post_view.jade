@@ -1,0 +1,13 @@
+extend layout
+
+block content
+  script.
+    hljs.initHighlightingOnLoad();
+  h1=post.title
+  div.postTags Tags: 
+    - for(var i in post.tags)
+      a.postTag(href='/tag/view/#{post.tags[i]}') #{post.tags[i]}
+       / 
+ 
+  hr.line
+  p!=mdContent

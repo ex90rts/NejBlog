@@ -1,0 +1,248 @@
+/*
+ *  * Nib provides a CSS reset
+ *   */
+*{border:0;margin:0;padding:0;}
+*:focus {outline: none;}
+ol, ul {
+    list-style: none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	vertical-align: middle;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+	vertical-align: middle;
+}
+html {
+    background: #2C3E50;
+    background: #2C3E50 -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6c7989), color-stop(100%, #434b55)) fixed;
+    background: #2C3E50 -webkit-linear-gradient(#6c7989, #434b55) fixed;
+    background: #2C3E50 -moz-linear-gradient(#6c7989, #434b55) fixed;
+    background: #2C3E50 -o-linear-gradient(#6c7989, #434b55) fixed;
+    background: #2C3E50 -ms-linear-gradient(#6c7989, #434b55) fixed;
+    background: #2C3E50 linear-gradient(#6c7989, #434b55) fixed;
+}
+body {
+    margin: 0;
+    font: 14px/1.5 Tahoma, "Microsoft Yahei", Helvetica, Arial, sans-serif;
+    color: #2C3E50;
+}
+.container {
+	max-width:900px;
+	min-width:600px;
+	background-color:#fff; 
+	margin:10px auto;
+}
+.clear{
+	clear:both;
+}
+header{
+	background-color:#1ABC9C;
+	padding:20px;
+}
+header .sitename{ 
+	float:left; 
+	width:500px; 
+	color:#fff;
+}
+header .sitename h1{
+	font-size:26px;
+	font-weight:100;
+}
+header .sitename h3{
+	font-size:14px;
+	font-weight:100;
+}
+header .sitelogo{ 
+	float:right; 
+	width:70px; 
+	height:70px; 
+	background-color:#ECF0F1;
+}
+header .sitelogo img{
+	width:60px; 
+	height:60px; 
+	margin:5px;
+}
+nav{
+    height:40px;
+    background-color:#34495e;
+}
+nav ul li{
+    display:block;
+    height: 28px;
+    width:80px;
+    padding:5px 10px;
+    float:left;
+    text-align:center;
+}
+nav ul li.on{
+    background-color:#1ABC9C;
+    border-bottom:2px solid #16a085;
+}
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-size:18px;
+    font-weight:100;
+}
+section.content{
+	min-height:200px;
+	background-color:#FFF;
+	padding: 30px 20px;
+	line-height: 2em;
+}
+section.content code{
+    line-height: 1.5em;
+}
+section.content h1{
+	font-size:26px;
+}
+section.content article{
+	padding-left:20px;
+}
+section.content article span{
+	margin-right:15px;
+}
+section.content article a{
+	text-decoration:none;
+	color:#069;
+}
+section.relevant{
+	min-height:200px;
+	height:100%;
+	border-top:5px #1ABC9C solid;
+}
+section.relevant .tags{ 
+	width:54%;
+	padding:10px;
+	float:left;
+}
+section.relevant .links{ 
+	width:18%;
+	padding:10px;
+	float:right;
+}
+section.relevant .aboutme{ 
+	width:18%;
+	padding:10px;
+	float:right;
+}
+.tags h1, .links h1, .aboutme h1{
+	padding:6px;
+}
+.tags a{ 
+	float:left; 
+	margin:3px 6px; 
+	text-decoration:none; 
+	color:#34495e;
+}
+.tags a span{
+	display:block;
+	width:20px;
+	float:right;
+	text-align:center;
+	background-color:#E74C3C;
+	margin-left:3px;
+	border-radius:5px;
+	color:#fff;
+	font-size:12px;
+}
+section.relevant .aboutme li{
+	line-height:1.8em;
+	padding-left:6px;
+}
+section.relevant .aboutme li a{
+	text-decoration:none; 
+	color:#34495e;
+}
+section.relevant .links li{
+	line-height:1.8em;
+	padding-left:6px;
+}
+section.relevant .links li a{
+	text-decoration:none; 
+	color:#34495e;
+}
+footer{
+	padding:10px; 
+	text-align:center; 
+	background-color:#ebedef;
+}
+
+.formControl{
+	border: 2px solid #bdc3c7;
+	color: #34495e;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	padding: 8px 12px;
+	height: 26px;
+	margin: 10px auto;
+	-webkit-appearance: none;
+	border-radius: 6px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+	transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+.formControl:focus{
+    border: 2px solid #1abc9c;
+}
+.loginForm{
+    width: 250px;
+    margin: 0 auto;
+    padding: 24px 23px 20px;
+    position: relative;
+}
+.loginField{
+    border: 2px solid #BDC3C8;
+    font-size: 17px;
+    text-indent: 3px;
+    width:200px;
+    display:block;
+}
+.loginSubmit, .postSubmit{
+    border-radius: 6px;
+    border-color: transparent;
+    font-size: 17px;
+    text-indent: 3px;
+    width:228px;
+    height: 42px;
+    display:block;
+    background-color: #1abc9c;
+	color: #ffffff;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	display:block;
+	margin: 0 auto;
+}
+.addPostLabel{
+    font-size:18px;
+    font-weight:700;
+    display:block;
+}
+.postContentField{
+    width:90%;
+    min-height: 500px;
+}
+.divider{
+    height: 100px;
+}
+hr.line{
+    height: 1px;
+	width: 100%;
+	background-color: #A5ABAC;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.postTags{
+    height: 30px;
+    line-height:30px;
+    margin-top:10px;
+}
+.postTags a{
+    
+}

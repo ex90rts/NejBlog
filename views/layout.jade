@@ -1,0 +1,34 @@
+doctype 5
+html(lang="zh_CN")
+  head
+    meta(charset='utf-8')
+    meta(name='description' content='')
+    meta(name='keywords' content='')
+    title= title
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/font-awesome.css')
+    link(rel='stylesheet', href='http://yandex.st/highlightjs/7.4/styles/monokai_sublime.min.css')
+    script(src='http://yandex.st/highlightjs/7.4/highlight.min.js')
+  body
+    .container
+      header
+        .sitename
+          h1 醉清风|Samoay's Blog
+          h3 互联网 技术 PHP Javascript nodejs Linux Objective-C
+        .sitelogo
+          img(src='/images/logo.jpg')
+        .clear
+      nav
+        ul
+          li(class=(currentNav=='index')?'on':'') <a href='/index.html'>Index</a>
+          li(class=(currentNav=='login')?'on':'') <a href='/user/login'>Login</a>
+          li(class=(currentNav=='about')?'on':'') <a href='/about.html'>About</a>
+          li <a href='/post/1'>Fork</a>
+      section.content
+        block content
+      section.relevant
+        !=relevant
+      footer Copyright © 2013 Create By <a href="/page/about.html">Samoay</a> Theme Inspired By <a href="http://jser.me/">jser.me</a>
