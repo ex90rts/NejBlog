@@ -2,11 +2,14 @@ exports.config = {
     env : 'development', //production
     port : 3000,
     encoding : 'utf8',
-    sitename : "醉清风|Samoay's Blog",
-    keywords : "互联网 技术 PHP Objective-C Javascript nodejs HTML5",
+    siteinfo : {
+	lang : 'zh_CN',
+        name : "NejBlog by Samoay",
+	desc : "A simple personal blog system powered by node.js and express framework",
+        keywords : "blog,node.js,javascript,express,jade,html5",
+        footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>',
+    },
     salt : 'xew24igjs',
-    title : 'xxxx',
-    footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>',
     admin : {
         cookie : 'token',
         username : 'admin',

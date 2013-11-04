@@ -32,11 +32,11 @@ app.use(express.cookieSession());
 
 app.engine('jade', require('jade').__express);
 
+app.locals.siteinfo = config.siteinfo;
+
 app.all('*', global.siteRelevant);
 app.all('*', global.currentNav);
-app.all('/*/add', routes.user.checkLogin);
-app.all('/*/update/*', routes.user.checkLogin);
-app.all('/*/delete/*', routes.user.checkLogin);
+app.all('*', routes.user.checkLogin);
 
 app.get('/', routes.index);
 app.get('/index.html', routes.index);

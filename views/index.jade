@@ -7,5 +7,6 @@ block content
       article
         span(class='datetime') #{postList[year][i].date}
         a.title(href='/post/view/#{postList[year][i]._id}') #{postList[year][i].title}
-        &nbsp;&nbsp;<a href="/post/update/#{postList[year][i]._id}"><i class="fa fa-edit"></i></a>
-        &nbsp;&nbsp;<a href="/post/delete/#{postList[year][i]._id}"><i class="fa fa-times-circle"></i></a>
+        if loginStatus
+          &nbsp;&nbsp;<a href="/post/update/#{postList[year][i]._id}"><i class="fa fa-edit"></i></a>
+          &nbsp;&nbsp;<a href="/post/delete/#{postList[year][i]._id}"><i class="fa fa-times-circle"></i></a>

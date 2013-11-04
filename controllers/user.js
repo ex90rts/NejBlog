@@ -26,6 +26,7 @@ exports.logout = function(req, res){
 
 exports.checkLogin = function(req, res, next){
     if (req.session.loginStatus){
+	res.locals.loginStatus = true;
 	next();
 	return;
     }
@@ -38,11 +39,12 @@ exports.checkLogin = function(req, res, next){
 
     if (token == createToken(req, res)){
 	req.session.loginStatus = true;
+	res.locals.loginStatus = true;
 	next();
 	return;
     }
 
-    if (/^\/*\/[add|update|delete]?\/*$/.test(req.path)){
+    if (/\/*\/(add|update|delete)(\/*)?/.test(req.path)){
         res.redirect('/user/login');
     }else{
         next();

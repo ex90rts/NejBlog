@@ -2,8 +2,8 @@ doctype 5
 html(lang="zh_CN")
   head
     meta(charset='utf-8')
-    meta(name='description' content='')
-    meta(name='keywords' content='')
+    meta(name='description' content='#{siteinfo.desc}')
+    meta(name='keywords' content='#{siteinfo.keywords}')
     title= title
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -16,8 +16,8 @@ html(lang="zh_CN")
     .container
       header
         .sitename
-          h1 醉清风|Samoay's Blog
-          h3 互联网 技术 PHP Javascript nodejs Linux Objective-C
+          h1!= siteinfo.name
+          h3!= siteinfo.desc
         .sitelogo
           img(src='/images/logo.jpg')
         .clear
@@ -26,10 +26,17 @@ html(lang="zh_CN")
           li(class=(currentNav=='index')?'on':'') <a href='/index.html'>Blog</a>
           li(class=(currentNav=='about')?'on':'') <a href='/about.html'>About me</a>
           li <a href='https://github.com/samoay/NejBlog' target='_blank'>Fork this blog</a>
-          li(class=(currentNav=='login')?'on':'') <a href='/user/login'>Admin login</a>
-          li(class=(currentNav=='admin')?'on':'') <a href='#'>Admin</a>
+          if loginStatus
+            li.adminGate(class=(currentNav=='admin')?'on':'') <a href='#'>Admin</a>
+              div.adminMenu
+                ul
+                  li <a href='/admin/setting'>Setting</a>
+                  li <a href='/post/add'>Add Post</a>
+                  li <a href='/user/logout'>Logout</a>
+          else
+            li(class=(currentNav=='login')?'on':'') <a href='/user/login'>Admin login</a>
       section.content
         block content
       section.relevant
         !=relevant
-      footer Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>
+      footer!= siteinfo.footer

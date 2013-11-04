@@ -93,6 +93,27 @@ nav ul li:hover{
     background-color:#1ABC9C;
     border-bottom:2px solid #16a085;
 }
+.adminGate{
+	position:relative;
+}
+.adminGate:hover .adminMenu{
+    display:block;
+}
+.adminMenu{
+    display:none;
+    position: absolute;
+    top: 38px;
+    left:0;
+}
+.adminMenu ul li{
+    display:block;
+    height: 28px;
+    min-width:90px;
+    padding:5px 20px;
+    text-align:left;
+    background-color:#34495e;
+    border-bottom:2px solid #34495e;
+}
 section.content{
 	min-height:200px;
 	background-color:#FFF;
