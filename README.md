@@ -6,6 +6,7 @@ NejBlog is a simple personal blog system which powered by node.js, express frame
 
 | Name           | Description                                                                    |
 |------------    | ------------------------------------------------------------------------------ | 
+| /config.js     | the site global config file, you can update it to personalize your own site    |
 | /controllers   | the C part of MVC, all logic code suppose to be here                           |
 | /data          | the static data folder for blog data                                           |
 | /models        | the M part of MVC, for saving json data to file system                         |
@@ -58,14 +59,14 @@ exports.config = {
 		username : 'admin', //administrator's user name
 		password : '123456' //administrator's password, please remember to change this password!!!
 	},
-        //connections for you on the web, such as Facebook profile, Github profile and so on
-        aboutme : {
-                'Link Name' : 'http://link.host/'
-        },
-        //friend's links, if you want to exchange blog link with others
-        links : {
-                'Link Name' : 'http://link.host/'
-        }
+    //connections for you on the web, such as Facebook profile, Github profile and so on
+    aboutme : {
+        'Link Name' : 'http://link.host/'
+    },
+    //friend's links, if you want to exchange blog link with others
+    links : {
+        'Link Name' : 'http://link.host/'
+    },
 	foo : ''
 };
 ```
