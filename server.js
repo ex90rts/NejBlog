@@ -21,9 +21,9 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-app.use('/css', express.static(__dirname + '/public/css'));
-app.use('/images', express.static(__dirname + '/public/images'));
-app.use('/fonts', express.static(__dirname + '/public/fonts'));
+app.use('/css', express.static(__dirname + '/public/css', { maxAge: 2592000000 }));
+app.use('/images', express.static(__dirname + '/public/images', { maxAge: 2592000000 }));
+app.use('/fonts', express.static(__dirname + '/public/fonts', { maxAge: 2592000000 }));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());

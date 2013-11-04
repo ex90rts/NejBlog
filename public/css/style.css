@@ -40,13 +40,13 @@ body {
 	clear:both;
 }
 header{
-	background-color:#1ABC9C;
+	background-color: #fff;
 	padding:20px;
 }
 header .sitename{ 
 	float:left; 
 	width:500px; 
-	color:#fff;
+	color:#333;
 }
 header .sitename h1{
 	font-size:26px;
@@ -60,7 +60,7 @@ header .sitelogo{
 	float:right; 
 	width:70px; 
 	height:70px; 
-	background-color:#ECF0F1;
+	background-color:#BDC3C7;
 }
 header .sitelogo img{
 	width:60px; 
