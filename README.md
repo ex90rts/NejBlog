@@ -33,6 +33,7 @@ As the default configuration, you can visit your blog via http://127.0.0.1:3000 
 
 The default site configuration is in the file called config.js under the project root directory. Remember to edit this file to personize your own blog, the content as following:
 
+```javascript
 	exports.config = {
 		env : 'development', //production
 		port : 3000, //the listenning port number, default is 3000
@@ -52,4 +53,5 @@ The default site configuration is in the file called config.js under the project
 		},
 		foo : ''
 	};
+```
 
