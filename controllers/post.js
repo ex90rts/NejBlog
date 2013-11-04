@@ -116,13 +116,16 @@ exports.doUpdate = function(req, res){
 exports.delete = function(req, res){
     var id = req.params.id;
     try{
+        var post = postModel.readPostData(id); 
 	if (postModel.removePostData(id)){
-            var post = postModel.readPostData(id); 
             for(var i=0; i<post.tags.length; i++){
 	        var tag = post.tags[i];
 	        tagModel.saveTagData(tag, post, 'remove');
             }
 	    tagModel.saveTagList(post.tags, 'remove');
+
+	    var createdYear = new Date(post.created).getFullYear();
+	    postModel.savePostList(createdYear, post, 'remove');
         }
     }catch(e){
         console.log('Remove post data file failed');

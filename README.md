@@ -47,6 +47,8 @@ exports.config = {
 		desc : "A simple personal blog system powered by node.js and express framework", 
 		//for your site meta keywords
 		keywords : "blog,node.js,javascript,express,jade,html5",
+                //your site logo
+                logo : '/images/logo.jpg',
 		//appears at the bottom of your site
 		footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>'
 	},
@@ -56,7 +58,17 @@ exports.config = {
 		username : 'admin', //administrator's user name
 		password : '123456' //administrator's password, please remember to change this password!!!
 	},
+        //connections for you on the web, such as Facebook profile, Github profile and so on
+        aboutme : {
+                'Link Name' : 'http://link.host/'
+        },
+        //friend's links, if you want to exchange blog link with others
+        links : {
+                'Link Name' : 'http://link.host/'
+        }
 	foo : ''
 };
 ```
+
+You need to restart your node server after update to make your changes working.
 

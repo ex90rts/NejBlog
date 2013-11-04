@@ -4,6 +4,10 @@ exports.index = function(req, res){
     controller.index.view(req, res);
 };
 
+exports.about = function(req, res){
+    controller.index.about(req, res);
+};
+
 exports.post = {
     view: function(req, res){
         controller.post.view(req, res);

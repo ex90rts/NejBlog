@@ -5,10 +5,12 @@
 .aboutme
   h1 About Me
   ul
-    li
-      a(href='/post/view/1', target='_blank') 关于我
+    - for(var l in aboutme)
+      li
+        a(href='#{aboutme[l]}', target='_blank') #{l}
 .links
   h1 Links
   ul
-    li
-      a(href='/user/login') Login
+    - for(var l in links)
+      li
+        a(href='#{links[l]}', target='_blank') #{l}

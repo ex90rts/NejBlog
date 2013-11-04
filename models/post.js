@@ -24,35 +24,39 @@ function postListFile(){
     return './data/postList.json';
 }
 
-exports.savePostList = function(createdYear, listItem, verb){
+exports.readPostList = function(){
     var filePath = postListFile();
     var postList = {};
     if (fs.existsSync(filePath)){
-        postList = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-	if (postList[createdYear]){
-	    var yearSublist = postList[createdYear];
-	    if (verb == 'add'){
-	        yearSublist.unshift(listItem);
-	        postList[createdYear] = yearSublist;
-	    }else{
-                var idx = -1;
-		for(var i=0; i<yearSublist.length; i++){
-		    if (yearSublist[i]['_id'] == listItem._id){
-			idx = i;
-		    }
-		}
-		yearSublist.splice(idx, 1);
-		if (yearSublist.length <= 0){
-		    delete postList[createYear];
-		}else{
-                    postList[createYear] = yearSublist;
+        postList = JSON.parse(fs.readFileSync(filePath));
+    }
+    return postList;
+};
+
+exports.savePostList = function(createdYear, listItem, verb){
+    var filePath = postListFile();
+    var postList = this.readPostList();
+    if (postList[createdYear]){
+	var yearSublist = postList[createdYear];
+    	if (verb == 'add'){
+            yearSublist.unshift(listItem);
+	    postList[createdYear] = yearSublist;
+        }else{
+            var idx = -1;
+            for(var i=0; i<yearSublist.length; i++){
+		if (yearSublist[i]['_id'] == listItem._id){
+		    idx = i;
 		}
 	    }
-	}else if(verb == 'add'){
-	    postList[createdYear] = [listItem];
+            yearSublist.splice(idx, 1);
+	    if (yearSublist.length <= 0){
+                delete postList[createdYear];
+            }else{
+                postList[createdYear] = yearSublist;
+            }
 	}
     }else if(verb == 'add'){
-	postList[createdYear] = [listItem];
+        postList[createdYear] = [listItem];
     }
 
     return fs.writeFileSync(filePath, JSON.stringify(postList));
@@ -84,7 +88,7 @@ exports.savePostData = function(post){
 exports.removePostData = function(id){
     var filePath = postDataFile(id);
     if (fs.existsSync(filePath)){
-	return fs.unlinkSync(filePath);
+	fs.unlinkSync(filePath);
     }
     return true;
 };

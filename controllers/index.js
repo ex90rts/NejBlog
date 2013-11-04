@@ -1,15 +1,26 @@
 var fs = require('fs');
+var postModel = require('../models/post');
 
 exports.view = function(req, res){
-    var listDataFile = './data/postList.json';
-    var postList = '';
+    var postList = false;
     try{
-        if (fs.existsSync(listDataFile)){
-            postList = JSON.parse(fs.readFileSync(listDataFile, 'utf8')); 
-        }
+        postList = postModel.readPostList();
+	if (JSON.stringify(postList).length == 2){
+	    postList = false;
+	}
     }catch(e){
 	console.log('Read post list data file failed: ' + e.toString());
-	postList = '';
     }
+    
     res.render('index', {pageTitle: 'Index', postList: postList});
 };
+
+exports.about = function(req, res){
+    var about = 'This is the default about content, you can create your own about content under Admin->Setting page after logged in.';
+    var filePath = './data/about.md';
+    if (fs.existsSync(filePath)){
+	about = fs.readFileSync(filePath);
+    }
+    res.render('about', {about: about});
+};
+
