@@ -34,24 +34,24 @@ As the default configuration, you can visit your blog via http://127.0.0.1:3000 
 The default site configuration is in the file called config.js under the project root directory. Remember to edit this file to personize your own blog, the content as following:
 
 ```javascript
-	exports.config = {
-		env : 'development', //production
-		port : 3000, //the listenning port number, default is 3000
-		encoding : 'utf8', //data file encoding
-		siteinfo : {
-		    lang : 'zh_CN', //your site language which will out put in views/layout.jade
-			name : "NejBlog by Samoay", //your site name which will appear at the header section on the top of your site
-		    desc : "A simple personal blog system powered by node.js and express framework",
-			keywords : "blog,node.js,javascript,express,jade,html5", //for your site meta keywords
-			footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>', //appears at the bottom of your site
-		},
-		salt : 'xew24igjs', //keep out cookie content safe
-		admin : {
-			cookie : 'token', //no need to change at this moment
-			username : 'admin', //administrator's user name
-			password : '123456' //administrator's password, please remember to change this password!!!
-		},
-		foo : ''
-	};
+exports.config = {
+	env : 'development', //production
+	port : 3000, //the listenning port number, default is 3000
+	encoding : 'utf8', //data file encoding
+	siteinfo : {
+		lang : 'zh_CN', //your site language which will out put in views/layout.jade
+		name : "NejBlog by Samoay", //your site name which will appear at the header section on the top of your site
+		desc : "A simple personal blog system powered by node.js and express framework", //your simple site description which will apper under your site name as a sub-title
+		keywords : "blog,node.js,javascript,express,jade,html5", //for your site meta keywords
+		footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>', //appears at the bottom of your site
+	},
+	salt : 'xew24igjs', //keep your cookie content safe
+	admin : {
+		cookie : 'token', //no need to change at this moment
+		username : 'admin', //administrator's user name
+		password : '123456' //administrator's password, please remember to change this password!!!
+	},
+	foo : ''
+};
 ```
 
