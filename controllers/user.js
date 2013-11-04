@@ -5,21 +5,23 @@ exports.default = function(req, res){
 };
 
 exports.login = function(req, res){
-    res.render('user_login');
+    res.render('user_login', {referer: req.session.referer});
 };
 
 exports.doLogin = function(req, res){
     var username = req.body.username;
     var password = req.body.password;
+    var referer = req.body.referer=='' ? '/' : req.body.referer;
     if (username==req.app.get('admin username') && password==req.app.get('admin password')){
         createToken(req, res);
     }
-    res.redirect('/');
+    res.redirect(referer);
 };
 
 exports.logout = function(req, res){
     var c_key = req.app.get('admin cookie');
     req.session.loginStatus = false;
+    req.session.referer = '';
     res.cookie(c_key, '', {expires: new Date(Date.now() - 900000)});
     res.redirect('/');
 };
@@ -45,6 +47,7 @@ exports.checkLogin = function(req, res, next){
     }
 
     if (/\/*\/(add|update|delete)(\/*)?/.test(req.path)){
+	req.session.referer = req.path;
         res.redirect('/user/login');
     }else{
         next();
