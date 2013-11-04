@@ -31,7 +31,7 @@ As the default configuration, you can visit your blog via http://127.0.0.1:3000 
     
 #### Config your blog
 
-The default site configuration is in the file called config.js under the project root directory. Remember to edit this file to personize your own blog, the content as following:
+The default site configuration is in the file called **config.js** under the project root directory. Remember to edit this file to personalize your own blog, the content as following:
 
 ```javascript
 exports.config = {
@@ -39,11 +39,16 @@ exports.config = {
 	port : 3000, //the listenning port number, default is 3000
 	encoding : 'utf8', //data file encoding
 	siteinfo : {
-		lang : 'zh_CN', //your site language which will out put in views/layout.jade
-		name : "NejBlog by Samoay", //your site name which will appear at the header section on the top of your site
-		desc : "A simple personal blog system powered by node.js and express framework", //your simple site description which will apper under your site name as a sub-title
-		keywords : "blog,node.js,javascript,express,jade,html5", //for your site meta keywords
-		footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>', //appears at the bottom of your site
+	    //your site language which will out put in views/layout.jade
+		lang : 'zh_CN',
+		//your site name which will appear at the header section on the top of your site
+		name : "NejBlog by Samoay",
+		//your simple site description which will apper under your site name as a sub-title
+		desc : "A simple personal blog system powered by node.js and express framework", 
+		//for your site meta keywords
+		keywords : "blog,node.js,javascript,express,jade,html5",
+		//appears at the bottom of your site
+		footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>'
 	},
 	salt : 'xew24igjs', //keep your cookie content safe
 	admin : {
