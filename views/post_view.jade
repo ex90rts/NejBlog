@@ -7,7 +7,7 @@ block content
   div.postTags Tags: 
     - for(var i in post.tags)
       a.postTag(href='/tag/view/#{post.tags[i]}') #{post.tags[i]}
-       / 
+      &nbsp;/&nbsp;
  
   hr.line
   p!=mdContent

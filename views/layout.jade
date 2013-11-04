@@ -23,12 +23,13 @@ html(lang="zh_CN")
         .clear
       nav
         ul
-          li(class=(currentNav=='index')?'on':'') <a href='/index.html'>Index</a>
-          li(class=(currentNav=='login')?'on':'') <a href='/user/login'>Login</a>
-          li(class=(currentNav=='about')?'on':'') <a href='/about.html'>About</a>
-          li <a href='/post/1'>Fork</a>
+          li(class=(currentNav=='index')?'on':'') <a href='/index.html'>Blog</a>
+          li(class=(currentNav=='about')?'on':'') <a href='/about.html'>About me</a>
+          li <a href='https://github.com/samoay/NejBlog' target='_blank'>Fork this blog</a>
+          li(class=(currentNav=='login')?'on':'') <a href='/user/login'>Admin login</a>
+          li(class=(currentNav=='admin')?'on':'') <a href='#'>Admin</a>
       section.content
         block content
       section.relevant
         !=relevant
-      footer Copyright © 2013 Create By <a href="/page/about.html">Samoay</a> Theme Inspired By <a href="http://jser.me/">jser.me</a>
+      footer Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>

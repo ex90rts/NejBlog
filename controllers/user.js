@@ -42,7 +42,11 @@ exports.checkLogin = function(req, res, next){
 	return;
     }
 
-    res.redirect('/user/login');
+    if (/^\/*\/[add|update|delete]?\/*$/.test(req.path)){
+        res.redirect('/user/login');
+    }else{
+        next();
+    }
 }
 
 function createToken(req, res){

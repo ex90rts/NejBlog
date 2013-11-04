@@ -74,8 +74,8 @@ nav{
 nav ul li{
     display:block;
     height: 28px;
-    width:80px;
-    padding:5px 10px;
+    min-width:90px;
+    padding:5px 20px;
     float:left;
     text-align:center;
 }
@@ -88,6 +88,10 @@ nav ul li a{
     color:#fff;
     font-size:18px;
     font-weight:100;
+}
+nav ul li:hover{
+    background-color:#1ABC9C;
+    border-bottom:2px solid #16a085;
 }
 section.content{
 	min-height:200px;

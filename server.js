@@ -2,23 +2,22 @@ var http = require('http');
 var express = require('express');
 var fs = require('fs');
 var path = require('path');
-var routes = require('./routes');
+var config = require('./config').config;
 var global = require('./global');
+var routes = require('./routes');
 
 var app = express();
 
-app.set('port', 3000);
-app.set('encoding', 'utf8');
-app.set('title', 'NX Blog');
+app.set('port', config.port);
+app.set('encoding', config.encoding);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.set('salt', '2dtwy02t');
-app.set('admin cookie', 'token');
-app.set('admin username', 'samoay');
-app.set('admin password', '123456');
+app.set('salt', config.salt);
+app.set('admin cookie', config.admin.cookie);
+app.set('admin username', config.admin.username);
+app.set('admin password', config.admin.password);
 app.configure('development', function(){
     app.locals.pretty = true;
-    app.set('title', 'NX Blog Dev');
     app.use(express.errorHandler());
 });
 
