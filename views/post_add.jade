@@ -1,6 +1,11 @@
 extend layout
 
 block content
+  link(rel='stylesheet', href='/css/markdown.css')
+  script(src="/js/Markdown.Converter.js")
+  script(src="/js/Markdown.Editor.js")
+  script(src="/js/Markdown.Sanitizer.js")
+
   form(name="postForm", action="/post/add", method="POST")
     div
       lable.addPostLabel Title
@@ -9,12 +14,21 @@ block content
     div
       label.addPostLabel Tags
       input.postTags(name="tags", class="formControl", size="60", required="required")
-      
-    div
+     
+    div.wmd-panel
       label.addPostLabel Content
-      textarea.postContent(name="content", class="formControl postContentField", required="required")
-
+      #wmd-button-bar
+      textarea.wmd-input(id="wmd-input" name="content", class="formControl postContentField", required="required")
+    div.wmd-preview
+ 
     div
       input.postSubmit(type="submit", value="Submit")
+
+    script.
+      (function () {
+      var converter = new Markdown.Converter();
+      var editor = new Markdown.Editor(converter);
+      editor.run();
+      })();
     
     div.divider

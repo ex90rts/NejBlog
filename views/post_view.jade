@@ -10,11 +10,11 @@ block content
       &nbsp;/&nbsp;
  
   hr.line
-  p!=mdContent
+  div.mkn!=mdContent
   
   .ds-thread
   script.
-    var duoshuoQuery = {short_name:"samoay"};
+    var duoshuoQuery = {short_name:"#{siteinfo.duoshuo}"};
     (function(){
       var ds = document.createElement('script');
       ds.type = 'text/javascript';ds.async = true;

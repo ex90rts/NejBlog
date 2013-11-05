@@ -120,9 +120,6 @@ section.content{
 	padding: 30px 20px;
 	line-height: 2em;
 }
-section.content code{
-    line-height: 1.5em;
-}
 section.content h1{
 	font-size:26px;
 }
@@ -270,4 +267,93 @@ hr.line{
 }
 .postTags a{
     
+}
+
+
+
+
+/***************************************************/
+/************** CSS for markdown content ***********/
+/***************************************************/
+.mkn{
+    margin-bottom: 100px;
+}
+.mkn *{
+    line-height: 1.6em;
+}
+.mkn p{
+    margin:15px 0;
+    color: #303030;
+}
+.mkn strong{
+    font-weight: 700;
+    color: #000;
+}
+.mkn ul, .mkn ol, .mkn h1, .mkn h2, .mkn h3, .mkn h4, .mkn h5, .mkn h6, .mkn h7{
+    margin:20px 0;
+    color: #000;
+}
+.mkn h1 {
+    font-size:1.8em;
+}
+.mkn h2 {
+    font-size:1.7em;
+}
+.mkn h3 {
+    font-size:1.6em;
+}
+.mkn h4 {
+    font-size:1.5em;
+}
+.mkn h5 {
+    font-size:1.4em;
+}
+.mkn h6 {
+    font-size:1.3em;
+}
+.mkn h7 {
+    font-size:1.2em;
+}
+.mkn ol, .mkn ul{
+    margin-left: 40px;
+    color: #666666;
+}
+.mkn ol{
+    list-style-type: decimal;
+}
+.mkn ul{
+    list-style-type: disc;
+}
+.mkn blockquote{
+    padding: 10px;
+    background:#f3f3f3;
+    border-left:4px solid #009a61;
+}
+.mkn code{
+    line-height: 1.2em;
+    overflow-x: scroll;
+}
+.mkn p code{
+    background:#ECD1D1;
+    margin:0 5px;
+}
+.mkn a{
+    color: #4985F0;
+    text-decoration: none;
+}
+.mkn a:hover{
+    text-decoration: underline;
+}
+.mkn hr{
+    display: block;
+    box-sizing: content-box;
+    height: 0;
+    margin: 20px auto 40px;
+    border: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}
+.mkn hr:before{
+    content: '* * *';
 }
