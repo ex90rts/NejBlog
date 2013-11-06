@@ -2,9 +2,12 @@ extend layout
 
 block content
   link(rel='stylesheet', href='/css/markdown.css')
+  link(rel='stylesheet', href='/css/uploadify.css');
   script(src="/js/Markdown.Converter.js")
   script(src="/js/Markdown.Editor.js")
   script(src="/js/Markdown.Sanitizer.js")
+  script(src="/js/jquery-1.10.2.min.js")
+  script(src="/js/jquery.uploadify.min.js")
 
   form(name="postForm", action="/post/add", method="POST")
     div
@@ -24,7 +27,7 @@ block content
     div
       label.addPostLabel Files
       div.fileList
-      input(type="file")
+      input#fileUpload(type="file")
  
     div
       input.postSubmit(type="submit", value="Submit")
@@ -35,5 +38,18 @@ block content
       var editor = new Markdown.Editor(converter);
       editor.run();
       })();
+      $(function(){
+      $('#fileUpload').uploadify({
+        'formData' : {
+           'timestamp' : '#{timestamp}',
+           'token' : '#{token}'
+         },
+         'swf' : '/images/uploadify.swf',
+         'uploader' : '/post/upload',
+         'onUploadSuccess' : function(file, data, response) {
+           $('.fileList').append('<div>'+data+'</div>');
+         }
+      });
+      });
     
     div.divider

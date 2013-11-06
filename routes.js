@@ -24,6 +24,9 @@ exports.post = {
     doUpdate: function(req, res){
         controller.post.doUpdate(req, res);
     },
+    doUpload: function(req, res){
+        controller.post.doUpload(req, res);
+    },
     delete: function(req, res){
         controller.post.delete(req, res);
     }

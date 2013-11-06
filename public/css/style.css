@@ -357,3 +357,6 @@ hr.line{
 .mkn hr:before{
     content: '* * *';
 }
+.mkn img{
+    max-width: 90%;
+}

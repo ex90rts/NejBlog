@@ -5,6 +5,7 @@ exports.default = function(req, res){
 };
 
 exports.login = function(req, res){
+    var referer = req.session.referer ? req.session.referer : '';
     res.render('user_login', {referer: req.session.referer});
 };
 

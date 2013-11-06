@@ -113,6 +113,39 @@ exports.doUpdate = function(req, res){
     res.redirect('/post/view/' + id);
 };
 
+function mkrandomName(){
+    var seeds = '0123456789abcdefghijklmnopqrstuvwxyz';
+    var name = '';
+    var length = seeds.length;
+    for(var i=0; i<16; i++){
+        name += seeds.substr(Math.round(Math.random()*length), 1);
+    }
+    
+    return name;
+}
+
+exports.doUpload = function(req, res){
+    var uploadDir = 'public/upload/';
+    var date = new Date();
+    var subFolderYear = date.getFullYear();
+    uploadDir = uploadDir + subFolderYear + '/';
+    if (!fs.existsSync(uploadDir)){
+	fs.mkdirSync(uploadDir, 0755);
+    }
+
+    var subFolderMonth = ('0'+(date.getMonth()+1)).substr(-2);
+    uploadDir = uploadDir + subFolderMonth + '/';
+    if (!fs.existsSync(uploadDir)){
+	fs.mkdirSync(uploadDir, 0755);
+    }
+
+    var tempPath = req.files.Filedata.path;
+    var filePath = uploadDir + mkrandomName() + tempPath.substr(-4);
+    fs.rename(tempPath, filePath, function(err){
+	res.send(req.headers.origin + filePath.replace('public', ''));
+    });
+};
+
 exports.delete = function(req, res){
     var id = req.params.id;
     try{

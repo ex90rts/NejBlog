@@ -25,6 +25,7 @@ app.use('/css', express.static(__dirname + '/public/css', { maxAge: 2592000000 }
 app.use('/js', express.static(__dirname + '/public/js', { maxAge: 2592000000 }));
 app.use('/images', express.static(__dirname + '/public/images', { maxAge: 2592000000 }));
 app.use('/fonts', express.static(__dirname + '/public/fonts', { maxAge: 2592000000 }));
+app.use('/upload', express.static(__dirname + '/public/upload', { maxAge: 2592000000 }));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -53,9 +54,10 @@ app.get('/user/logout', routes.user.logout);
 
 app.post('/post/add', routes.post.doAdd);
 app.post('/post/update/:id', routes.post.doUpdate);
+app.post('/post/upload', routes.post.doUpload);
 app.post('/user/login', routes.user.doLogin);
 
-var dataDirs = ['data', 'data/post', 'data/tag'];
+var dataDirs = ['data', 'data/post', 'data/tag', 'public/upload'];
 for(var i=0; i<dataDirs.length; i++){
     if (!fs.existsSync(dataDirs[i])){
         fs.mkdirSync(dataDirs[i], 0755);

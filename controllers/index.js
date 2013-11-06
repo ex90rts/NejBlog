@@ -24,3 +24,14 @@ exports.about = function(req, res){
     res.render('about', {about: about});
 };
 
+exports.rss = function(req, res){
+    var postList = {};
+    try{
+	postList = JSON.stringify(postModel.readPostList());
+    }catch(e){}
+        
+    var list = [];
+    for(var year in postList){
+        
+    }
+};
