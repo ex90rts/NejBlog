@@ -1,0 +1,9 @@
+doctype 5
+html(lang="zh_CN")
+  head
+    title=Upload
+
+  body(style="margin:0;padding:0;height:30px")
+    form(method="post",enctype="multipart/form-data",action="/post/upload")
+      input(type="file", name="filedata")
+      input(type="submit")

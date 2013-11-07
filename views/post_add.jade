@@ -25,11 +25,6 @@ block content
     div.wmd-preview
 
     div
-      label.addPostLabel Files
-      div.fileList
-      input#fileUpload(type="file")
- 
-    div
       input.postSubmit(type="submit", value="Submit")
 
     script.
@@ -38,18 +33,5 @@ block content
       var editor = new Markdown.Editor(converter);
       editor.run();
       })();
-      $(function(){
-      $('#fileUpload').uploadify({
-        'formData' : {
-           'timestamp' : '#{timestamp}',
-           'token' : '#{token}'
-         },
-         'swf' : '/images/uploadify.swf',
-         'uploader' : '/post/upload',
-         'onUploadSuccess' : function(file, data, response) {
-           $('.fileList').append('<div>'+data+'</div>');
-         }
-      });
-      });
     
     div.divider

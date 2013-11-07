@@ -1,4 +1,4 @@
-﻿// needs Markdown.Converter.js at the moment
+// needs Markdown.Converter.js at the moment
 
 (function () {
 
@@ -37,6 +37,7 @@
         image: "Image <img> Ctrl+G",
         imagedescription: "enter image description here",
         imagedialog: "<p><b>Insert Image</b></p><p>http://example.com/images/diagram.jpg \"optional title\"<br><br></p>",
+        uploadserver: "/post/upload",
 
         olist: "Numbered List <ol> Ctrl+O",
         ulist: "Bulleted List <ul> Ctrl+U",
@@ -1062,7 +1063,7 @@
     // callback: The function which is executed when the prompt is dismissed, either via OK or Cancel.
     //      It receives a single argument; either the entered text (if OK was chosen) or null (if Cancel
     //      was chosen).
-    ui.prompt = function (text, defaultInputText, callback) {
+    ui.prompt = function (type, text, defaultInputText, callback) {
 
         // These variables need to be declared at this level since they are used
         // in multiple functions.
@@ -1137,8 +1138,18 @@
             style.position = "relative";
             dialog.appendChild(form);
 
+            // The file upload iframe
+            if (type=="image"){
+                var iframe = doc.createElement("iframe");
+                iframe.setAttribute("src", defaultsStrings["uploadserver"]);
+                iframe.style.width = "80%";
+                iframe.style.height = "30px";
+                form.appendChild(iframe);
+            }
+                    
             // The input text box
             input = doc.createElement("input");
+            input.id = "linkField";
             input.type = "text";
             input.value = defaultInputText;
             style = input.style;
@@ -1777,10 +1788,10 @@
 
             if (isImage) {
                 if (!this.hooks.insertImageDialog(linkEnteredCallback))
-                    ui.prompt(this.getString("imagedialog"), imageDefaultText, linkEnteredCallback);
+                    ui.prompt("image", this.getString("imagedialog"), imageDefaultText, linkEnteredCallback);
             }
             else {
-                ui.prompt(this.getString("linkdialog"), linkDefaultText, linkEnteredCallback);
+                ui.prompt("link", this.getString("linkdialog"), linkDefaultText, linkEnteredCallback);
             }
             return true;
         }

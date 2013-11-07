@@ -113,6 +113,10 @@ exports.doUpdate = function(req, res){
     res.redirect('/post/view/' + id);
 };
 
+exports.upload = function(req, res){
+    res.render('post_upload');
+};
+
 function mkrandomName(){
     var seeds = '0123456789abcdefghijklmnopqrstuvwxyz';
     var name = '';
@@ -139,10 +143,12 @@ exports.doUpload = function(req, res){
 	fs.mkdirSync(uploadDir, 0755);
     }
 
-    var tempPath = req.files.Filedata.path;
+    var tempPath = req.files.filedata.path;
     var filePath = uploadDir + mkrandomName() + tempPath.substr(-4);
     fs.rename(tempPath, filePath, function(err){
-	res.send(req.headers.origin + filePath.replace('public', ''));
+        var fileurl = req.headers.origin + filePath.replace('public', '');
+	var script = '<script>parent.document.getElementById("linkField").value="' + fileurl + '";</script>';
+	res.send(script);
     });
 };
 
