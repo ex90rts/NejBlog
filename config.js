@@ -3,6 +3,7 @@ exports.config = {
     port : 3000,
     encoding : 'utf8',
     siteinfo : {
+	webmaster : "samoay@gmail.com",
 	lang : 'zh_CN',
         name : "NejBlog by Samoay",
 	desc : "A simple personal blog system powered by node.js and express framework",
@@ -18,7 +19,7 @@ exports.config = {
         password : '123456' //Please remember to change this password!!!
     },
     aboutme : {
-	'About Me' : '/about.html',
+	'RSS订阅' : '/rss',
 	'Github' : 'http://github.com/samoay',
 	'Google Plus' : 'https://plus.google.com/116034800456010545162',
 	'微博(@惊鸿一瞥V)' : 'http://weibo.com/samoay'

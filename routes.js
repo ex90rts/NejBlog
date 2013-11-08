@@ -8,6 +8,10 @@ exports.about = function(req, res){
     controller.index.about(req, res);
 };
 
+exports.rss = function(req, res){
+    controller.index.rss(req, res);
+};
+
 exports.post = {
     view: function(req, res){
         controller.post.view(req, res);

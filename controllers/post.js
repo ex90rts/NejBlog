@@ -91,6 +91,7 @@ exports.doUpdate = function(req, res){
     }
     
     postModel.savePostData(post);
+    postModel.savePostList(createdYear, listItem, 'update');
     
     var oldTags = oldPost.tags;
     var delTags = [];

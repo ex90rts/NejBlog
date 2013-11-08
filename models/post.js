@@ -41,6 +41,12 @@ exports.savePostList = function(createdYear, listItem, verb){
     	if (verb == 'add'){
             yearSublist.unshift(listItem);
 	    postList[createdYear] = yearSublist;
+	}else if(verb == 'update'){
+	    for(var i=0; i<yearSublist.length; i++){
+		if (yearSublist[i]['_id'] == listItem._id){
+		    yearSublist[i] = listItem;
+		}
+	    }
         }else{
             var idx = -1;
             for(var i=0; i<yearSublist.length; i++){

@@ -27,11 +27,17 @@ exports.about = function(req, res){
 exports.rss = function(req, res){
     var postList = {};
     try{
-	postList = JSON.stringify(postModel.readPostList());
+	postList = postModel.readPostList();
     }catch(e){}
         
     var list = [];
     for(var year in postList){
-        
+        var subList = postList[year];
+        for(var i=0; i<subList.length; i++){
+           list.unshift(subList[i]); 
+	}	
     }
+    
+    res.set('Content-Type', 'application/rss+xml');
+    res.render('rss', {posts: list});
 };

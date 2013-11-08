@@ -1,0 +1,21 @@
+doctype xml
+rss(version='2.0')
+  channel
+    title= siteinfo.name
+    link(href="http://samoay.me")
+    description= siteinfo.desc
+    language= siteinfo.lang
+    webMaster= siteinfo.webmaster
+    if posts.length
+      lastBuildDate= new Date(posts[0].created).toUTCString()
+    each post in posts
+      item
+        title= post.title
+        link(href="http://samoay/blog/#{post._id}",rel="nofollow")
+        description
+          | <![CDATA[
+          | #{post.title}
+          | #{post.title}
+          | ]]>
+        pubDate= new Date(post.created).toUTCString()
+        guid(isPermaLink='false', href="http://samoay/post/view/#{post._id}")
