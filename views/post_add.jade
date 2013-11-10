@@ -11,15 +11,15 @@ block content
 
   form(name="postForm", action="/post/add", method="POST")
     div
-      lable.addPostLabel Title
-      input.postTitle(name="title", class="formControl", size="60", required="required")
+      lable.formLabel Title
+      input(name="title", class="formControl", size="60", required="required")
 
     div
-      label.addPostLabel Tags
-      input.postTags(name="tags", class="formControl", size="60", required="required")
+      label.formLabel Tags
+      input(name="tags", class="formControl", size="60", required="required")
      
     div.wmd-panel
-      label.addPostLabel Content
+      label.formLabel Content
       #wmd-button-bar
       textarea.wmd-input(id="wmd-input" name="content", class="formControl postContentField", required="required")
     div.wmd-preview

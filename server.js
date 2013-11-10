@@ -53,11 +53,13 @@ app.get('/post/upload', routes.post.upload);
 app.get('/tag/view/:tag', routes.tag.view);
 app.get('/user/login', routes.user.login);
 app.get('/user/logout', routes.user.logout);
+app.get('/admin/setting', routes.admin.setting);
 
 app.post('/post/add', routes.post.doAdd);
 app.post('/post/update/:id', routes.post.doUpdate);
 app.post('/post/upload', routes.post.doUpload);
 app.post('/user/login', routes.user.doLogin);
+app.post('/admin/setting', routes.admin.doSetting);
 
 var dataDirs = ['data', 'data/post', 'data/tag', 'public/upload'];
 for(var i=0; i<dataDirs.length; i++){

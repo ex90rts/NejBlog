@@ -197,12 +197,12 @@ footer{
 
 .formControl{
 	border: 2px solid #bdc3c7;
-	color: #34495e;
+	color: #666;
 	font-family: "Lato", Helvetica, Arial, sans-serif;
 	font-size: 15px;
-	padding: 8px 12px;
+	padding: 5px 12px;
 	height: 26px;
-	margin: 10px auto;
+	margin: 5px auto;
 	-webkit-appearance: none;
 	border-radius: 6px;
 	-webkit-box-shadow: none;
@@ -212,6 +212,19 @@ footer{
 }
 .formControl:focus{
     border: 2px solid #1abc9c;
+}
+.smallTextarea{
+    height: 60px;
+    width:90%;
+}
+.largeTextarea{
+    height: 150px;
+    width:90%;
+}
+.formLabel{
+    font-size:18px;
+    font-weight:700;
+    display:block;
 }
 .loginForm{
     width: 250px;
@@ -240,11 +253,6 @@ footer{
 	font-size: 15px;
 	display:block;
 	margin: 0 auto;
-}
-.addPostLabel{
-    font-size:18px;
-    font-weight:700;
-    display:block;
 }
 .postContentField{
     width:90%;

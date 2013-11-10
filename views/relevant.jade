@@ -3,11 +3,11 @@
   - for(var k in tagList)
     a(href='/tag/view/#{k}') #{k}<span>#{tagList[k]}</span>
 .aboutme
-  h1 Me & the Web
+  h1 Me & Web
   ul
-    - for(var l in aboutme)
+    - for(var l in webinfo)
       li
-        a(href='#{aboutme[l]}', target='_blank') #{l}
+        a(href='#{webinfo[l]}', target='_blank') #{l}
 .links
   h1 Links
   ul

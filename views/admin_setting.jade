@@ -1,0 +1,58 @@
+extend layout
+
+block content
+  link(rel='stylesheet', href='/css/markdown.css')
+  script(src="/js/Markdown.Converter.js")
+  script(src="/js/Markdown.Editor.js")
+  script(src="/js/Markdown.Sanitizer.js")
+
+  form(name="postForm", action="/admin/setting", method="POST")
+    div
+      lable.formLabel Lang
+      input(name="siteinfo[lang]", class="formControl", size="60", value=setting.siteinfo.lang, required="required")
+      
+    div
+      label.formLabel Site Name
+      input(name="siteinfo[name]", class="formControl", size="60", value=setting.siteinfo.name, required="required")
+
+    div
+      label.formLabel Site Desc
+      textarea.smallTextarea(name="siteinfo[desc]", class="formControl")=setting.siteinfo.desc
+
+    div
+      label.formLabel Keywords
+      input(name="siteinfo[keywords]", class="formControl", size="60", value=setting.siteinfo.keywords)
+
+    div
+      label.formLabel Site Logo
+      input(type="file", name="siteinfo[logo]", class="formControl", size="60", value=setting.siteinfo.logo)
+
+    div
+      label.formLabel Footer
+      textarea.smallTextarea(name="siteinfo[footer]", class="formControl", required="required")=setting.siteinfo.footer
+
+    div.wmd-panel
+      label.formLabel About Me
+      #wmd-button-bar
+      textarea.wmd-input(id="wmd-input" name="aboutme", class="formControl postContentField")=aboutme
+    div.wmd-preview
+      
+    div
+      label.formLabel Links
+      textarea.largeTextarea(name="links", class="formControl")=linksText
+
+    div
+      label.formLabel Me & Web
+      textarea.largeTextarea(name="webinfo", class="formControl")=webinfoText
+
+    div
+      input.postSubmit(type="submit", value="Submit")
+
+    script.
+      (function () {
+      var converter = new Markdown.Converter();
+      var editor = new Markdown.Editor(converter);
+      editor.run();
+      })();
+      
+    div.divider

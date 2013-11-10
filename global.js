@@ -1,11 +1,17 @@
 var crypto = require('crypto');
 var jade = require('jade');
 var tagModel = require('./models/tag');
-var config = require('./config').config;
+var adminModel = require('./models/admin');
 
 exports.siteRelevant = function(req, res, next){
     var tagList = tagModel.readTagList();
-    var relevant = jade.renderFile('views/relevant.jade', {loginStatus: req.session.loginStatus, tagList: tagList, aboutme: config.aboutme, links: config.links});
+    var config = adminModel.readSetting();
+    var relevant = jade.renderFile('views/relevant.jade', {
+        loginStatus: req.session.loginStatus, 
+        tagList: tagList, 
+        webinfo: config.webinfo, 
+        links: config.links
+    });
     req.app.locals.relevant = relevant;
     next();
 };

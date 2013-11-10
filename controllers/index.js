@@ -1,33 +1,35 @@
 var fs = require('fs');
 var postModel = require('../models/post');
+var adminModel = require('../models/admin');
+var markdown = require('markdown').markdown;
 
 exports.view = function(req, res){
     var postList = false;
     try{
         postList = postModel.readPostList();
-	if (JSON.stringify(postList).length == 2){
-	    postList = false;
-	}
+        if (JSON.stringify(postList).length == 2){
+	        postList = false;
+        }
     }catch(e){
-	console.log('Read post list data file failed: ' + e.toString());
+        console.log('Read post list data file failed: ' + e.toString());
     }
     
     res.render('index', {pageTitle: 'Index', postList: postList});
 };
 
 exports.about = function(req, res){
-    var about = 'This is the default about content, you can create your own about content under Admin->Setting page after logged in.';
-    var filePath = './data/about.md';
-    if (fs.existsSync(filePath)){
-	about = fs.readFileSync(filePath);
+    var about = adminModel.readAboutme();
+    if (!about){
+        about = 'This is the default about content, you can create your own about content under Admin->Setting page after logged in.';
     }
-    res.render('about', {about: about});
+
+    res.render('about', {about: markdown.toHTML(about)});
 };
 
 exports.rss = function(req, res){
     var postList = {};
     try{
-	postList = postModel.readPostList();
+        postList = postModel.readPostList();
     }catch(e){}
         
     var list = [];

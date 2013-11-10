@@ -60,6 +60,15 @@ exports.user = {
     }
 };
 
+exports.admin = {
+    setting: function(req, res){
+        controller.admin.setting(req, res);
+    },
+    doSetting: function(req, res){
+        controller.admin.doSetting(req, res);
+    }
+};
+
 exports.errors = {
     pageNotFound: function(req, res){
         res.render('404.jade');
