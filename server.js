@@ -43,7 +43,7 @@ app.all('*', routes.user.checkLogin);
 app.get('/', routes.index);
 app.get('/index.html', routes.index);
 app.get('/about(\.html)?', routes.about);
-app.get('/rss.xml', routes.rss);
+app.get('/rss(\.xml)?', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
 app.get('/post/view/:id', routes.post.view);
 app.get('/post/add', routes.post.add);
