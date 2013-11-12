@@ -58,6 +58,13 @@ exports.uploadFile = function(files, name){
 
     var tempPath = files[name].path;
     var filePath = uploadDir + this.mkrandomName() + tempPath.substr(-4);
-    fs.renameSync(tempPath, filePath);
+    
+    var is = fs.createReadStream(tempPath);
+    var os = fs.createWriteStream(filePath);
+    is.pipe(os);
+    is.on('end', function(){
+        fs.unlinkSync(tempPath);
+    });
+
     return filePath.replace('public', '');
 };
