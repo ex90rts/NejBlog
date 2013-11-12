@@ -41,7 +41,7 @@ app.all('*', global.currentNav);
 app.all('*', routes.user.checkLogin);
 
 app.get('/', routes.index);
-app.get('/index.html', routes.index);
+app.get('/index(\.html)?', routes.index);
 app.get('/about(\.html)?', routes.about);
 app.get('/rss(\.xml)?', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
