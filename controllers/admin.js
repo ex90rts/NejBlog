@@ -1,5 +1,6 @@
 var adminModel = require('../models/admin');
 var markdown = require('markdown').markdown;
+var global = require('../global');
 
 exports.setting = function(req, res){
     var setting = adminModel.readSetting();
@@ -41,8 +42,14 @@ exports.doSetting = function(req, res){
             webinfo[rows[0]] = rows[1];
         }
     }
+
+    var siteinfo = req.body.siteinfo;
+    if (req.files.logofile && req.files.logofile.size > 0){
+        siteinfo.logo = req.headers.origin + global.uploadFile(req.files, 'logofile');
+    }
+
     var setting = {
-        siteinfo: req.body.siteinfo,
+        siteinfo: siteinfo,
         links: links,
         webinfo: webinfo
     };

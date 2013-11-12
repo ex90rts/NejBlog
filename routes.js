@@ -57,6 +57,12 @@ exports.user = {
     },
     checkLogin: function(req, res, next){
         controller.user.checkLogin(req, res, next);
+    },
+    passwd: function(req, res){
+        controller.user.passwd(req, res);
+    },
+    doPasswd: function(req, res){
+        controller.user.doPasswd(req, res);
     }
 };
 

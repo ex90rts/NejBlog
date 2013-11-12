@@ -1,0 +1,21 @@
+extend layout
+
+block content
+
+  form(name="passwdForm", action="/user/passwd", method="POST")
+    div
+      lable.formLabel Old Password
+      input(name="oldPassword", class="formControl", size="60", required="required")
+
+    div
+      label.formLabel New Password
+      input(name="password", class="formControl", size="60", required="required")
+     
+    div
+      label.formLabel Confirm
+      input(name="password2", class="formControl", size="60", required="required")
+     
+    div
+      input.postSubmit(type="submit", value="Submit")
+
+    div.divider

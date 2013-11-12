@@ -12,10 +12,10 @@ exports.config = {
         footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>',
     },
     salt : 'xew24igjs',
-    admin : {
+    user : {
         cookie : 'token',
         username : 'admin',
-        password : '123456' //Please remember to change this password!!!
+        password : 'e10adc3949ba59abbe56e057f20f883e' //Current is 123456, please remember to change this password!!!
     },
     webinfo : {
         'RSS订阅' : '/rss',

@@ -11,7 +11,7 @@ exports.login = function(req, res){
 
 exports.doLogin = function(req, res){
     var username = req.body.username;
-    var password = req.body.password;
+    var password = crypto.createHash('md5').update(req.body.password).digest('hex');
     var referer = req.body.referer=='' ? '/' : req.body.referer;
     if (username==req.app.get('admin username') && password==req.app.get('admin password')){
         createToken(req, res);
@@ -29,31 +29,44 @@ exports.logout = function(req, res){
 
 exports.checkLogin = function(req, res, next){
     if (req.session.loginStatus){
-	res.locals.loginStatus = true;
-	next();
-	return;
+        res.locals.loginStatus = true;
+        next();
+        return;
     }
 
     var c_key = req.app.get('admin cookie');
     var token = '';
     try{
-	token = req.cookies[c_key];
+        token = req.cookies[c_key];
     }catch(e){}
 
-    if (token == createToken(req, res)){
-	req.session.loginStatus = true;
-	res.locals.loginStatus = true;
-	next();
-	return;
+    if (req.method == 'POST' && token == createToken(req, res)){
+        req.session.loginStatus = true;
+        res.locals.loginStatus = true;
+        next();
+        return;
     }
 
-    if (/\/*\/(add|update|delete)(\/*)?/.test(req.path)){
-	req.session.referer = req.path;
+    if (/\/*\/(add|update|delete|passwd)(\/*)?/.test(req.path)){
+	    req.session.referer = req.path;
         res.redirect('/user/login');
     }else{
         next();
     }
-}
+};
+
+exports.passwd = function(req, res){
+    res.render('user_passwd');
+};
+
+exports.doPasswd = function(req, res){
+    var oldPassword = req.body.oldPassword;
+    var password = req.body.password;
+    var password2 = req.body.password2;
+
+    console.log(oldPassword, password, password2);
+    res.redirect('/');
+};
 
 function createToken(req, res){
     var c_salt = req.app.get('salt');
@@ -62,11 +75,12 @@ function createToken(req, res){
     var c_password = req.app.get('admin password');
     var c_token = crypto.createHash('md5').update(c_username + c_password + c_salt).digest('hex');
     if (req.path == '/user/login'){
-	var token = crypto.createHash('md5').update(req.body.username + req.body.password + c_salt).digest('hex');
-	if (token !== c_token){
+        var hashPassword = crypto.createHash('md5').update(req.body.password).digest('hex');
+        var token = crypto.createHash('md5').update(req.body.username + hashPassword + c_salt).digest('hex');
+        if (token !== c_token){
             return false;
-	}
-	res.cookie(c_key, token, {expires: new Date(Date.now() + 900000), httpOnly: true});
+        }
+        res.cookie(c_key, token, {expires: new Date(Date.now() + 900000), httpOnly: true});
     }
 
     return c_token;

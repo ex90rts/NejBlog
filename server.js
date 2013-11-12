@@ -13,9 +13,9 @@ app.set('encoding', config.encoding);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('salt', config.salt);
-app.set('admin cookie', config.admin.cookie);
-app.set('admin username', config.admin.username);
-app.set('admin password', config.admin.password);
+app.set('admin cookie', config.user.cookie);
+app.set('admin username', config.user.username);
+app.set('admin password', config.user.password);
 app.configure('development', function(){
     app.locals.pretty = true;
     app.use(express.errorHandler());
@@ -53,12 +53,14 @@ app.get('/post/upload', routes.post.upload);
 app.get('/tag/view/:tag', routes.tag.view);
 app.get('/user/login', routes.user.login);
 app.get('/user/logout', routes.user.logout);
+app.get('/user/passwd', routes.user.passwd);
 app.get('/admin/setting', routes.admin.setting);
 
 app.post('/post/add', routes.post.doAdd);
 app.post('/post/update/:id', routes.post.doUpdate);
 app.post('/post/upload', routes.post.doUpload);
 app.post('/user/login', routes.user.doLogin);
+app.post('/user/passwd', routes.user.doPasswd);
 app.post('/admin/setting', routes.admin.doSetting);
 
 var dataDirs = ['data', 'data/post', 'data/tag', 'public/upload'];

@@ -6,7 +6,7 @@ block content
   script(src="/js/Markdown.Editor.js")
   script(src="/js/Markdown.Sanitizer.js")
 
-  form(name="postForm", action="/admin/setting", method="POST")
+  form(name="postForm", action="/admin/setting", method="POST", enctype="multipart/form-data")
     div
       lable.formLabel Lang
       input(name="siteinfo[lang]", class="formControl", size="60", value=setting.siteinfo.lang, required="required")
@@ -24,8 +24,12 @@ block content
       input(name="siteinfo[keywords]", class="formControl", size="60", value=setting.siteinfo.keywords)
 
     div
+      label.formLabel Comment Serice ID
+      input(name="siteinfo[duoshuo]", class="formControl", size="60", value=setting.siteinfo.duoshuo)
+
+    div
       label.formLabel Site Logo
-      input(type="file", name="siteinfo[logo]", class="formControl", size="60", value=setting.siteinfo.logo)
+      input(type="file", name="logofile", class="formControl", size="60", value=setting.siteinfo.logo)
 
     div
       label.formLabel Footer
