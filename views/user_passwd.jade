@@ -2,20 +2,24 @@ extend layout
 
 block content
 
-  form(name="passwdForm", action="/user/passwd", method="POST")
+  form.passwdForm(name="passwdForm", action="/user/passwd", method="POST")
+    div
+      lable.formLabel Username
+      input(name="username", value="#{username}", class="formControl passwdField", size="60", required="required")
+
     div
       lable.formLabel Old Password
-      input(name="oldPassword", class="formControl", size="60", required="required")
+      input(name="oldPassword", class="formControl passwdField", size="60", required="required")
 
     div
       label.formLabel New Password
-      input(name="password", class="formControl", size="60", required="required")
+      input(name="password", class="formControl passwdField", size="60", required="required")
      
     div
       label.formLabel Confirm
-      input(name="password2", class="formControl", size="60", required="required")
+      input(name="password2", class="formControl passwdField", size="60", required="required")
      
     div
-      input.postSubmit(type="submit", value="Submit")
+      input.submit(type="submit", value="Submit")
 
     div.divider

@@ -13,6 +13,8 @@ html(lang="zh_CN")
     link(rel='stylesheet', href='http://yandex.st/highlightjs/7.4/styles/monokai_sublime.min.css')
     script(src='http://yandex.st/highlightjs/7.4/highlight.min.js')
   body
+    .message(class=message?'show':'hidden')=message
+
     .container
       header
         .sitename

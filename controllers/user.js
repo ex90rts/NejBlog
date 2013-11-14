@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+var userModel = require('../models/user');
 
 exports.default = function(req, res){
     res.send('Hello, User Controller!');
@@ -56,16 +57,48 @@ exports.checkLogin = function(req, res, next){
 };
 
 exports.passwd = function(req, res){
-    res.render('user_passwd');
+    var user = userModel.readUserData();
+    res.render('user_passwd', {username: user.username, message: 'Test Message'});
 };
 
 exports.doPasswd = function(req, res){
+    var username = req.body.username;
     var oldPassword = req.body.oldPassword;
     var password = req.body.password;
     var password2 = req.body.password2;
 
-    console.log(oldPassword, password, password2);
-    res.redirect('/');
+    var user = userModel.readUserData();
+    
+    var error = '';
+    do{
+        if (/^\w{5,16}$/.test(username) == false){
+            error = 'Username Not Valid';
+            break;
+        }
+        if (password.length < 6){
+            error = 'New Password Is To Short, At Least 6 Chars';
+            break;
+        }
+        if (password != password2){
+            error = 'Tow New Password Not Match';
+            break;
+        }
+
+        if (crypto.createHash('md5').update(oldPassword).digest('hex') != user.password){
+            error = 'Old Password Not Match';
+            break;
+        }
+        
+        user.username = username;
+        user.password = crypto.createHash('md5').update(password).digest('hex');
+        userModel.saveUserData(user);
+    }while(false); 
+    
+    if (error != ''){
+        res.render('user_passwd', {username: user.username, message: error});
+    }else{
+        res.redirect('/');
+    }
 };
 
 function createToken(req, res){
