@@ -27,17 +27,29 @@ html {
 }
 body {
     margin: 0;
-    font: 14px/1.5 Tahoma, "Microsoft Yahei", Helvetica, Arial, sans-serif;
+    font: 14px/1.5 Helvetica, "Microsoft Yahei", Tahoma, Arial, sans-serif;
     color: #2C3E50;
 }
+h1 {
+    font-size: 1.6em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.4em;
+}
+
+
+/*Global Styles*/
 .clear{
 	clear:both;
 }
 .show{
     display: block;
 }
-.hidden{
-    display: hidden;
+.hide{
+    display: none;
 }
 .message{
     position: absolute;
@@ -46,32 +58,37 @@ body {
     color: #000;
     height: 30px;
     line-height: 30px;
-    width: 500px;
+    width: 50%;
+    max-width: 500px;
+    min-width:300px;
     margin: 0 auto;
     text-align: center;
     border-radius: 5px;
 }
 .container {
+    width: 96%;
 	max-width:900px;
-	min-width:600px;
+	min-width:300px;
 	background-color:#fff; 
-	margin:10px auto;
+	margin:2% auto;
 }
+
+/*Header Section*/
 header{
 	background-color: #fff;
-	padding:20px;
+	padding:2%;
 }
 header .sitename{ 
 	float:left; 
-	width:500px; 
+	width:60%; 
 	color:#333;
 }
 header .sitename h1{
-	font-size:26px;
-	font-weight:100;
+	font-size:1.8em;
+	font-weight:700;
 }
 header .sitename h3{
-	font-size:14px;
+	font-size:1em;
 	font-weight:100;
 }
 header .sitelogo{ 
@@ -85,15 +102,15 @@ header .sitelogo img{
 	height:60px; 
 	margin:5px;
 }
+
+/*Nav Section*/
 nav{
     height:40px;
     background-color:#34495e;
 }
 nav ul li{
     display:block;
-    height: 28px;
-    min-width:90px;
-    padding:5px 20px;
+    min-width:100px;
     float:left;
     text-align:center;
 }
@@ -102,10 +119,14 @@ nav ul li.on{
     border-bottom:2px solid #16a085;
 }
 nav ul li a{
+    height: 38px;
+    line-height: 38px;
+    display: block;
     text-decoration:none;
     color:#fff;
-    font-size:16px;
+    font-size:1.2em;
     font-weight:100;
+    padding:0 10px;
 }
 nav ul li:hover{
     background-color:#1ABC9C;
@@ -125,72 +146,76 @@ nav ul li:hover{
     z-index: 999;
 }
 .adminMenu ul li{
-    display:block;
-    height: 28px;
-    min-width:90px;
-    padding:5px 20px;
     text-align:left;
     background-color:#34495e;
     border-bottom:2px solid #34495e;
 }
+.adminMenu ul li a{
+    font-size: 1.1em;
+}
+
+/*Content Section*/
 section.content{
 	min-height:200px;
 	background-color:#FFF;
-	padding: 30px 20px;
+	padding:2%;
 	line-height: 2em;
 }
-section.content h1{
-	font-size:26px;
-}
 section.content article{
-	padding-left:20px;
+	padding-left:2%;
 }
 section.content article span{
-	margin-right:15px;
+	margin-right:1.5%;
 }
 section.content article a{
 	text-decoration:none;
 	color:#069;
 }
+
+/*Site Relevant Section*/
 section.relevant{
 	min-height:200px;
 	height:100%;
 	border-top:5px #1ABC9C solid;
 }
 section.relevant .tags{ 
-	width:54%;
-	padding:10px;
+	width:52%;
+	min-width: 430px;
+	padding:1.5%;
 	float:left;
 }
 section.relevant .links{ 
 	width:18%;
-	padding:10px;
+	min-width: 140px;
+	padding:1.5%;
 	float:right;
 }
 section.relevant .aboutme{ 
 	width:18%;
-	padding:10px;
+	min-width: 140px;
+	padding:1.5%;
 	float:right;
 }
-.tags h1, .links h1, .aboutme h1{
-	padding:6px;
+section.relevant h3{
+	padding:0 6px;
 }
-.tags a{ 
+section.relevant .tags a{ 
 	float:left; 
 	margin:3px 6px; 
 	text-decoration:none; 
 	color:#34495e;
 }
-.tags a span{
+section.relevant .tags a span{
 	display:block;
 	width:20px;
 	float:right;
 	text-align:center;
 	background-color:#E74C3C;
 	margin-left:3px;
+	margin-top:3px;
 	border-radius:5px;
 	color:#fff;
-	font-size:12px;
+	font-size:0.8em;
 }
 section.relevant .aboutme li{
 	line-height:1.8em;
@@ -208,12 +233,16 @@ section.relevant .links li a{
 	text-decoration:none; 
 	color:#34495e;
 }
+
+/*Footer Section*/
 footer{
-	padding:10px; 
+	padding:2%; 
 	text-align:center; 
 	background-color:#ebedef;
+	font-size: 0.9em;
 }
 
+/*Forms Style*/
 .formControl{
 	border: 2px solid #bdc3c7;
 	color: #666;
@@ -309,8 +338,38 @@ hr.line{
     
 }
 
+@media(max-width:480px){
+    .narrowhide{
+        display: none;
+    }
+}
 
+@media(max-width:899px){
+    nav ul li a{
+        font-size: 1em;
+    }
+    section.relevant{
+        height: 100%;
+    }
+    section.relevant .tags{
+    	float: none;
+    	min-width: 95%;
+    }
+    section.relevant .links{
+        float: none;
+        min-width: 95%;
+    }
+    section.relevant .aboutme{
+     	float: none;
+     	min-width: 95%;
+    }
+}
 
+@media(min-width:900px){
+    .container{
+        margin: 2% auto;
+    }
+}
 
 /***************************************************/
 /************** CSS for markdown content ***********/

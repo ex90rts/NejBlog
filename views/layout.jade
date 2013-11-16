@@ -4,6 +4,8 @@ html(lang="zh_CN")
     meta(charset='utf-8')
     meta(name='description' content='#{siteinfo.desc}')
     meta(name='keywords' content='#{siteinfo.keywords}')
+    meta(http-equiv="X-UA-Compatible",content="IE=edge, chrome=1")
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
     title= title
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,8 +14,10 @@ html(lang="zh_CN")
     link(rel='stylesheet', href='/css/font-awesome.css')
     link(rel='stylesheet', href='http://yandex.st/highlightjs/7.4/styles/monokai_sublime.min.css')
     script(src='http://yandex.st/highlightjs/7.4/highlight.min.js')
+    script(src='/js/jquery-1.10.2.min.js')
+    script(src='/js/main.js?v=201311151034')
   body
-    .message(class=message?'show':'hidden')=message
+    .message(class=message?'show':'hide')=message
 
     .container
       header
@@ -27,7 +31,7 @@ html(lang="zh_CN")
         ul
           li(class=(currentNav=='index')?'on':'') <a href='/index'>Blog</a>
           li(class=(currentNav=='about')?'on':'') <a href='/about'>About me</a>
-          li <a href='https://github.com/samoay/NejBlog' target='_blank'>Fork this blog</a>
+          li.narrowhide <a href='https://github.com/samoay/NejBlog' target='_blank'>Fork this blog</a>
           if loginStatus
             li.adminGate(class=(currentNav=='admin')?'on':'') <a href='#'>Admin</a>
               div.adminMenu

@@ -3,13 +3,10 @@ extend layout
 block content
   if postList
     - for(var year in postList)
-      h1 #{year}
+      h2 #{year}
       - for(var i in postList[year])
         article
           span(class='datetime') #{postList[year][i].date}
           a.title(href='/post/view/#{postList[year][i]._id}') #{postList[year][i].title}
-          if loginStatus
-            &nbsp;&nbsp;<a href="/post/update/#{postList[year][i]._id}"><i class="fa fa-edit"></i></a>
-            &nbsp;&nbsp;<a href="/post/delete/#{postList[year][i]._id}"><i class="fa fa-times-circle"></i></a>
   else
     p Well done! Let's going to write your first article: <a href="/post/add">Add Post</a>
