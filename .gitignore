@@ -2,3 +2,4 @@
 data
 public/upload
 *.swp
+node_modules/*

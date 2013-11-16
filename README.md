@@ -26,6 +26,7 @@ Simply clone this repo to your webroot and start the node server:
 
     $ git clone git@github.com:samoay/NejBlog.git
     $ cd NejBlog
+    $ npm install #because I already removed the node_modules files from git, so you need to install them by yourself now
     $ node server.js &
 
 As the default configuration, you can visit your blog via http://127.0.0.1:3000 now !!! 
