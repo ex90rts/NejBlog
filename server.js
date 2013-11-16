@@ -47,6 +47,7 @@ app.get('/rss(\.xml)?', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
 app.get('/post/view/:id', routes.post.view);
 app.get('/post/add', routes.post.add);
+app.get('/post/admin', routes.post.admin);
 app.get('/post/update/:id', routes.post.update);
 app.get('/post/delete/:id', routes.post.delete);
 app.get('/post/upload', routes.post.upload);

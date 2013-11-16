@@ -242,6 +242,28 @@ footer{
 	font-size: 0.9em;
 }
 
+/*Table Style*/
+table{
+    width: 100%;
+    border-collapse:collapse;
+}
+table th, table td{
+    padding: 2px 3px;
+}
+table th{
+    text-align: center;
+    background-color: #556270;
+    color: #fff;
+    border: 1px solid #fff;
+}
+table td{
+    border: 1px solid #fff;
+    background-color:#ebedef;
+}
+table td.txtcenter{
+    text-align: center;
+}
+
 /*Forms Style*/
 .formControl{
 	border: 2px solid #bdc3c7;

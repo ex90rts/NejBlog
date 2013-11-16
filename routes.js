@@ -36,6 +36,9 @@ exports.post = {
     },
     delete: function(req, res){
         controller.post.delete(req, res);
+    },
+    admin: function(req, res){
+        controller.post.admin(req, res);
     }
 };
 

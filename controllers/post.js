@@ -16,6 +16,26 @@ exports.view = function(req, res){
     res.render('post_view', {post: post, mdContent: mdContent});    
 };
 
+exports.admin = function(req, res){
+    var postList = false;
+    try{
+        postList = postModel.readPostList();
+        if (JSON.stringify(postList).length == 2){
+            postList = false;
+        }
+    }catch(e){}
+
+    if (postList){
+        var tempList = [];
+        for(var year in postList){
+            tempList = tempList.concat(postList[year]);
+        }
+        postList = tempList;
+    }
+
+    res.render('post_admin', {postList: postList});
+};
+
 exports.add = function(req, res){
     res.render('post_add', {title: 'Add New Post'});
 };
@@ -143,5 +163,5 @@ exports.delete = function(req, res){
         console.log('Remove post data file failed');
     }
     
-    res.redirect('/');
+    res.redirect('/post/admin');
 };
