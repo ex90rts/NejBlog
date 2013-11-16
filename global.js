@@ -68,3 +68,12 @@ exports.uploadFile = function(files, name){
 
     return filePath.replace('public', '');
 };
+
+exports.setMessage = function(req, message){
+    req.app.locals.message = message;
+    setTimeout(this.clearMessage, 5000, req);
+};
+
+exports.clearMessage = function(req){
+    req.app.locals.message = '';
+};

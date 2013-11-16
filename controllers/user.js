@@ -1,4 +1,5 @@
 var crypto = require('crypto');
+var global = require('../global');
 var userModel = require('../models/user');
 
 exports.default = function(req, res){
@@ -14,8 +15,12 @@ exports.doLogin = function(req, res){
     var username = req.body.username;
     var password = crypto.createHash('md5').update(req.body.password).digest('hex');
     var referer = req.body.referer=='' ? '/' : req.body.referer;
-    if (username==req.app.get('admin username') && password==req.app.get('admin password')){
+
+    var user = userModel.readUserData();
+    if (username==user.username && password==user.password){
         createToken(req, res);
+    }else{
+        global.setMessage(req, 'Username or password is wrong');
     }
     res.redirect(referer);
 };
@@ -63,7 +68,7 @@ exports.checkLogin = function(req, res, next){
 
 exports.passwd = function(req, res){
     var user = userModel.readUserData();
-    res.render('user_passwd', {username: user.username, message: 'Test Message'});
+    res.render('user_passwd', {username: user.username});
 };
 
 exports.doPasswd = function(req, res){
@@ -100,17 +105,21 @@ exports.doPasswd = function(req, res){
     }while(false); 
     
     if (error != ''){
-        res.render('user_passwd', {username: user.username, message: error});
+        global.setMessage(req, error);
+        res.render('user_passwd', {username: user.username});
     }else{
+        global.setMessage(req, 'Password changed');
         res.redirect('/');
     }
 };
 
 function createToken(req, res){
     var c_salt = req.app.get('salt');
-    var c_key = req.app.get('admin cookie');
-    var c_username = req.app.get('admin username');
-    var c_password = req.app.get('admin password');
+
+    var user = userModel.readUserData();
+    var c_key = user.cookie;
+    var c_username = user.username;
+    var c_password = user.password;
     var c_token = crypto.createHash('md5').update(c_username + c_password + c_salt).digest('hex');
     if (req.path == '/user/login' && req.method == 'POST'){
         var hashPassword = crypto.createHash('md5').update(req.body.password).digest('hex');

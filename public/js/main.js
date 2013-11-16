@@ -12,9 +12,14 @@ $(document).ready(function(){
         	$(".message").center();
     	});
     	
+    	if ($(".message").html().length > 0){
+    	    $(".message").show();
+    	    messageState = true;
+    	}
+    	
     	if (messageState){
     		$(".message").center();
-    	    $(".message").delay(5000).fadeOut(1600, "linear", function(){
+    	    $(".message").delay(3000).fadeOut(1600, "linear", function(){
     	        messageState = false;
     	    });
     	}
