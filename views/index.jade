@@ -7,6 +7,6 @@ block content
       - for(var i in postList[year])
         article
           span(class='datetime') #{postList[year][i].date}
-          a.title(href='/post/view/#{postList[year][i]._id}') #{postList[year][i].title}
+          a.title(href='/post/view/#{postList[year][i]._id}', title='#{postList[year][i].title}') #{postList[year][i].title}
   else
     p Well done! Let's going to write your first article: <a href="/post/add">Add Post</a>

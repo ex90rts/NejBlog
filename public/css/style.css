@@ -252,7 +252,7 @@ table th, table td{
 }
 table th{
     text-align: center;
-    background-color: #556270;
+    background-color: #718EAD;
     color: #fff;
     border: 1px solid #fff;
 }
@@ -486,4 +486,27 @@ hr.line{
 }
 .mkn img{
     max-width: 90%;
+}
+.mkn table{
+    width: 80%;
+    border-collapse:collapse;
+}
+.mkn table th, .mkn table td{
+    padding: 2px 5px;
+}
+.mkn table th{
+    text-align: center;
+    background-color: #F0E4E4;
+    color: #000;
+    font-size: 700;
+    font-family: Arial;
+    border: 1px solid #D0D5DA;
+}
+.mkn table td{
+    border: 1px solid #D0D5DA;
+    background-color: #fff;
+    color: #666;
+}
+.mkn table td.txtcenter{
+    text-align: center;
 }

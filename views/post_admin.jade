@@ -14,7 +14,8 @@ block content
         each post in postList
           tr
             td #{post._id}
-            td #{post.title}
+            td
+              a(href="/post/view/#{post._id}", target="_blank") #{post.title}
             td.txtcenter #{post.created}
             td.txtcenter
               a(href="/post/update/#{post._id}") Update

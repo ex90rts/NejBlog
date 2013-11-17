@@ -5,4 +5,4 @@ block content
     - for(var i in postList)
       article
         span(class='datetime') #{postList[i].date}
-        a.title(href='/post/view/#{postList[i]._id}') #{postList[i].title}
+        a.title(href='/post/view/#{postList[i]._id}', title='#{postList[i].title}') #{postList[i].title}

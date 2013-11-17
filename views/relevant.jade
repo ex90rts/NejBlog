@@ -1,17 +1,17 @@
 .tags
   h3 Tags
   - for(var k in tagList)
-    a(href='/tag/view/#{k}') #{k}<span>#{tagList[k]}</span>
+    a(href='/tag/view/#{k}', title='#{k}') #{k}<span>#{tagList[k]}</span>
   div.clear
 .aboutme
   h3 Me & Web
   ul
     - for(var l in webinfo)
       li
-        a(href='#{webinfo[l]}', target='_blank') #{l}
+        a(href='#{webinfo[l]}', title='#{l}', target='_blank') #{l}
 .links
   h3 Links
   ul
     - for(var l in links)
       li
-        a(href='#{links[l]}', target='_blank') #{l}
+        a(href='#{links[l]}', title='#{l}', target='_blank') #{l}

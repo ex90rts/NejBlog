@@ -1,5 +1,4 @@
 var adminModel = require('../models/admin');
-var markdown = require('markdown').markdown;
 var global = require('../global');
 
 exports.setting = function(req, res){
