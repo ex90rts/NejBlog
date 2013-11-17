@@ -9,11 +9,11 @@ block content
   form(name="postForm", action="/admin/setting", method="POST", enctype="multipart/form-data")
     div
       lable.formLabel Lang
-      input(name="siteinfo[lang]", class="formControl", size="60", value=setting.siteinfo.lang, required="required")
+      input.mormalInput(name="siteinfo[lang]", class="formControl", value=setting.siteinfo.lang, required="required")
       
     div
       label.formLabel Site Name
-      input(name="siteinfo[name]", class="formControl", size="60", value=setting.siteinfo.name, required="required")
+      input.mormalInput(name="siteinfo[name]", class="formControl", value=setting.siteinfo.name, required="required")
 
     div
       label.formLabel Site Desc
@@ -21,15 +21,15 @@ block content
 
     div
       label.formLabel Keywords
-      input(name="siteinfo[keywords]", class="formControl", size="60", value=setting.siteinfo.keywords)
+      input.mormalInput(name="siteinfo[keywords]", class="formControl", value=setting.siteinfo.keywords)
 
     div
       label.formLabel Comment Serice ID
-      input(name="siteinfo[duoshuo]", class="formControl", size="60", value=setting.siteinfo.duoshuo)
+      input.mormalInput(name="siteinfo[duoshuo]", class="formControl", value=setting.siteinfo.duoshuo)
 
     div
       label.formLabel Site Logo
-      input(type="file", name="logofile", class="formControl", size="60", value=setting.siteinfo.logo)
+      input.mormalInput(type="file", name="logofile", class="formControl", value=setting.siteinfo.logo)
 
     div
       label.formLabel Footer

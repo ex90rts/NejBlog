@@ -1,5 +1,6 @@
 var fs = require('fs');
 var markdown = require('markdown').markdown;
+var marked = require('marked');
 var global = require('../global');
 var postModel = require('../models/post');
 var tagModel = require('../models/tag');
@@ -13,6 +14,7 @@ exports.view = function(req, res){
     }
 
     var mdContent = markdown.toHTML(post.content);
+    var mdContent = marked(post.content);
     res.render('post_view', {post: post, mdContent: mdContent});    
 };
 

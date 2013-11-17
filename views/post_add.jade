@@ -12,11 +12,11 @@ block content
   form(name="postForm", action="/post/add", method="POST")
     div
       lable.formLabel Title
-      input(name="title", class="formControl", size="60", required="required")
+      input.mormalInput(name="title", class="formControl", required="required")
 
     div
       label.formLabel Tags
-      input(name="tags", class="formControl", size="60", required="required")
+      input.mormalInput(name="tags", class="formControl", required="required")
      
     div.wmd-panel
       label.formLabel Content

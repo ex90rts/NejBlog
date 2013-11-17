@@ -6,7 +6,7 @@ blockquote {
 
 .wmd-panel
 {
-	min-width: 500px;
+	overflow: hidden;
 }
 
 .wmd-button-bar 
