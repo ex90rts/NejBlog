@@ -23,7 +23,7 @@ exports.currentNav = function(req, res, next){
         nav = 'login';
     }else if(req.path == '/about' || req.path == '/about.html'){
         nav = 'about';
-    }else if(/\/*\/(add|update|delete|setting|passwd)(\/*)?/.test(req.path)){
+    }else if(/\/*\/(add|update|delete|setting|passwd|admin)(\/*)?/.test(req.path)){
         nav = 'admin';
     }
     req.app.locals.currentNav = nav;
