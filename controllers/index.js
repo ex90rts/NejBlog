@@ -1,7 +1,7 @@
 var fs = require('fs');
 var postModel = require('../models/post');
 var adminModel = require('../models/admin');
-var markdown = require('markdown').markdown;
+var marked = require('marked');
 
 exports.view = function(req, res){
     var postList = false;
@@ -23,7 +23,7 @@ exports.about = function(req, res){
         about = 'This is the default about content, you can create your own about content under Admin->Setting page after logged in.';
     }
 
-    res.render('about', {about: markdown.toHTML(about)});
+    res.render('about', {about: marked(about)});
 };
 
 exports.rss = function(req, res){
