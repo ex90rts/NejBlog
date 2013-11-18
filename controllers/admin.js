@@ -4,7 +4,7 @@ var global = require('../global');
 exports.setting = function(req, res){
     var setting = adminModel.readSetting();
     var aboutme = adminModel.readAboutme();
-   
+
     var linksText = '';
     for(var k in setting.links){
         linksText += k + '|' + setting.links[k] + '\r\n';

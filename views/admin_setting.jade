@@ -24,8 +24,15 @@ block content
       input.mormalInput(name="siteinfo[keywords]", class="formControl", value=setting.siteinfo.keywords)
 
     div
+      label.formLabel #{langs.setting_commentservice} 
+        span.formTips!= langs.setting_commentservice_tip
+      select.normalSelect(name="siteinfo[comment_service]")
+        each value,key in setting.comments
+          option(value="#{key}", selected=(setting.siteinfo.comment_service==key)) #{value}
+
+    div
       label.formLabel #{langs.setting_commentserviceid} <span class="formTips">#{langs.setting_commentserviceid_tip}</span>
-      input.mormalInput(name="siteinfo[duoshuo]", class="formControl", value=setting.siteinfo.duoshuo)
+      input.tinyInput(name="siteinfo[comment_id]", class="formControl", value=setting.siteinfo.comment_id)
 
     div
       label.formLabel #{langs.setting_sitelogo} <span class="formTips">#{langs.setting_sitelogo_tip}</span>

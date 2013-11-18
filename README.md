@@ -45,6 +45,10 @@ The default admin account is:
 
 **Please remember to change the default password under Admin-->Password after you logged in.**
 
+#### Comment Setting
+
+Currently, Nejblog support three popular social comment services: Disqus.com, Lifefyre.com and Duoshuo.com (For users in China). You need to choose one of these services and get the unique site ID(Disqus called disqus_shortname, Lifefyre called siteId, Duoshuo called shortname), then you can set the ID as **comment service id** in Admin-->Setting page.
+
 #### Project dependencies
 
 - express >= 3.4.4  The main project framework

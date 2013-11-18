@@ -8,9 +8,14 @@ exports.config = {
         desc : "A simple personal blog system powered by node.js and express framework",
         keywords : "blog,node.js,javascript,express,jade,html5",
         logo : '/images/logo.jpg',
-        comment_service: "disqus",
-        comment_id : 'samoays',
+        comment_service: "livefyre",
+        comment_id : '347941',
         footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>',
+    },
+    comments : {
+        'duoshuo' : 'duoshuo.com',
+        'disqus' : 'disqus.com',
+        'livefyre' : 'livefyre.com'
     },
     salt : 'xew24igjs',
     user : {

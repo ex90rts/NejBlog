@@ -10,7 +10,8 @@ exports.readSetting = function(){
     var setting = {
         siteinfo : config.siteinfo,
         links : config.links,
-        webinfo: config.webinfo
+        webinfo: config.webinfo,
+        comments: config.comments
     };
     
     if (fs.existsSync(filePath)){
