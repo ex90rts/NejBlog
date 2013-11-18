@@ -53,7 +53,7 @@ exports.doAdd = function(req, res){
     };
    
     var createdYear = date.getFullYear();
-    var createdDate = (date.getMonth() + 1) + '-' + date.getDate();
+    var createdDate =  ('0'+(date.getMonth() + 1)).substr(-2) + '-' + ('0' + date.getDate()).substr(-2);
     var listItem = {
         _id: postId,
 	title: req.body.title,

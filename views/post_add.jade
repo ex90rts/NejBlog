@@ -2,12 +2,10 @@ extend layout
 
 block content
   link(rel='stylesheet', href='/css/markdown.css')
-  link(rel='stylesheet', href='/css/uploadify.css');
   script(src="/js/Markdown.Converter.js")
   script(src="/js/Markdown.Editor.js")
   script(src="/js/Markdown.Sanitizer.js")
   script(src="/js/jquery-1.10.2.min.js")
-  script(src="/js/jquery.uploadify.min.js")
 
   form(name="postForm", action="/post/add", method="POST")
     div
@@ -17,7 +15,11 @@ block content
     div
       label.formLabel Tags
       input.mormalInput(name="tags", class="formControl", required="required")
-     
+      
+    div
+      label.formLabel Created Date
+      input.mormalInput(name="created", class="formControl", required="required")
+      
     div.wmd-panel
       label.formLabel Content
       #wmd-button-bar
