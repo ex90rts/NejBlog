@@ -9,6 +9,7 @@ NejBlog is a simple personal blog system which powered by node.js, express frame
 | /config.js     | the default site global config file for running                                |
 | /controllers   | the C part of MVC, all logic code suppose to be here                           |
 | /data          | the static data folder for blog data                                           |
+| /langs         | languages file for the site                                                    |
 | /models        | the M part of MVC, for saving json data to file system                         |
 | /node_modules  | npm modules                                                                    |
 | /public        | public website resources such as css, images, static html files                |
