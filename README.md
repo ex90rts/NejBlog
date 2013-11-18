@@ -24,12 +24,12 @@ NejBlog is a simple personal blog system which powered by node.js, express frame
 
 Simply clone this repo to your webroot and start the node server:
 
-    ```shell
-    $ git clone git@github.com:samoay/NejBlog.git
-    $ cd NejBlog  #change folder name if you want
-    $ npm install #install dependent npm modules
-    $ node server.js &
-    ```
+```
+$ git clone git@github.com:samoay/NejBlog.git
+$ cd NejBlog  #change folder name if you want
+$ npm install #install dependent npm modules
+$ node server.js &
+```
 
 As the default configuration, you can visit your blog via http://127.0.0.1:3000 now !!! 
     
