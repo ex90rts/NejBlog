@@ -12,13 +12,25 @@ block content
   hr.line
   div.mkn!=mdContent
   
-  .ds-thread
-  script.
-    var duoshuoQuery = {short_name:"#{siteinfo.duoshuo}"};
-    (function(){
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+  if siteinfo.comment_service == "duoshuo"
+    .ds-thread
+    script.
+      var duoshuoQuery = {short_name:"#{siteinfo.comment_id}"};
+      (function(){
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+  else if siteinfo.comment_service == "disqus"
+    #disqus_thread
+    script.
+      var disqus_shortname = 'nejblog';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    a(href="http://disqus.com", class="dsq-brlink") comments powered by <span class="logo-disqus">Disqus</span></a>
+    
