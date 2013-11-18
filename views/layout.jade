@@ -31,20 +31,20 @@ html(lang="#{siteinfo.lang}")
         .clear
       nav
         ul
-          li(class=(currentNav=='index')?'on':'') <a href='/index'>Blog</a>
-          li(class=(currentNav=='about')?'on':'') <a href='/about'>About me</a>
-          li.narrowhide <a href='https://github.com/samoay/NejBlog' target='_blank'>Fork this blog</a>
+          li(class=(currentNav=='index')?'on':'') <a href='/index'>#{langs.nav_blog}</a>
+          li(class=(currentNav=='about')?'on':'') <a href='/about'>#{langs.nav_aboutme}</a>
+          li.narrowhide <a href='https://github.com/samoay/NejBlog' target='_blank'>#{langs.nav_fork}</a>
           if loginStatus
-            li.adminGate(class=(currentNav=='admin')?'on':'') <a href='#'>Admin</a>
+            li.adminGate(class=(currentNav=='admin')?'on':'') <a href='#'>#{langs.nav_admin}</a>
               div.adminMenu
                 ul
-                  li <a href='/admin/setting'>Setting</a>
-                  li <a href='/post/add'>Add Post</a>
-                  li <a href='/post/admin'>My Posts</a>
-                  li <a href='/user/passwd'>Password</a>
-                  li <a href='/user/logout'>Logout</a>
+                  li <a href='/admin/setting'>#{langs.nav_admin_setting}</a>
+                  li <a href='/post/add'>#{langs.nav_admin_addpost}</a>
+                  li <a href='/post/admin'>#{langs.nav_admin_myposts}</a>
+                  li <a href='/user/passwd'>#{langs.nav_admin_password}</a>
+                  li <a href='/user/logout'>#{langs.nav_admin_logout}</a>
           else
-            li(class=(currentNav=='login')?'on':'') <a href='/user/login'>Admin login</a>
+            li(class=(currentNav=='login')?'on':'') <a href='/user/login'>#{langs.nav_admin_login}</a>
       section.content
         block content
       section.relevant

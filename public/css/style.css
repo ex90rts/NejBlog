@@ -299,6 +299,9 @@ footer{
     width:40%;
     min-width: 250px;
 }
+.tinyInput{
+    width: 150px;
+}
 .smallTextarea{
     height: 60px;
     width:90%;
@@ -311,6 +314,11 @@ footer{
     font-size:18px;
     font-weight:700;
     display:block;
+}
+.formTips{
+    font-size:0.8em;
+    font-weight: 100;
+    color: #999;
 }
 .loginForm{
     width: 250px;

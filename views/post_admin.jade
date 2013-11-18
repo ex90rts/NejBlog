@@ -2,14 +2,14 @@ extend layout
 
 block content
   if postList
-    h2 Post Admin
+    h2 #{langs.mypost_title}
     table.postList
       thead
         tr
-          th ID
-          th Title
-          th Create Date
-          th Actions
+          th #{langs.mypost_th_id}
+          th #{langs.mypost_th_title}
+          th #{langs.mypost_th_created}
+          th #{langs.mypost_th_actions}
       tbody
         each post in postList
           tr
@@ -18,9 +18,9 @@ block content
               a(href="/post/view/#{post._id}", target="_blank") #{post.title}
             td.txtcenter #{post.created}
             td.txtcenter
-              a(href="/post/update/#{post._id}") Update
+              a(href="/post/update/#{post._id}") #{langs.mypost_action_update}
               &nbsp;|&nbsp;
-              a(href="/post/delete/#{post._id}", onclick="return confirm('Are u sure u want to delete this post? It is not cancelable!');") Delete
+              a(href="/post/delete/#{post._id}", onclick="return confirm('#{langs.mypost_delete_tip}');") #{langs.mypost_action_delete}
 
   else
-    p There is no post here! Let's going to write your first article: <a href="/post/add">Add Post</a>
+    p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>

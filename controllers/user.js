@@ -20,7 +20,7 @@ exports.doLogin = function(req, res){
     if (username==user.username && password==user.password){
         createToken(req, res);
     }else{
-        global.setMessage(req, 'Username or password is wrong');
+        global.setMessage(req, req.app.locals.langs.login_failed);
     }
     res.redirect(referer);
 };
@@ -78,24 +78,25 @@ exports.doPasswd = function(req, res){
     var password2 = req.body.password2;
 
     var user = userModel.readUserData();
-    
+    var langs = req.app.locals.langs;
+
     var error = '';
     do{
         if (/^\w{5,16}$/.test(username) == false){
-            error = 'Username Not Valid';
+            error = langs.password_failed_username;
             break;
         }
         if (password.length < 6){
-            error = 'New Password Is To Short, At Least 6 Chars';
+            error = langs.password_failed_newpassword;
             break;
         }
         if (password != password2){
-            error = 'Tow New Password Not Match';
+            error = langs.password_failed_match;
             break;
         }
 
         if (crypto.createHash('md5').update(oldPassword).digest('hex') != user.password){
-            error = 'Old Password Not Match';
+            error = langs.password_failed_oldpassword;
             break;
         }
         
@@ -108,7 +109,7 @@ exports.doPasswd = function(req, res){
         global.setMessage(req, error);
         res.render('user_passwd', {username: user.username});
     }else{
-        global.setMessage(req, 'Password changed');
+        global.setMessage(req, langs.password_changed);
         res.redirect('/');
     }
 };

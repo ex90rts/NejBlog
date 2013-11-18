@@ -42,7 +42,11 @@ exports.add = function(req, res){
 
 exports.doAdd = function(req, res){
     var postId = postModel.savePostIds();
-    var date = new Date(); 
+    var date = new Date();
+    var created = req.body.created;
+    if (created.length > 0 && /^\d{4}-\d{2}-\d{2}$/.test(created)){
+        date = new Date(created);
+    }
     var tags = tagModel.parseTags(req.body.tags);
     var post = {
         _id: postId,
@@ -91,17 +95,23 @@ exports.doUpdate = function(req, res){
     }
 
     var tags = tagModel.parseTags(req.body.tags);
-    var date = new Date();    
+    
+    var date = new Date(oldPost.created);
+    var created = req.body.created;
+    if (created.length > 0 && /^\d{4}-\d{2}-\d{2}$/.test(created)){
+        date = new Date(created);
+    }
+
     var post = {
         _id: id,
         title: req.body.title,
         content: req.body.content,
         tags: tags,
-        created: oldPost.created
+        created: date.toJSON()
     };
 
     var createdYear = date.getFullYear();
-    var createdDate = (date.getMonth() + 1) + '-' + date.getDate();
+    var createdDate =  ('0'+(date.getMonth() + 1)).substr(-2) + '-' + ('0' + date.getDate()).substr(-2);
     var listItem = {
         _id: id,
         title: req.body.title,

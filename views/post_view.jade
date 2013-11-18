@@ -4,7 +4,7 @@ block content
   script.
     hljs.initHighlightingOnLoad();
   h2=post.title
-  div.postTags Tags: 
+  div.postTags #{langs.post_tags}: 
     - for(var i in post.tags)
       a.postTag(href='/tag/view/#{post.tags[i]}', title='#{post.tags[i]}') #{post.tags[i]}
       &nbsp;&nbsp;

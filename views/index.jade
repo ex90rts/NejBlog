@@ -9,4 +9,4 @@ block content
           span(class='datetime') #{postList[year][i].date}
           a.title(href='/post/view/#{postList[year][i]._id}', title='#{postList[year][i].title}') #{postList[year][i].title}
   else
-    p Well done! Let's going to write your first article: <a href="/post/add">Add Post</a>
+    p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>

@@ -4,18 +4,18 @@ block content
 
   form.passwdForm(name="passwdForm", action="/user/passwd", method="POST")
     div
-      input.smallInput(name="username", value="#{username}", placeholder="Username", class="formControl passwdField", required="required")
+      input.smallInput(name="username", value="#{username}", placeholder="#{langs.password_username}", class="formControl passwdField", required="required")
 
     div
-      input.smallInput(name="oldPassword", type="password", placeholder="Old Password",  class="formControl passwdField", required="required")
+      input.smallInput(name="oldPassword", type="password", placeholder="#{langs.password_oldpassword}",  class="formControl passwdField", required="required")
 
     div
-      input.smallInput(name="password", type="password", placeholder="New Password", class="formControl passwdField", required="required")
+      input.smallInput(name="password", type="password", placeholder="#{langs.password_newpassword}", class="formControl passwdField", required="required")
      
     div
-      input.smallInput(name="password2", type="password", placeholder="Confirm Password", class="formControl passwdField", required="required")
+      input.smallInput(name="password2", type="password", placeholder="#{langs.password_confirmpassword}", class="formControl passwdField", required="required")
      
     div
-      input.submit(type="submit", value="Submit")
+      input.submit(type="submit", value="#{langs.password_submit}")
 
     div.divider

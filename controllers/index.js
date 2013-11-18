@@ -1,7 +1,7 @@
 var fs = require('fs');
+var marked = require('marked');
 var postModel = require('../models/post');
 var adminModel = require('../models/admin');
-var marked = require('marked');
 
 exports.view = function(req, res){
     var postList = false;
@@ -20,7 +20,7 @@ exports.view = function(req, res){
 exports.about = function(req, res){
     var about = adminModel.readAboutme();
     if (!about){
-        about = 'This is the default about content, you can create your own about content under Admin->Setting page after logged in.';
+        about = req.app.locals.langs.tip_noaboutme;
     }
 
     res.render('about', {about: marked(about)});

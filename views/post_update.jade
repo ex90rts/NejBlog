@@ -1,34 +1,50 @@
 extend layout
 
 block content
+  link(rel='stylesheet', href='/css/jquery-ui-1.10.3.custom.min.css')
   link(rel='stylesheet', href='/css/markdown.css')
   script(src="/js/Markdown.Converter.js")
   script(src="/js/Markdown.Editor.js")
   script(src="/js/Markdown.Sanitizer.js")
+  script(src="/js/jquery-1.10.2.min.js")
+  script(src="/js/jquery-ui-1.10.3.custom.min.js")
 
   form(name="postForm", action="/post/update/"+post._id, method="POST")
     div
-      lable.formLabel Title
+      lable.formLabel #{langs.post_title}
       input.mormalInput(name="title", class="formControl", value=post.title, required="required")
       
     div
-      label.formLabel Tags
+      label.formLabel #{langs.post_tags} <span class="formTips">#{langs.post_tags_tip}</span>
       input.mormalInput(name="tags", class="formControl", value=post.tags, required="required")
 
     div.wmd-panel
-      label.formLabel Content
+      label.formLabel #{langs.post_content} <span class="formTips">#{langs.post_content_tip}</span>
       #wmd-button-bar
       textarea.wmd-input(id="wmd-input" name="content", class="formControl postContentField", required="required")=post.content
     div.wmd-preview
+    
+    div
+      label.formLabel #{langs.post_created} <span class="formTips">#{langs.post_created_tip}</span>
+      input.tinyInput(id="datepicker", name="created", class="formControl")
       
     div
-      input.submit(type="submit", value="Submit")
+      input.submit(type="submit", value="#{langs.post_submit}")
 
     script.
       (function () {
       var converter = new Markdown.Converter();
       var editor = new Markdown.Editor(converter);
       editor.run();
+      
+      
+      $("#datepicker").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          showOtherMonths: true,
+          selectOtherMonths: true,
+          dateFormat: "yy-mm-dd"
+      });
       })();
       
     div.divider

@@ -8,49 +8,49 @@ block content
 
   form(name="postForm", action="/admin/setting", method="POST", enctype="multipart/form-data")
     div
-      lable.formLabel Lang
-      input.mormalInput(name="siteinfo[lang]", class="formControl", value=setting.siteinfo.lang, required="required")
+      lable.formLabel #{langs.setting_lang} <span class="formTips">#{langs.setting_lang_tip}</span>
+      input.tinyInput(name="siteinfo[lang]", class="formControl", value=setting.siteinfo.lang, required="required")
       
     div
-      label.formLabel Site Name
+      label.formLabel #{langs.setting_sitename} <span class="formTips">#{langs.setting_sitename_tip}</span>
       input.mormalInput(name="siteinfo[name]", class="formControl", value=setting.siteinfo.name, required="required")
 
     div
-      label.formLabel Site Desc
+      label.formLabel #{langs.setting_sitedesc} <span class="formTips">#{langs.setting_sitedesc_tip}</span>
       textarea.smallTextarea(name="siteinfo[desc]", class="formControl")=setting.siteinfo.desc
 
     div
-      label.formLabel Keywords
+      label.formLabel #{langs.setting_keywords} <span class="formTips">#{langs.setting_keywords_tip}</span>
       input.mormalInput(name="siteinfo[keywords]", class="formControl", value=setting.siteinfo.keywords)
 
     div
-      label.formLabel Comment Serice ID
+      label.formLabel #{langs.setting_commentserviceid} <span class="formTips">#{langs.setting_commentserviceid_tip}</span>
       input.mormalInput(name="siteinfo[duoshuo]", class="formControl", value=setting.siteinfo.duoshuo)
 
     div
-      label.formLabel Site Logo
+      label.formLabel #{langs.setting_sitelogo} <span class="formTips">#{langs.setting_sitelogo_tip}</span>
       input.mormalInput(type="file", name="logofile", class="formControl", value=setting.siteinfo.logo)
 
     div
-      label.formLabel Footer
+      label.formLabel #{langs.setting_footer} <span class="formTips">#{langs.setting_footer_tip}</span>
       textarea.smallTextarea(name="siteinfo[footer]", class="formControl", required="required")=setting.siteinfo.footer
 
     div.wmd-panel
-      label.formLabel About Me
+      label.formLabel #{langs.setting_aboutme}  <span class="formTips">#{langs.setting_aboutme_tip}</span>
       #wmd-button-bar
       textarea.wmd-input(id="wmd-input" name="aboutme", class="formControl postContentField")=aboutme
     div.wmd-preview
       
     div
-      label.formLabel Links
+      label.formLabel #{langs.setting_links} <span class="formTips">#{langs.setting_links_tip}</span>
       textarea.largeTextarea(name="links", class="formControl")=linksText
 
     div
-      label.formLabel Me & Web
+      label.formLabel #{langs.setting_meweb} <span class="formTips">#{langs.setting_meweb_tip}</span>
       textarea.largeTextarea(name="webinfo", class="formControl")=webinfoText
 
     div
-      input.submit(type="submit", value="Submit")
+      input.submit(type="submit", value="#{langs.setting_submit}")
 
     script.
       (function () {

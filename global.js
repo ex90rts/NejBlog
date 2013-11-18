@@ -11,7 +11,8 @@ exports.siteRelevant = function(req, res, next){
         loginStatus: req.session.loginStatus, 
         tagList: tagList, 
         webinfo: config.webinfo, 
-        links: config.links
+        links: config.links,
+	langs: req.app.locals.langs
     });
     req.app.locals.relevant = relevant;
     next();

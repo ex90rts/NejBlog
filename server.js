@@ -5,6 +5,7 @@ var path = require('path');
 var config = require('./config').config;
 var global = require('./global');
 var routes = require('./routes');
+var adminModel = require('./models/admin');
 
 var app = express();
 
@@ -35,6 +36,15 @@ app.use(express.cookieSession());
 app.engine('jade', require('jade').__express);
 
 app.locals.siteinfo = config.siteinfo;
+
+var settings = adminModel.readSetting();
+var langs = require('./langs/en_US');
+if (settings.siteinfo.lang != 'en_US'){
+    if (fs.existsSync('./langs/' + settings.siteinfo.lang + '.js')){
+        langs = require('./langs/' + settings.siteinfo.lang);
+    }
+}
+app.locals.langs = langs.content;
 
 app.all('*', global.siteRelevant);
 app.all('*', global.currentNav);
