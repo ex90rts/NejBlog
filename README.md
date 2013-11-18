@@ -2,6 +2,10 @@
 
 NejBlog is a simple personal blog system which powered by node.js, express framework and jade template engine. The name "Nej" comes from the first letter of each main basic technical parts.
 
+**Version** 0.1.0, this is the beta version: the first working version, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
+
+If you are interesting about more features in future, please check the **Development plan** section  for detail.
+
 #### Directories and files
 
 | Name           | Description                                                                    |
@@ -60,7 +64,7 @@ Currently, Nejblog support three popular social comment services: Disqus.com, Li
 #### Development plan
 
 1. Update markdown editor, for making a better image upload UI
-2. Staticize the post page, support permalink of each post
-3. More site theme for the site, multi themes config support
+2. More site theme for the site, multi themes config support
+3. Staticize the post page, support permalink of each post
 
 

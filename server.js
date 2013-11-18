@@ -1,3 +1,5 @@
+var VERSION = '0.1.0';
+
 var http = require('http');
 var express = require('express');
 var fs = require('fs');
