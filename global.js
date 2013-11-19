@@ -12,7 +12,7 @@ exports.siteRelevant = function(req, res, next){
         tagList: tagList, 
         webinfo: config.webinfo, 
         links: config.links,
-	langs: req.app.locals.langs
+        langs: req.app.locals.langs
     });
     req.app.locals.relevant = relevant;
     next();

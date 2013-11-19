@@ -60,18 +60,19 @@ exports.doAdd = function(req, res){
     var createdDate =  ('0'+(date.getMonth() + 1)).substr(-2) + '-' + ('0' + date.getDate()).substr(-2);
     var listItem = {
         _id: postId,
-	title: req.body.title,
-	tags: req.body.tags,
-	created: post.created,
-	year: createdYear,
-	date: createdDate
+        title: req.body.title,
+        tags: req.body.tags,
+        created: post.created,
+        year: createdYear,
+        date: createdDate
     }
     
     postModel.savePostData(post); 
     postModel.savePostList(createdYear, listItem, 'add');
+    postModel.savePostSumm(postId, listItem);
 
     for(var i=0; i<tags.length; i++){
-	tagModel.saveTagData(tags[i], listItem, 'add');
+        tagModel.saveTagData(tags[i], listItem, 'add');
     }
     tagModel.saveTagList(tags, 'add');
 
@@ -83,7 +84,7 @@ exports.update = function(req, res){
     if (postData){
         res.render('post_update', {post: postData});
     }else{
-	res.redirect(404, '/404');
+        res.redirect(404, '/404');
     }
 };
 
@@ -123,6 +124,7 @@ exports.doUpdate = function(req, res){
     
     postModel.savePostData(post);
     postModel.savePostList(createdYear, listItem, 'update');
+    postModel.savePostSumm(id, listItem);
     
     var oldTags = oldPost.tags;
     var delTags = [];
@@ -158,16 +160,21 @@ exports.doUpload = function(req, res){
 exports.delete = function(req, res){
     var id = req.params.id;
     try{
-        var post = postModel.readPostData(id); 
-	if (postModel.removePostData(id)){
-            for(var i=0; i<post.tags.length; i++){
-	        var tag = post.tags[i];
-	        tagModel.saveTagData(tag, post, 'remove');
-            }
-	    tagModel.saveTagList(post.tags, 'remove');
+        var summ = postModel.readPostSumm(id);
+        var post = postModel.readPostData(id);
+	    if (postModel.removePostData(id)){
+            postModel.removePostSumm(id);
+            postModel.updatePostId(id, 'remove');
 
-	    var createdYear = new Date(post.created).getFullYear();
-	    postModel.savePostList(createdYear, post, 'remove');
+            for(var i=0; i<post.tags.length; i++){
+	            var tag = post.tags[i];
+	            tagModel.saveTagData(tag, post, 'remove');
+            }
+	        tagModel.saveTagList(post.tags, 'remove');
+
+	        var createdYear = new Date(post.created).getFullYear();
+	        postModel.savePostList(createdYear, summ, 'remove');
+            postModel.saveTrashList(summ, 'add');
         }
     }catch(e){
         console.log('Remove post data file failed');

@@ -27,7 +27,6 @@ app.configure('development', function(){
 app.use('/css', express.static(__dirname + '/public/css', { maxAge: 2592000000 }));
 app.use('/js', express.static(__dirname + '/public/js', { maxAge: 2592000000 }));
 app.use('/images', express.static(__dirname + '/public/images', { maxAge: 2592000000 }));
-app.use('/fonts', express.static(__dirname + '/public/fonts', { maxAge: 2592000000 }));
 app.use('/upload', express.static(__dirname + '/public/upload', { maxAge: 2592000000 }));
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -53,9 +52,9 @@ app.all('*', global.currentNav);
 app.all('*', routes.user.checkLogin);
 
 app.get('/', routes.index);
-app.get('/index(\.html)?', routes.index);
-app.get('/about(\.html)?', routes.about);
-app.get('/rss(\.xml)?', routes.rss);
+app.get('/index', routes.index);
+app.get('/about', routes.about);
+app.get('/rss', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
 app.get('/post/view/:id', routes.post.view);
 app.get('/post/add', routes.post.add);
@@ -76,7 +75,7 @@ app.post('/user/login', routes.user.doLogin);
 app.post('/user/passwd', routes.user.doPasswd);
 app.post('/admin/setting', routes.admin.doSetting);
 
-var dataDirs = ['data', 'data/post', 'data/tag', 'public/upload'];
+var dataDirs = ['data', 'data/post', 'data/tag', 'data/trash', 'public/upload'];
 for(var i=0; i<dataDirs.length; i++){
     if (!fs.existsSync(dataDirs[i])){
         fs.mkdirSync(dataDirs[i], 0755);
