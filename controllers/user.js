@@ -57,10 +57,12 @@ exports.checkLogin = function(req, res, next){
         if (/\/*\/(add|update|delete|passwd|setting)(\/*)?/.test(req.path)){
 	        req.session.referer = req.path;
             res.redirect('/user/login');
+            return;
         }
     }else{
         if (req.path == '/user/login' && req.method == 'GET'){
             res.redirect('/post/admin');
+            return;
         }
     }
     next();
