@@ -4,6 +4,8 @@ var global = require('../global');
 var postModel = require('../models/post');
 var tagModel = require('../models/tag');
 
+var marksumm = require('markdown-summary');
+
 exports.view = function(req, res){
     var id = req.params.id;
     var post = postModel.readPostData(id);
@@ -12,7 +14,8 @@ exports.view = function(req, res){
 	return;
     }
 
-    var mdContent = marked(post.content);
+    //var mdContent = marked(post.content);
+    var mdContent = marksumm.summ(post.content);
     res.render('post_view', {post: post, mdContent: mdContent});    
 };
 
