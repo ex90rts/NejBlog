@@ -34,11 +34,17 @@ exports.post = {
     doUpload: function(req, res){
         controller.post.doUpload(req, res);
     },
-    delete: function(req, res){
-        controller.post.delete(req, res);
+    trash: function(req, res){
+        controller.post.trash(req, res);
+    },
+    doTrash: function(req, res){
+        controller.post.doTrash(req, res);
     },
     admin: function(req, res){
         controller.post.admin(req, res);
+    },
+    remove: function(req, res){
+        controller.post.remove(req, res);
     }
 };
 

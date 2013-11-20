@@ -2,7 +2,7 @@ extend layout
 
 block content
   if postList
-    h2 #{langs.mypost_admin} <a class="trashLink" href="/post/trash">#{langs.mypost_trashlink}</a>
+    h2 #{langs.mypost_trash} <a class="adminLink" href="/post/admin">#{langs.mypost_adminlink}</a>
     table.postList
       thead
         tr
@@ -18,9 +18,9 @@ block content
               a(href="/post/view/#{post._id}", target="_blank") #{post.title}
             td.txtcenter #{post.created}
             td.txtcenter
-              a(href="/post/update/#{post._id}") #{langs.mypost_action_update}
-              &nbsp;|&nbsp;
-              a(href="/post/trash/#{post._id}", onclick="return confirm('#{langs.mypost_trash_tip}');") #{langs.mypost_action_trash}
+              a(href="/post/restore/#{post._id}") #{langs.mypost_action_restore}
+              &nbsp|&nbsp;
+              a(href="/post/remove/#{post._id}", onclick="return confirm('#{langs.mypost_remove_tip}');") #{langs.mypost_action_remove}
 
   else
     p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>

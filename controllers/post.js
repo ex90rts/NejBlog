@@ -4,8 +4,6 @@ var global = require('../global');
 var postModel = require('../models/post');
 var tagModel = require('../models/tag');
 
-var marksumm = require('markdown-summary');
-
 exports.view = function(req, res){
     var id = req.params.id;
     var post = postModel.readPostData(id);
@@ -14,8 +12,7 @@ exports.view = function(req, res){
 	return;
     }
 
-    //var mdContent = marked(post.content);
-    var mdContent = marksumm.summ(post.content);
+    var mdContent = marked(post.content);
     res.render('post_view', {post: post, mdContent: mdContent});    
 };
 
@@ -160,7 +157,18 @@ exports.doUpload = function(req, res){
 	res.send(script);
 };
 
-exports.delete = function(req, res){
+exports.trash = function(req, res){
+    var postList = [];
+
+    var trashList = postModel.readTrashList();
+    if (trashList){
+        postList = trashList;
+    }
+
+    res.render('post_trash', {postList: postList});
+};
+
+exports.doTrash = function(req, res){
     var id = req.params.id;
     try{
         var summ = postModel.readPostSumm(id);
@@ -184,4 +192,34 @@ exports.delete = function(req, res){
     }
     
     res.redirect('/post/admin');
+};
+
+exports.remove = function(req, res){
+    var id = req.params.id;
+    try{
+        var summ = postModel.readPostSumm(id, true);
+        if (summ){
+            postModel.removeSummTrash(id);
+            postModel.removePostTrash(id);
+            postModel.saveTrashList(summ, 'remove');
+        }
+    }catch(e){
+        console.log(e);
+    }
+
+    res.redirect('/post/trash');
+};
+
+exports.restore = function(req, res){
+    var id = req.params.id;
+    try{
+        var summ = postModel.readPostSumm(id, true);
+        if (summ){
+            
+        }
+    }catch(e){
+        console.log(e);
+    }
+
+    res.redirect('/post/trash');
 };

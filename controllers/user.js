@@ -54,7 +54,7 @@ exports.checkLogin = function(req, res, next){
     }while(false);
 
     if (req.session.loginStatus == false || req.session.loginStatus == undefined){
-        if (/\/*\/(add|update|delete|passwd|setting)(\/*)?/.test(req.path)){
+        if (/\/*\/(add|update|trash|restore|remove|passwd|setting)(\/*)?/.test(req.path)){
 	        req.session.referer = req.path;
             res.redirect('/user/login');
         }else{

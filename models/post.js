@@ -100,8 +100,8 @@ function summTrashFile(id){
     return './data/trash/summ-' + id + '.json';
 }
 
-exports.readPostSumm = function(id){
-    var filePath = summDataFile(id);
+exports.readPostSumm = function(id, trash){
+    var filePath = trash ? summTrashFile(id) : summDataFile(id);
     if (!fs.existsSync(filePath)){
         return false;
     }
@@ -124,6 +124,23 @@ exports.removePostSumm = function(id){
     if (fs.existsSync(filePath)){
         var trashPath = summTrashFile(id);
         fs.renameSync(filePath, trashPath);
+    }
+    return true;
+};
+
+exports.restorePostSumm = function(id){
+    var trashPath = summTrashFile(id);
+    if (fs.existsSync(trashPath)){
+        var filePath = summDataFile(id);
+        fs.renameSync(trashPath, filePath);
+    }
+    return true;
+}
+
+exports.removeSummTrash = function(id){
+    var filePath = summTrashFile(id);
+    if (fs.existsSync(filePath)){
+        fs.unlinkSync(filePath);
     }
     return true;
 };
@@ -160,6 +177,23 @@ exports.removePostData = function(id){
     if (fs.existsSync(filePath)){
         var trashPath = postTrashFile(id);
         fs.renameSync(filePath, trashPath);
+    }
+    return true;
+};
+
+exports.restorePostData = function(id){
+    var trashPath = postTrashFile(id);
+    if (fs.existsSync(trashPath)){
+        var filePath = postDataFile(id);
+        fs.renameSync(trashPath, filePath);
+    }
+    return true;
+};
+
+exports.removePostTrash = function(id){
+    var filePath = postTrashFile(id);
+    if (fs.existsSync(filePath)){
+        fs.unlinkSync(filePath);
     }
     return true;
 };
