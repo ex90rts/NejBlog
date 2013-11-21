@@ -27,19 +27,14 @@ exports.about = function(req, res){
 };
 
 exports.rss = function(req, res){
-    var postList = {};
-    try{
-        postList = postModel.readPostList();
-    }catch(e){}
-        
+    var postIds = postModel.readPostIds();
+    
     var list = [];
-    for(var year in postList){
-        var subList = postList[year];
-        for(var i=0; i<subList.length; i++){
-           list.unshift(subList[i]); 
-	}	
+    for(var i=0; i<postIds.length; i++){
+        var summ = postModel.readPostSumm(postIds[i]);
+        list.unshift(summ); 
     }
     
-    res.set('Content-Type', 'application/rss+xml');
+    res.contentType('application/xml');
     res.render('rss', {posts: list});
 };

@@ -14,8 +14,7 @@ rss(version='2.0')
         link(href="http://samoay/blog/#{post._id}",rel="nofollow")
         description
           | <![CDATA[
-          | #{post.title}
-          | #{post.title}
+          | #{post.summary}
           | ]]>
         pubDate= new Date(post.created).toUTCString()
         guid(isPermaLink='false', href="http://samoay/post/view/#{post._id}")

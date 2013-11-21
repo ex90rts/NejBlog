@@ -20,6 +20,17 @@ exports.savePostIds = function(){
     return postId;
 };
 
+exports.readPostIds = function(){
+    var postIds = [];
+    
+    var filePath = postIdsFile();
+    if (fs.existsSync(filePath)){
+        var postIds = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+
+    return postIds;
+};
+
 exports.updatePostId = function(id, verb){
     var filePath = postIdsFile();
     if (fs.existsSync(filePath)){

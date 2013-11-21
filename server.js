@@ -54,7 +54,7 @@ app.all('*', routes.user.checkLogin);
 app.get('/', routes.index);
 app.get('/index', routes.index);
 app.get('/about', routes.about);
-app.get('/rss', routes.rss);
+app.get('/rss(\.xml)?', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
 app.get('/post/view/:id', routes.post.view);
 app.get('/post/add', routes.post.add);

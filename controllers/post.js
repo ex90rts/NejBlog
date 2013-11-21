@@ -9,7 +9,7 @@ exports.view = function(req, res){
     var post = postModel.readPostData(id);
     if (!post){
         res.redirect(404, '/404');
-	return;
+        return;
     }
 
     var mdContent = marked(post.content);
@@ -61,13 +61,14 @@ exports.doAdd = function(req, res){
     var listItem = {
         _id: postId,
         title: req.body.title,
+        summary: markedSummary(req.body.content),
         tags: req.body.tags,
         created: post.created,
         year: createdYear,
         date: createdDate
     }
     
-    postModel.savePostData(post); 
+    postModel.savePostData(post);
     postModel.savePostList(createdYear, listItem, 'add');
     postModel.savePostSumm(postId, listItem);
 
@@ -116,6 +117,7 @@ exports.doUpdate = function(req, res){
     var listItem = {
         _id: id,
         title: req.body.title,
+        summary: markedSummary(req.body.content),
         tags: req.body.tags,
         created: post.created,
         year: createdYear,
@@ -223,3 +225,112 @@ exports.restore = function(req, res){
 
     res.redirect('/post/trash');
 };
+
+function markedSummary(marked, options){
+    var _options = {
+        words: 200,
+        lines: 20,
+        basehtml: true,
+        linebreak: false,
+        link: false,
+        image: false
+    };
+    for(var k in options){
+        _options[k] = options[k];
+    }
+
+    var symbols = {
+        linebreak: /(\n)+/,
+	    strong: /\*{2}(.*?)\*{2}/,
+	    italic: /\*(.*?)\*/,
+	    quote: /^ *>(.*?)/,
+	    code: /^ {3,}(.*?)/,
+        codeBlock: /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/gm,
+        ollist: /^\d\. /,
+        ullist: /^[*|-] /,
+        heading: /^#{1,6}(.*[^#])+#*$/,
+        inLineLink: /\[(.*?)\]\((.*?)\)/g,
+        endLink: /\[(.*?)\]\[\d+\]/g,
+        inLineImage: /\!\[(.*?)\]\((.*?)\)/g,
+        endImage: /\!\[(.*?)\]\[\d+\]/g,
+        links: /^ *\[\d+\]: ?http(.*?)/,
+        table: /^ *\|(.*[^\|])+\|{1}(.*?)$/
+    };
+
+    //remove code block
+    marked = marked.replace(/\r\n|\r/g, '\n')
+                   .replace(/\t/g, '    ')
+                   .replace(/\u00a0/g, ' ')
+                   .replace(/\u2424/g, '\n')
+                   .replace(/\n{2,}/g, '\n')
+                   .replace(symbols.codeBlock, '');
+    
+    var lines = marked.split(symbols.linebreak, _options.lines * 10);
+    
+    var summary = '';
+    var linecount = 0;
+    for(var i=0; i<lines.length; i++){
+        if (linecount >= _options.lines || summary.length >= _options.words){
+            break;
+        }
+
+        var text = lines[i];
+
+        //ignore lines
+        if (/^(\r?\n)+$/g.test(text)){
+            continue;
+        }
+        if (symbols.code.test(text) && symbols.quote.test(text)==false){
+            continue;
+        }
+        if (symbols.links.test(text)){
+            continue;
+        }
+        if (symbols.table.test(text)){
+            continue;
+        }
+
+        //remove spaces
+        text = text.replace(/^\s*/g, "").replace(/\s*/g, "");
+
+        //keep base html code if needed
+        if (_options.basehtml){
+            text = text.replace(symbols.strong, "<strong>$1</strong>");
+            text = text.replace(symbols.italic, "<em>$1</em>");
+            text = text.replace(symbols.heading, "<strong>$1: </strong>");
+        }else{
+            text = text.replace(symbols.strong, "$1");
+            text = text.replace(symbols.italic, "$1");
+            text = text.replace(symbols.heading, "$1: ");
+        }
+        if (_options.link){
+            text = text.replace(symbols.inLineLink, "<a href='$2' target='_blank'>$1</a>");
+        }
+        if (_options.image){
+            text = text.replace(symbols.inLineImage, "<img src='$2' alt='$1' />");
+        }
+        if (symbols.quote.test(text)){
+            text = ' \"'+ text +'\" ';
+        }
+
+        //replace leftover symbols
+        text = text.replace(/[\*#-]*/, '').replace(symbols.endImage, '').replace(symbols.endLink, ' $1 ');
+
+        if (text == ''){
+            continue;
+        }
+
+        //add line break
+        if (_options.linebreak){
+            text = text + '<br />';
+        }else{
+            text = text + ' ';
+        }
+
+        summary += text;
+
+        linecount++;
+    }
+
+    return summary;
+}
