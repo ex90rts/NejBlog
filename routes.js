@@ -40,6 +40,9 @@ exports.post = {
     doTrash: function(req, res){
         controller.post.doTrash(req, res);
     },
+    restore: function(req, res){
+        controller.post.restore(req, res);
+    },
     admin: function(req, res){
         controller.post.admin(req, res);
     },

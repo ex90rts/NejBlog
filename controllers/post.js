@@ -62,7 +62,7 @@ exports.doAdd = function(req, res){
         _id: postId,
         title: req.body.title,
         summary: markedSummary(req.body.content),
-        tags: req.body.tags,
+        tags: tags,
         created: post.created,
         year: createdYear,
         date: createdDate
@@ -118,7 +118,7 @@ exports.doUpdate = function(req, res){
         _id: id,
         title: req.body.title,
         summary: markedSummary(req.body.content),
-        tags: req.body.tags,
+        tags: tags,
         created: post.created,
         year: createdYear,
         date: createdDate
@@ -213,17 +213,27 @@ exports.remove = function(req, res){
 };
 
 exports.restore = function(req, res){
-    var id = req.params.id;
+    var id = parseInt(req.params.id);
     try{
         var summ = postModel.readPostSumm(id, true);
         if (summ){
-            
+            postModel.savePostList(summ.year, summ, 'restore');
+            postModel.restorePostSumm(id);
+            postModel.restorePostData(id);
+            postModel.saveTrashList(summ);
+            postModel.updatePostId(id, 'add');
+
+            var tags = summ.tags; 
+            for(var i=0; i<tags.length; i++){
+                tagModel.saveTagData(tags[i], summ, 'add');
+            }
+            tagModel.saveTagList(tags, 'add');
         }
     }catch(e){
         console.log(e);
     }
 
-    res.redirect('/post/trash');
+    res.redirect('/post/admin');
 };
 
 function markedSummary(marked, options){

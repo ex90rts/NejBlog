@@ -62,6 +62,7 @@ app.get('/post/admin', routes.post.admin);
 app.get('/post/update/:id', routes.post.update);
 app.get('/post/trash', routes.post.trash);
 app.get('/post/trash/:id', routes.post.doTrash);
+app.get('/post/restore/:id', routes.post.restore);
 app.get('/post/remove/:id', routes.post.remove);
 app.get('/post/upload', routes.post.upload);
 app.get('/tag/view/:tag', routes.tag.view);

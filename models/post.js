@@ -47,8 +47,8 @@ exports.updatePostId = function(id, verb){
             if (idx >= 0){
                 postIds.splice(idx, 1);
             }
-            postIds.sort().reverse();
         }
+        postIds.sort().reverse();
         fs.writeFileSync(filePath, JSON.stringify(postIds));
     }
 
@@ -82,6 +82,20 @@ exports.savePostList = function(createdYear, listItem, verb){
                     yearSublist[i] = listItem;
                 }
             }
+        }else if(verb == 'restore'){
+            var idx = 0;
+            for(var i=0; i<yearSublist.length; i++){
+                idx = i;
+                if (listItem._id > yearSublist[i]['_id']){
+                    break;
+                }
+                //if end to the last, need to plus 1
+                if (i == yearSublist.length - 1){
+                    idx++;
+                }
+            }
+            yearSublist.splice(idx, 0, listItem);
+            postList[createdYear] = yearSublist;
         }else{
             var idx = -1;
             for(var i=0; i<yearSublist.length; i++){
@@ -96,8 +110,10 @@ exports.savePostList = function(createdYear, listItem, verb){
                 postList[createdYear] = yearSublist;
             }
         }
-    }else if(verb == 'add'){
-        postList[createdYear] = [listItem];
+    }else{
+        if(verb == 'add' || verb == 'restore'){
+            postList[createdYear] = [listItem];
+        }
     }
 
     return fs.writeFileSync(filePath, JSON.stringify(postList));
