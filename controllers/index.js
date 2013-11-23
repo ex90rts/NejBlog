@@ -4,9 +4,14 @@ var postModel = require('../models/post');
 var adminModel = require('../models/admin');
 
 exports.view = function(req, res){
+    var page = req.params.page;
+    if (page == undefined || /^\d+$/.test(page) == false){
+        page = 1;
+    }
+
     var postList = false;
     try{
-        postList = postModel.readPostList();
+        postList = postModel.readPostList(page);
         if (JSON.stringify(postList).length == 2){
 	        postList = false;
         }

@@ -2,11 +2,11 @@ extend layout
 
 block content
   if postList
-    - for(var year in postList)
-      h2 #{year}
-      - for(var i in postList[year])
-        article
-          span(class='datetime') #{postList[year][i].date}
-          a.title(href='/post/view/#{postList[year][i]._id}', title='#{postList[year][i].title}') #{postList[year][i].title}
+    each post in postList
+      //h2 #{post.year}
+      article
+        span #{post.year}
+        span(class='datetime') #{post.date}
+        a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
   else
     p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>

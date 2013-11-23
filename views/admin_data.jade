@@ -1,0 +1,26 @@
+extend layout
+
+block content
+
+  h3 #{langs.admindata_title}
+
+  form.admindataForm(name="backupForm", action="/admin/backup", method="GET")
+
+    h4 #{langs.admindata_backup_tip}
+
+    div
+      input.submit(type="submit", value="#{langs.admindata_backup}")
+
+  hr.line
+
+  form.admindataForm(name="restoreForm", action="/admin/restore", enctype="multipart/form-data", method="POST")
+
+    h4 #{langs.admindata_restore_upload}
+
+    div
+      input.normalInput(name="filedata", type="file", class="formControl", required="required")
+     
+    div
+      input.submit(type="submit", value="#{langs.admindata_restore}")
+
+    div.divider

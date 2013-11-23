@@ -27,7 +27,7 @@ html(lang="#{siteinfo.lang}")
           h1!= siteinfo.name
           h3!= siteinfo.desc
         .sitelogo
-          img(src='#{siteinfo.logo}')
+          img(src='#{siteinfo.logo}', alt='#{siteinfo.name}')
         .clear
       nav
         ul
@@ -39,6 +39,7 @@ html(lang="#{siteinfo.lang}")
               div.adminMenu
                 ul
                   li <a href='/admin/setting'>#{langs.nav_admin_setting}</a>
+                  li <a href='/admin/data'>#{langs.nav_admin_data}</a>
                   li <a href='/post/add'>#{langs.nav_admin_addpost}</a>
                   li <a href='/post/admin'>#{langs.nav_admin_myposts}</a>
                   li <a href='/user/passwd'>#{langs.nav_admin_password}</a>

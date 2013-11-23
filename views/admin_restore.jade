@@ -1,0 +1,18 @@
+extend layout
+
+block content
+
+  form.admindataForm(name="restoreForm", action="/admin/dorestore", method="POST")
+
+    h4.red #{langs.admindata_restore_tip}
+
+    label.formLabel #{langs.admindata_restore_file}
+     | #{filePath}
+    
+    input(type="hidden", name="filePath", value="#{filePath}")
+
+    div
+      input.submit(type="submit", value="#{langs.admindata_dorestore}")
+      input.cancel(type="button", value="#{langs.cancel}", onclick="javascript:location.href='/admin/data';")
+
+    div.divider

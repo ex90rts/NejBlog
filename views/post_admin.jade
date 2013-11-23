@@ -1,8 +1,10 @@
 extend layout
 
 block content
+  
+  h3 #{langs.mypost_admin} <a class="trashLink" href="/post/trash">#{langs.mypost_trashlink}</a>
+  
   if postList
-    h2 #{langs.mypost_admin} <a class="trashLink" href="/post/trash">#{langs.mypost_trashlink}</a>
     table.postList
       thead
         tr

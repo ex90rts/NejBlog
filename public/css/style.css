@@ -13,7 +13,7 @@ table {
 }
 caption, th, td {
 	text-align: left;
-	font-weight: normal;
+	font-weight: 100;
 	vertical-align: middle;
 }
 html {
@@ -80,6 +80,13 @@ h3 {
 	min-width:300px;
 	background-color:#fff; 
 	margin:2% auto;
+}
+.bcenter{
+    margin-left: auto;
+    margin-right: auto;
+}
+.red{
+    color: #E74C3C;
 }
 
 /*Header Section*/
@@ -155,6 +162,7 @@ nav ul li:hover{
     z-index: 999;
 }
 .adminMenu ul li{
+    min-width: 130px;
     text-align:left;
     background-color:#34495e;
     border-bottom:2px solid #34495e;
@@ -256,18 +264,27 @@ footer{
     width: 100%;
     border-collapse:collapse;
 }
+.postList tr{
+    background-color: #fff;
+}
+.postList tr:nth-child(2n){
+	background-color: #f8f8f8;
+}
 .postList th, .postList td{
-    padding: 2px 3px;
+    padding: 4px 5px;
 }
 .postList th{
     text-align: center;
-    background-color: #718EAD;
-    color: #fff;
-    border: 1px solid #fff;
+    background-color: #E4FCFE;
+    color: #000;
+    font-weight: 700;
+    font-family: Arial;
+    border: 1px solid #ddd;
 }
 .postList td{
-    border: 1px solid #fff;
-    background-color:#ebedef;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    color: #666;
 }
 .postList td.txtcenter{
     text-align: center;
@@ -339,7 +356,6 @@ footer{
     width: 250px;
     margin: 0 auto;
     padding: 24px 23px 20px;
-    position: relative;
 }
 .loginField{
     border: 2px solid #BDC3C8;
@@ -352,13 +368,16 @@ footer{
     width: 300px;
     margin: 0 auto;
     padding: 24px 23px 20px;
-    position: relative;
 }
 .passwdField{
     border: 2px solid #BDC3C8;
     font-size: 17px;
     text-indent: 3px;
     display:block;
+}
+.admindataForm{
+    margin: 0 auto;
+    padding: 24px 23px 20px;
 }
 .submit{
     border-radius: 6px;
@@ -373,7 +392,23 @@ footer{
 	font-family: "Lato", Helvetica, Arial, sans-serif;
 	font-size: 15px;
 	display:block;
-	margin: 20px auto;
+	margin-top: 20px;
+	cursor: pointer;
+}
+.cancel{
+    border-radius: 6px;
+    border-color: transparent;
+    font-size: 17px;
+    text-indent: 3px;
+    width:228px;
+    height: 42px;
+    display:block;
+    background-color: #DBE2E4;
+	color: #E74C3C;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	display:block;
+	margin-top: 20px;
 	cursor: pointer;
 }
 .postContentField{
@@ -388,7 +423,7 @@ hr.line{
 	width: 100%;
 	background-color: #A5ABAC;
 	margin-top: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 .postTags{
     height: 30px;
@@ -537,13 +572,13 @@ hr.line{
     text-align: center;
     background-color: #E4FCFE;
     color: #000;
-    font-size: 700;
+    font-weight: 700;
     font-family: Arial;
     border: 1px solid #ddd;
 }
 .mkn table td{
     border: 1px solid #ddd;
-    background-color: none;
+    background-color: transparent;
     color: #666;
 }
 .mkn table td.txtcenter{

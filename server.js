@@ -52,7 +52,7 @@ app.all('*', global.currentNav);
 app.all('*', routes.user.checkLogin);
 
 app.get('/', routes.index);
-app.get('/index', routes.index);
+app.get('/index(\/:page)?', routes.index);
 app.get('/about', routes.about);
 app.get('/rss(\.xml)?', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
@@ -70,6 +70,8 @@ app.get('/user/login', routes.user.login);
 app.get('/user/logout', routes.user.logout);
 app.get('/user/passwd', routes.user.passwd);
 app.get('/admin/setting', routes.admin.setting);
+app.get('/admin/data', routes.admin.data);
+app.get('/admin/backup', routes.admin.backup);
 
 app.post('/post/add', routes.post.doAdd);
 app.post('/post/update/:id', routes.post.doUpdate);
@@ -77,6 +79,8 @@ app.post('/post/upload', routes.post.doUpload);
 app.post('/user/login', routes.user.doLogin);
 app.post('/user/passwd', routes.user.doPasswd);
 app.post('/admin/setting', routes.admin.doSetting);
+app.post('/admin/restore', routes.admin.restore);
+app.post('/admin/dorestore', routes.admin.doRestore);
 
 var dataDirs = ['data', 'data/post', 'data/tag', 'data/trash', 'public/upload'];
 for(var i=0; i<dataDirs.length; i++){

@@ -84,6 +84,18 @@ exports.admin = {
     },
     doSetting: function(req, res){
         controller.admin.doSetting(req, res);
+    },
+    data: function(req, res){
+        controller.admin.data(req, res);
+    },
+    backup: function(req, res){
+        controller.admin.backup(req, res);
+    },
+    restore: function(req, res){
+        controller.admin.restore(req, res);
+    },
+    doRestore: function(req, res){
+        controller.admin.doRestore(req, res);
     }
 };
 

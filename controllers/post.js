@@ -17,9 +17,14 @@ exports.view = function(req, res){
 };
 
 exports.admin = function(req, res){
+    var page = req.params.page;
+    if (page == undefined || /^\d+$/.test(page) == false){
+        page = 1;
+    }
+    
     var postList = false;
     try{
-        postList = postModel.readPostList();
+        postList = postModel.readPostList(page);
         if (JSON.stringify(postList).length == 2){
             postList = false;
         }
@@ -58,7 +63,7 @@ exports.doAdd = function(req, res){
    
     var createdYear = date.getFullYear();
     var createdDate =  ('0'+(date.getMonth() + 1)).substr(-2) + '-' + ('0' + date.getDate()).substr(-2);
-    var listItem = {
+    var summ = {
         _id: postId,
         title: req.body.title,
         summary: markedSummary(req.body.content),
@@ -69,11 +74,11 @@ exports.doAdd = function(req, res){
     }
     
     postModel.savePostData(post);
-    postModel.savePostList(createdYear, listItem, 'add');
-    postModel.savePostSumm(postId, listItem);
+    postModel.savePostList(summ, 'add');
+    postModel.savePostSumm(postId, summ);
 
     for(var i=0; i<tags.length; i++){
-        tagModel.saveTagData(tags[i], listItem, 'add');
+        tagModel.saveTagData(tags[i], summ, 'add');
     }
     tagModel.saveTagList(tags, 'add');
 
@@ -81,7 +86,7 @@ exports.doAdd = function(req, res){
 };
 
 exports.update = function(req, res){
-    var postData = postModel.readPostData(req.params.id, req.app.get('encoding'));
+    var postData = postModel.readPostData(req.params.id);
     if (postData){
         res.render('post_update', {post: postData});
     }else{
@@ -114,7 +119,7 @@ exports.doUpdate = function(req, res){
 
     var createdYear = date.getFullYear();
     var createdDate =  ('0'+(date.getMonth() + 1)).substr(-2) + '-' + ('0' + date.getDate()).substr(-2);
-    var listItem = {
+    var summ = {
         _id: id,
         title: req.body.title,
         summary: markedSummary(req.body.content),
@@ -125,8 +130,8 @@ exports.doUpdate = function(req, res){
     }
     
     postModel.savePostData(post);
-    postModel.savePostList(createdYear, listItem, 'update');
-    postModel.savePostSumm(id, listItem);
+    postModel.savePostList(summ, 'update');
+    postModel.savePostSumm(id, summ);
     
     var oldTags = oldPost.tags;
     var delTags = [];
@@ -134,13 +139,13 @@ exports.doUpdate = function(req, res){
     for(var i=0; i<oldTags.length; i++){
         if (tags.indexOf(oldTags[i]) == -1){
             delTags.push(oldTags[i]);
-            tagModel.saveTagData(oldTags[i], listItem, 'remove');
+            tagModel.saveTagData(oldTags[i], summ, 'remove');
         }
     }
     for (var i=0; i<tags.length; i++){
         if (oldTags.indexOf(tags[i]) == -1){
             newTags.push(tags[i]);
-            tagModel.saveTagData(tags[i], listItem, 'add');
+            tagModel.saveTagData(tags[i], summ, 'add');
         }
     }
     tagModel.saveTagList(delTags, 'remove');
@@ -177,7 +182,7 @@ exports.doTrash = function(req, res){
         var post = postModel.readPostData(id);
 	    if (postModel.removePostData(id)){
             postModel.removePostSumm(id);
-            postModel.updatePostId(id, 'remove');
+            postModel.updatePostIds(id, 'remove');
 
             for(var i=0; i<post.tags.length; i++){
 	            var tag = post.tags[i];
@@ -185,8 +190,7 @@ exports.doTrash = function(req, res){
             }
 	        tagModel.saveTagList(post.tags, 'remove');
 
-	        var createdYear = new Date(post.created).getFullYear();
-	        postModel.savePostList(createdYear, summ, 'remove');
+	        postModel.savePostList(summ, 'remove');
             postModel.saveTrashList(summ, 'add');
         }
     }catch(e){
@@ -217,11 +221,11 @@ exports.restore = function(req, res){
     try{
         var summ = postModel.readPostSumm(id, true);
         if (summ){
-            postModel.savePostList(summ.year, summ, 'restore');
+            postModel.savePostList(summ, 'restore');
             postModel.restorePostSumm(id);
             postModel.restorePostData(id);
             postModel.saveTrashList(summ);
-            postModel.updatePostId(id, 'add');
+            postModel.updatePostIds(id, 'add');
 
             var tags = summ.tags; 
             for(var i=0; i<tags.length; i++){

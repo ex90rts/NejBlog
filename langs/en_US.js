@@ -1,4 +1,6 @@
 exports.content = {
+    cancel : "Cancel",
+
     nav_blog : "Blog",
     nav_aboutme: "About me",
     nav_fork: "Fork this blog",
@@ -7,6 +9,7 @@ exports.content = {
     nav_admin_setting: "Setting",
     nav_admin_addpost: "Add Post",
     nav_admin_myposts: "My Posts",
+    nav_admin_data : "Backup/Restore",
     nav_admin_password: "Password",
     nav_admin_logout: "Logout",
 
@@ -81,5 +84,16 @@ exports.content = {
     password_failed_oldpassword: "Old Password is incorrect",
     password_failed_newpassword: "New Password is not wellformated, at least 6 chars",
     password_failed_match: "New Password confirmation is not match",
-    password_changed: "Password changed!"
+    password_changed: "Password changed!",
+
+    admindata_title : "Data Backup/Restore",
+    admindata_backup : "Backup",
+    admindata_backup_tip : "Click the following button to start backuping all your setting and posts:",
+    admindata_restore : "Restore",
+    admindata_restore_upload : "Please choose a backup zip file to restore:",
+    admindata_restorefilenotfound : "The restore zip file --@1-- is not found",
+    admindata_restore_file : "Data File to Restore:",
+    admindata_restore_tip : "Caution, this action will replace all current data with the following zip data you have uploaded and can not be undone! Please make sure that you want to proceed !!",
+    admindata_dorestore : "Proceed Restore",
+    admindata_restore_succ : "Restore succeed"
 };
