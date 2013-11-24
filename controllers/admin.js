@@ -20,7 +20,8 @@ exports.setting = function(req, res){
         setting: setting, 
         aboutme: aboutme,
         linksText: linksText,
-        webinfoText: webinfoText
+        webinfoText: webinfoText,
+        pageTitle: req.app.locals.langs.nav_admin_setting
     });
 };
 
@@ -64,7 +65,7 @@ exports.doSetting = function(req, res){
 };
 
 exports.data = function(req, res){
-    res.render('admin_data');
+    res.render('admin_data', {pageTitle: req.app.locals.langs.nav_admin_data});
 };
 
 exports.backup = function(req, res){
@@ -99,7 +100,7 @@ exports.restore = function(req, res){
         fs.unlinkSync(tempPath);
     });
 
-    res.render('admin_restore', {filePath: filePath});
+    res.render('admin_restore', {filePath: filePath, pageTitle: req.app.locals.langs.nav_admin_data});
 };
 
 exports.doRestore = function(req, res){

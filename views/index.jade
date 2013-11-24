@@ -1,12 +1,18 @@
 extend layout
 
 block content
-  if postList
+  if postList.length
     each post in postList
-      //h2 #{post.year}
+      //h2.postYear #{post.year}
       article
-        span #{post.year}
-        span(class='datetime') #{post.date}
+        span.dateyear #{post.year}
+        span.datetime #{post.date}
         a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
   else
     p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>
+
+  div.page
+    if newerPage
+      a.newerPage(href="/index/#{newerPage}") #{langs.page_newer}
+    if olderPage
+      a.olderPage(href="/index/#{olderPage}") #{langs.page_older}

@@ -8,12 +8,12 @@ exports.view = function(req, res){
     var id = req.params.id;
     var post = postModel.readPostData(id);
     if (!post){
-        res.redirect(404, '/404');
+        res.redirect('/404');
         return;
     }
 
     var mdContent = marked(post.content);
-    res.render('post_view', {post: post, mdContent: mdContent});    
+    res.render('post_view', {post: post, mdContent: mdContent, pageTitle: post.title});    
 };
 
 exports.admin = function(req, res){
@@ -21,28 +21,28 @@ exports.admin = function(req, res){
     if (page == undefined || /^\d+$/.test(page) == false){
         page = 1;
     }
-    
-    var postList = false;
-    try{
-        postList = postModel.readPostList(page);
-        if (JSON.stringify(postList).length == 2){
-            postList = false;
-        }
-    }catch(e){}
-
-    if (postList){
-        var tempList = [];
-        for(var year in postList){
-            tempList = tempList.concat(postList[year]);
-        }
-        postList = tempList;
+    page = parseInt(page);
+    if ( postModel.checkPostPage(page) == false ){
+        res.redirect('/post/admin/1');
     }
-
-    res.render('post_admin', {postList: postList});
+   
+    var olderPage = false;
+    var newerPage = false;
+    var olderPageNum = page + 1;
+    if ( postModel.checkPostPage(olderPageNum) ){
+        olderPage = olderPageNum;
+    }
+    var newerPageNum = page - 1;
+    if ( newerPageNum > 0 && postModel.checkPostPage(newerPageNum) ){
+        newerPage = newerPageNum;
+    }
+    
+    var postList = postModel.readPostList(page);
+    res.render('post_admin', {postList: postList, pageTitle: req.app.locals.langs.nav_admin_myposts, olderPage: olderPage, newerPage: newerPage});
 };
 
 exports.add = function(req, res){
-    res.render('post_add', {title: 'Add New Post'});
+    res.render('post_add', {pageTitle: req.app.locals.langs.nav_admin_addpost});
 };
 
 exports.doAdd = function(req, res){
@@ -88,9 +88,9 @@ exports.doAdd = function(req, res){
 exports.update = function(req, res){
     var postData = postModel.readPostData(req.params.id);
     if (postData){
-        res.render('post_update', {post: postData});
+        res.render('post_update', {post: postData, pageTitle: req.app.locals.langs.pagetitle_updatepost});
     }else{
-        res.redirect(404, '/404');
+        res.redirect('/404');
     }
 };
 
@@ -98,7 +98,8 @@ exports.doUpdate = function(req, res){
     var id = req.params.id;
     var oldPost = postModel.readPostData(id);
     if (!oldPost){
-        res.redirect(404, '/404');
+        res.redirect('/404');
+        return;
     }
 
     var tags = tagModel.parseTags(req.body.tags);
@@ -172,7 +173,7 @@ exports.trash = function(req, res){
         postList = trashList;
     }
 
-    res.render('post_trash', {postList: postList});
+    res.render('post_trash', {postList: postList, pageTitle: req.app.locals.langs.pagetitle_trash});
 };
 
 exports.doTrash = function(req, res){
@@ -194,7 +195,7 @@ exports.doTrash = function(req, res){
             postModel.saveTrashList(summ, 'add');
         }
     }catch(e){
-        console.log('Remove post data file failed');
+        console.log('Remove post data file failed: ' + e);
     }
     
     res.redirect('/post/admin');
@@ -210,7 +211,7 @@ exports.remove = function(req, res){
             postModel.saveTrashList(summ, 'remove');
         }
     }catch(e){
-        console.log(e);
+        console.log('Remove post data failed: ' + e);
     }
 
     res.redirect('/post/trash');
@@ -234,7 +235,7 @@ exports.restore = function(req, res){
             tagModel.saveTagList(tags, 'add');
         }
     }catch(e){
-        console.log(e);
+        console.log('Restore post data failed: ' + e);
     }
 
     res.redirect('/post/admin');

@@ -4,5 +4,5 @@ block content
     h1=tag
     - for(var i in postList)
       article
-        span(class='datetime') #{postList[i].date}
+        span(class='datetime') #{postList[i].year}-#{postList[i].date}
         a.title(href='/post/view/#{postList[i]._id}', title='#{postList[i].title}') #{postList[i].title}

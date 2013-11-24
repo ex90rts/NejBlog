@@ -1,6 +1,6 @@
 var fs = require('fs');
-var listMaxPost = 110;
-var listCutPust = 10;
+var listMaxPost = 50;
+var listCutPost = 10;
 var dataFolderNum = 20;
 
 function postIdsFile(){
@@ -73,18 +73,26 @@ function postListFile(page){
     return './data/postList.'+ page +'.json';
 }
 
+exports.checkPostPage = function(page){
+    var listFile = postListFile(page);
+    if (fs.existsSync(listFile)){
+        return true;
+    }
+    return false;
+}
+
 function resetPostList(page, moveList){
     var listFile = postListFile(page);
     if(fs.existsSync(listFile)){
         var oldPostList = JSON.parse(fs.readFileSync(listFile));
-        
+      
         var listArray = oldPostList['list'];
         var listLength = listArray.length;
         var totalLength = listLength + moveList.length;
         
 		if (totalLength > listMaxPost){
 		    var nextMoveList = listArray.splice(listLength-listCutPost, listCutPost);
-			var minId = listArray[listLength-1]['_id'];
+			var minId = listArray[listArray.length-1]['_id'];
 			
 			var newPostList = {
 			    'minId' : minId,
@@ -143,6 +151,7 @@ exports.savePostList = function(summ, verb){
     //the start file is not exist
     if (!fs.existsSync(listFile)){
         postList['minId'] = summ._id;
+        postList['list'] = [];
     }
 
     var listArray = postList['list'];
@@ -182,6 +191,7 @@ exports.savePostList = function(summ, verb){
 	    resetPostList(2, moveList);
 	}
 
+    postList['minId'] = listArray[listArray.length - 1]['_id'];
 	postList['list'] = listArray;
     fs.writeFileSync(listFile, JSON.stringify(postList));
 

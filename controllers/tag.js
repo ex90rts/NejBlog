@@ -7,6 +7,6 @@ exports.view = function(req, res){
 	    res.redirect('/404');
     }
 
-    res.render('tag_view', {tag: tag, postList: tagData});
+    res.render('tag_view', {tag: tag, postList: tagData, pageTitle: tag});
 }
     

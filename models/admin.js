@@ -6,7 +6,6 @@ function settingFile(){
 }
 
 exports.readSetting = function(){
-    var filePath = settingFile();
     var setting = {
         siteinfo : config.siteinfo,
         links : config.links,
@@ -14,6 +13,7 @@ exports.readSetting = function(){
         comments: config.comments
     };
     
+    var filePath = settingFile();
     if (fs.existsSync(filePath)){
         var _setting = JSON.parse(fs.readFileSync(filePath));
         if (_setting.siteinfo){

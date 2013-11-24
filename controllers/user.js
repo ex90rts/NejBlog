@@ -8,7 +8,7 @@ exports.default = function(req, res){
 
 exports.login = function(req, res){
     var referer = req.session.referer ? req.session.referer : '';
-    res.render('user_login', {referer: referer});
+    res.render('user_login', {referer: referer, pageTitle: req.app.locals.langs.nav_admin_login});
 };
 
 exports.doLogin = function(req, res){
@@ -54,7 +54,7 @@ exports.checkLogin = function(req, res, next){
     }while(false);
 
     if (req.session.loginStatus == false || req.session.loginStatus == undefined){
-        if (/\/*\/(add|update|trash|restore|remove|passwd|setting)(\/*)?/.test(req.path)){
+        if (global.adminPages(req.path)){
 	        req.session.referer = req.path;
             res.redirect('/user/login');
         }else{
@@ -71,7 +71,7 @@ exports.checkLogin = function(req, res, next){
 
 exports.passwd = function(req, res){
     var user = userModel.readUserData();
-    res.render('user_passwd', {username: user.username});
+    res.render('user_passwd', {username: user.username, pageTitle: req.app.locals.langs.pagetitle_password});
 };
 
 exports.doPasswd = function(req, res){

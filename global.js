@@ -4,6 +4,24 @@ var fs = require('fs');
 var tagModel = require('./models/tag');
 var adminModel = require('./models/admin');
 
+function adminPages(path){
+    var paths = [
+        /^\/post\/(add|upload|admin|update|delete|trash|restore|remove)/,
+        /^\/user\/(logout|passwd)/,
+        /^\/admin\/(setting|data|backup|restore|dorestore)/
+    ];
+    var isAdmin = false;
+    for(var i in paths){
+        if (paths[i].test(path)){
+            isAdmin = true;
+            break;
+        }
+    }
+    
+    return isAdmin;
+};
+exports.adminPages = adminPages;
+
 exports.siteRelevant = function(req, res, next){
     var tagList = tagModel.readTagList();
     var config = adminModel.readSetting();
@@ -24,7 +42,7 @@ exports.currentNav = function(req, res, next){
         nav = 'login';
     }else if(req.path == '/about' || req.path == '/about.html'){
         nav = 'about';
-    }else if(/\/*\/(add|update|delete|trash|setting|passwd|admin)(\/*)?/.test(req.path)){
+    }else if(adminPages(req.path)){
         nav = 'admin';
     }
     req.app.locals.currentNav = nav;

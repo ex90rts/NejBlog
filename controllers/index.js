@@ -8,18 +8,24 @@ exports.view = function(req, res){
     if (page == undefined || /^\d+$/.test(page) == false){
         page = 1;
     }
-
-    var postList = false;
-    try{
-        postList = postModel.readPostList(page);
-        if (JSON.stringify(postList).length == 2){
-	        postList = false;
-        }
-    }catch(e){
-        console.log('Read post list data file failed: ' + e.toString());
+    page = parseInt(page);
+    if ( page>1 && postModel.checkPostPage(page) == false ){
+        res.redirect('/index/1');
     }
-    
-    res.render('index', {pageTitle: 'Index', postList: postList});
+   
+    var olderPage = false;
+    var newerPage = false;
+    var olderPageNum = page + 1;
+    if ( postModel.checkPostPage(olderPageNum) ){
+        olderPage = olderPageNum;
+    }
+    var newerPageNum = page - 1;
+    if ( newerPageNum > 0 && postModel.checkPostPage(newerPageNum) ){
+        newerPage = newerPageNum;
+    }
+
+    var postList = postModel.readPostList(page);
+    res.render('index', {postList: postList, pageTitle: req.app.locals.langs.pagetitle_homepage, olderPage: olderPage, newerPage: newerPage});
 };
 
 exports.about = function(req, res){
@@ -28,17 +34,12 @@ exports.about = function(req, res){
         about = req.app.locals.langs.tip_noaboutme;
     }
 
-    res.render('about', {about: marked(about)});
+    res.render('about', {about: marked(about), pageTitle: req.app.locals.langs.pagetitle_aboutme});
 };
 
 exports.rss = function(req, res){
-    var postIds = postModel.readPostIds();
-    
-    var list = [];
-    for(var i=0; i<postIds.length; i++){
-        var summ = postModel.readPostSumm(postIds[i]);
-        list.unshift(summ); 
-    }
+    var postList = postModel.readPostList(1);
+    var list = postList.slice(0, 20);
     
     res.contentType('application/xml');
     res.render('rss', {posts: list});

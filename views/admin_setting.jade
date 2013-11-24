@@ -35,6 +35,10 @@ block content
       input.tinyInput(name="siteinfo[comment_id]", class="formControl", value=setting.siteinfo.comment_id)
 
     div
+      label.formLabel #{langs.setting_gaid} <span class="formTips">#{langs.setting_gaid_tip}</span>
+      input.tinyInput(name="siteinfo[gaid]", class="formControl", value=setting.siteinfo.gaid)
+
+    div
       label.formLabel #{langs.setting_sitelogo} <span class="formTips">#{langs.setting_sitelogo_tip}</span>
       input.mormalInput(type="file", name="logofile", class="formControl", value=setting.siteinfo.logo)
 

@@ -6,7 +6,7 @@ html(lang="#{siteinfo.lang}")
     meta(name='keywords' content='#{siteinfo.keywords}')
     meta(http-equiv="X-UA-Compatible",content="IE=edge, chrome=1")
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-    title= siteinfo.name
+    title #{siteinfo.name} - #{pageTitle}
     //if lt IE 9
       script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
     link(rel='stylesheet', href='/css/style.css')
@@ -23,17 +23,17 @@ html(lang="#{siteinfo.lang}")
 
     .container
       header
-        .sitename
-          h1!= siteinfo.name
-          h3!= siteinfo.desc
-        .sitelogo
-          img(src='#{siteinfo.logo}', alt='#{siteinfo.name}')
-        .clear
+        .headerBox
+          .sitename
+            h1!= siteinfo.name
+            h3!= siteinfo.desc
+          .sitelogo
+            img(src='#{siteinfo.logo}', alt='#{siteinfo.name}')
+          .clear
       nav
         ul
           li(class=(currentNav=='index')?'on':'') <a href='/index'>#{langs.nav_blog}</a>
           li(class=(currentNav=='about')?'on':'') <a href='/about'>#{langs.nav_aboutme}</a>
-          li.narrowhide <a href='https://github.com/samoay/NejBlog' target='_blank'>#{langs.nav_fork}</a>
           if loginStatus
             li.adminGate(class=(currentNav=='admin')?'on':'') <a href='#'>#{langs.nav_admin}</a>
               div.adminMenu
@@ -47,7 +47,21 @@ html(lang="#{siteinfo.lang}")
           else
             li(class=(currentNav=='login')?'on':'') <a href='/user/login'>#{langs.nav_admin_login}</a>
       section.content
-        block content
+        .contentBox
+          block content
       section.relevant
-        !=relevant
-      footer!= siteinfo.footer
+        .releventBox
+          !=relevant
+      footer
+        .footerBox
+          !=siteinfo.footer
+      
+      script.
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '#{siteinfo.gaid}']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();

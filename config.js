@@ -10,7 +10,8 @@ exports.config = {
         logo : '/images/logo.jpg',
         comment_service: "",
         comment_id : "",
-        footer : 'Copyright © 2013 Created By <a href="/page/about.html">Samoay</a>, Theme Inspired By <a href="http://jser.me/">jser.me</a>',
+        gaid : "",
+        footer : 'Copyright © 2013 Powered By <a href="http://nejblog.samoay.me" target="_blank">NejBlog</a>, <a href="https://github.com/samoay/NejBlog" target="_blank">Fork me on Github</a>',
     },
     comments : {
         'duoshuo' : 'duoshuo.com',

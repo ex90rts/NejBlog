@@ -4,7 +4,7 @@ block content
   
   h3 #{langs.mypost_trash} <a class="adminLink" href="/post/admin">#{langs.mypost_adminlink}</a>
   
-  if postList
+  if postList.length
     table.postList
       thead
         tr
@@ -25,4 +25,4 @@ block content
               a(href="/post/remove/#{post._id}", onclick="return confirm('#{langs.mypost_remove_tip}');") #{langs.mypost_action_remove}
 
   else
-    p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>
+    p #{langs.mypost_trash_empty}

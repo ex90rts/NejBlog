@@ -1,12 +1,12 @@
-var VERSION = '0.1.0';
+var VERSION = '0.2.0';
 
+var fs = require('fs');
 var http = require('http');
 var express = require('express');
-var fs = require('fs');
 var path = require('path');
-var config = require('./config').config;
 var global = require('./global');
 var routes = require('./routes');
+var config = require('./config').config;
 var adminModel = require('./models/admin');
 
 var app = express();
@@ -17,8 +17,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('salt', config.salt);
 app.set('admin cookie', config.user.cookie);
-app.set('admin username', config.user.username);
-app.set('admin password', config.user.password);
+
 app.configure('development', function(){
     app.locals.pretty = true;
     app.use(express.errorHandler());
@@ -34,10 +33,6 @@ app.use(express.bodyParser());
 app.use(express.cookieParser(app.get('salt')));
 app.use(express.cookieSession());
 
-app.engine('jade', require('jade').__express);
-
-app.locals.siteinfo = config.siteinfo;
-
 var settings = adminModel.readSetting();
 var langs = require('./langs/en_US');
 if (settings.siteinfo.lang != 'en_US'){
@@ -45,20 +40,19 @@ if (settings.siteinfo.lang != 'en_US'){
         langs = require('./langs/' + settings.siteinfo.lang);
     }
 }
+app.locals.siteinfo = settings.siteinfo;
 app.locals.langs = langs.content;
 
-app.all('*', global.siteRelevant);
-app.all('*', global.currentNav);
-app.all('*', routes.user.checkLogin);
+app.all('*', global.siteRelevant, global.currentNav, routes.user.checkLogin);
 
 app.get('/', routes.index);
-app.get('/index(\/:page)?', routes.index);
+app.get('/index\/?(:page)?', routes.index);
 app.get('/about', routes.about);
 app.get('/rss(\.xml)?', routes.rss);
 app.get('/404', routes.errors.pageNotFound);
 app.get('/post/view/:id', routes.post.view);
 app.get('/post/add', routes.post.add);
-app.get('/post/admin', routes.post.admin);
+app.get('/post/admin\/?(:page)?', routes.post.admin);
 app.get('/post/update/:id', routes.post.update);
 app.get('/post/trash', routes.post.trash);
 app.get('/post/trash/:id', routes.post.doTrash);

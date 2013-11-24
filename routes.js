@@ -101,7 +101,7 @@ exports.admin = {
 
 exports.errors = {
     pageNotFound: function(req, res){
-        res.render('404.jade');
+        res.render('404.jade', {pageTitle: req.app.locals.langs.pagetitle_404});
     },
     userError: function(req, res){
         res.render('400.jade');

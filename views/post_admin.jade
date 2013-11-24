@@ -24,5 +24,11 @@ block content
               &nbsp;|&nbsp;
               a(href="/post/trash/#{post._id}", onclick="return confirm('#{langs.mypost_trash_tip}');") #{langs.mypost_action_trash}
 
+    div.page
+      if newerPage
+        a.newerPage(href="/post/admin/#{newerPage}") #{langs.page_newer}
+      if olderPage
+        a.olderPage(href="/post/admin/#{olderPage}") #{langs.page_older}
+      
   else
     p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>
