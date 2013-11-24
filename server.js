@@ -11,7 +11,16 @@ var adminModel = require('./models/admin');
 
 var app = express();
 
-app.set('port', config.port);
+var args = process.argv.splice(2);
+var port = config.port;
+if (args.length > 0){
+    if (/^300[0-9]$/.test(args[0])){
+        port = args[0];
+    }
+}
+console.log(port);
+
+app.set('port', port);
 app.set('encoding', config.encoding);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
