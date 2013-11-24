@@ -18,7 +18,6 @@ if (args.length > 0){
         port = args[0];
     }
 }
-console.log(port);
 
 app.set('port', port);
 app.set('encoding', config.encoding);
