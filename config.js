@@ -24,14 +24,7 @@ exports.config = {
         username : 'admin',
         password : 'e10adc3949ba59abbe56e057f20f883e' //Current is 123456, please remember to change this password!!!
     },
-    webinfo : {
-        'RSS订阅' : '/rss',
-        'Github' : 'http://github.com/samoay',
-        'Google Plus' : 'https://plus.google.com/116034800456010545162',
-        '微博(@惊鸿一瞥V)' : 'http://weibo.com/samoay'
-    },
-    links : {
-        '草依山的Javascript世界' : 'http://jser.me/'
-    },
+    webinfo : {},
+    links : {},
     foo : ''
 };
