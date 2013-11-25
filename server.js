@@ -1,4 +1,4 @@
-var VERSION = '0.2.0';
+var VERSION = '0.2.1';
 
 var fs = require('fs');
 var http = require('http');
