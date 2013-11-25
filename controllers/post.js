@@ -22,7 +22,7 @@ exports.admin = function(req, res){
         page = 1;
     }
     page = parseInt(page);
-    if ( postModel.checkPostPage(page) == false ){
+    if ( page > 1 && postModel.checkPostPage(page) == false ){
         res.redirect('/post/admin/1');
     }
    
@@ -241,127 +241,74 @@ exports.restore = function(req, res){
     res.redirect('/post/admin');
 };
 
-function markedSummary(marked, options){
-    var _options = {
-        words: 500,
-        lines: 50,
-        basehtml: false,
-        link: false,
-        image: false
-    };
-    for(var k in options){
-        _options[k] = options[k];
-    }
+function markedSummary(text, lineLimit){
+	if (lineLimit == undefined || /^\d+$/.test(lineLimit)==false){
+		var lineLimit = 10;
+	}
 
     var symbols = {
         newline: /(\n)+/,
-	    strong: /\*{2}(.*?)\*{2}/,
-	    italic: /\*(.*?)\*/,
-	    quote: /^( *>[^\n]+(\n[^\n]+)*\n*)+/,
 	    hr: /^( *[-*_]){3,} *(?:\n+|$)/,
 	    code: /^( {4}[^\n]+\n*)+/,
-        codeBlock: /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/gm,
-        ollist: /^\d\. /,
-        ullist: /^[*|-] /,
-        heading: /^#{1,6}(.*[^#])+#*$/,
-        inLineLink: /\[(.*?)\]\((.*?)\)/g,
-        endLink: /\[(.*?)\]\[\d+\]/g,
-        inLineImage: /\!\[(.*?)\]\((.*?)\)/g,
-        endImage: /\!\[(.*?)\]\[\d+\]/g,
         def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
         table: /^ *\|(.*[^\|])+\|{1}(.*?)$/
     };
 
-    //remove code block
-    marked = marked.replace(/\r\n|\r/g, '\n')
-                   .replace(/\t/g, '    ')
-                   .replace(/\u00a0/g, ' ')
-                   .replace(/\u2424/g, '\n')
-                   .replace(/\n{2,}/g, '\n')
-                   .replace(symbols.codeBlock, '');
-    
-    var lines = marked.split(symbols.newline, _options.lines * 10);
-    
+    text = text.replace(/\r\n|\r/g, '\n')
+               .replace(/\t/g, '    ')
+               .replace(/\u00a0/g, ' ')
+               .replace(/\u2424/g, '\n')
+               .replace(/^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/gm, '');
+ 
+    var lines = text.split(symbols.newline);
+   
     var summary = '';
+    var deflines = '';
     var linecount = 0;
+    var linebreak = 0;
+    var intable = false;
     for(var i=0; i<lines.length; i++){
-        if (linecount >= _options.lines || summary.length >= _options.words){
-            break;
-        }
-
-        var text = lines[i];
-
-        //ignore lines
-        if (/^(\r?\n)+$/g.test(text)){
+    	//if line breaks, only append but do not count line number
+    	if (/^\n+$/.test(lines[i])){
+    		if (linebreak == 0){
+    			summary += '\n\n';
+    		}
+    		linebreak++;
+    		continue;
+    	}
+    	
+    	//ignore hr lines
+        if (symbols.hr.test(lines[i])){
             continue;
-        }
-        if (symbols.hr.test(text)){
-            continue;
-        }
-        if (symbols.code.test(text) && symbols.quote.test(text)==false){
-            continue;
-        }
-        if (symbols.def.test(text)){
-            continue;
-        }
-        if (symbols.table.test(text)){
-            continue;
-        }
-
-        //remove spaces
-        text = text.replace(/^\s*/g, "").replace(/\s*$/g, "");
-
-        //keep base html code if needed
-        if (_options.basehtml){
-            text = text.replace(symbols.strong, "<strong>$1</strong>");
-            text = text.replace(symbols.italic, "<em>$1</em>");
-            text = text.replace(symbols.heading, "<strong>$1: </strong>");
-        }else{
-            text = text.replace(symbols.strong, "$1");
-            text = text.replace(symbols.italic, "$1");
-            text = text.replace(symbols.heading, "$1: ");
-        }
-        //image must comes first
-        if (_options.image){
-            text = text.replace(symbols.inLineImage, "<img src='$2' alt='$1' />");
-        }else{
-        	text = text.replace(symbols.inLineImage, '');
-        }
-        if (_options.link){
-            text = text.replace(symbols.inLineLink, "<a href='$2' target='_blank'>$1</a>");
-        }else{
-        	text = text.replace(symbols.inLineLink, '');
-        }
-        if (symbols.quote.test(text)){
-        	text = text.replace(/^> */, '');
-        	if (_options.basehtml){
-                text = ' <strong><em>'+ text +'</em></strong> ';
-            }else{
-                text = '  '+ text +'  ';
-            }
         }
         
-        text = text.replace(symbols.ollist, ' n.');
-        text = text.replace(symbols.ullist, ' n.');
-
-        //replace leftover symbols
-        text = text.replace(/[\*#]*/g, '').replace(symbols.endImage, '').replace(symbols.endLink, ' $1 ');
-
-        if (text == ''){
+        //ignore codes
+        if (symbols.code.test(lines[i])){
             continue;
         }
-
-        //add line break
-        if (_options.basehtml){
-            text = text + '<br />';
-        }else{
-            text = text + ' ';
+        
+        //append def data separately
+        if (symbols.def.test(lines[i])){
+        	deflines += lines[i] + '\n';
+            continue;
         }
-
-        summary += text;
-
+        
+        //if former line is table and current line also table, append, otherwise, continue
+        if (linecount>lineLimit && (intable==false || symbols.table.test(lines[i])==false)){
+        	intable = false;
+        	continue;
+        }
+        
+        //save table status
+        if (linecount<=lineLimit && symbols.table.test(lines[i])){
+        	intable = true;
+        }
+        
+        //append current line and increase line count
+        summary += lines[i];
+        linebreak = 0;
         linecount++;
     }
 
-    return summary + '...';
+    return marked(summary + '\n' + deflines);
 }

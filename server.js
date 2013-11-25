@@ -14,7 +14,7 @@ var app = express();
 var args = process.argv.splice(2);
 var port = config.port;
 if (args.length > 0){
-    if (/^300[0-9]$/.test(args[0])){
+    if (/^(80|8080|300[0-9])$/.test(args[0])){
         port = args[0];
     }
 }
