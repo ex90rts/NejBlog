@@ -243,10 +243,9 @@ exports.restore = function(req, res){
 
 function markedSummary(marked, options){
     var _options = {
-        words: 200,
-        lines: 20,
-        basehtml: true,
-        linebreak: false,
+        words: 500,
+        lines: 50,
+        basehtml: false,
         link: false,
         image: false
     };
@@ -255,11 +254,12 @@ function markedSummary(marked, options){
     }
 
     var symbols = {
-        linebreak: /(\n)+/,
+        newline: /(\n)+/,
 	    strong: /\*{2}(.*?)\*{2}/,
 	    italic: /\*(.*?)\*/,
-	    quote: /^ *>(.*?)/,
-	    code: /^ {3,}(.*?)/,
+	    quote: /^( *>[^\n]+(\n[^\n]+)*\n*)+/,
+	    hr: /^( *[-*_]){3,} *(?:\n+|$)/,
+	    code: /^( {4}[^\n]+\n*)+/,
         codeBlock: /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/gm,
         ollist: /^\d\. /,
         ullist: /^[*|-] /,
@@ -268,7 +268,7 @@ function markedSummary(marked, options){
         endLink: /\[(.*?)\]\[\d+\]/g,
         inLineImage: /\!\[(.*?)\]\((.*?)\)/g,
         endImage: /\!\[(.*?)\]\[\d+\]/g,
-        links: /^ *\[\d+\]: ?http(.*?)/,
+        def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
         table: /^ *\|(.*[^\|])+\|{1}(.*?)$/
     };
 
@@ -280,7 +280,7 @@ function markedSummary(marked, options){
                    .replace(/\n{2,}/g, '\n')
                    .replace(symbols.codeBlock, '');
     
-    var lines = marked.split(symbols.linebreak, _options.lines * 10);
+    var lines = marked.split(symbols.newline, _options.lines * 10);
     
     var summary = '';
     var linecount = 0;
@@ -295,10 +295,13 @@ function markedSummary(marked, options){
         if (/^(\r?\n)+$/g.test(text)){
             continue;
         }
+        if (symbols.hr.test(text)){
+            continue;
+        }
         if (symbols.code.test(text) && symbols.quote.test(text)==false){
             continue;
         }
-        if (symbols.links.test(text)){
+        if (symbols.def.test(text)){
             continue;
         }
         if (symbols.table.test(text)){
@@ -306,7 +309,7 @@ function markedSummary(marked, options){
         }
 
         //remove spaces
-        text = text.replace(/^\s*/g, "").replace(/\s*/g, "");
+        text = text.replace(/^\s*/g, "").replace(/\s*$/g, "");
 
         //keep base html code if needed
         if (_options.basehtml){
@@ -318,25 +321,38 @@ function markedSummary(marked, options){
             text = text.replace(symbols.italic, "$1");
             text = text.replace(symbols.heading, "$1: ");
         }
-        if (_options.link){
-            text = text.replace(symbols.inLineLink, "<a href='$2' target='_blank'>$1</a>");
-        }
+        //image must comes first
         if (_options.image){
             text = text.replace(symbols.inLineImage, "<img src='$2' alt='$1' />");
+        }else{
+        	text = text.replace(symbols.inLineImage, '');
+        }
+        if (_options.link){
+            text = text.replace(symbols.inLineLink, "<a href='$2' target='_blank'>$1</a>");
+        }else{
+        	text = text.replace(symbols.inLineLink, '');
         }
         if (symbols.quote.test(text)){
-            text = ' \"'+ text +'\" ';
+        	text = text.replace(/^> */, '');
+        	if (_options.basehtml){
+                text = ' <strong><em>'+ text +'</em></strong> ';
+            }else{
+                text = '  '+ text +'  ';
+            }
         }
+        
+        text = text.replace(symbols.ollist, ' n.');
+        text = text.replace(symbols.ullist, ' n.');
 
         //replace leftover symbols
-        text = text.replace(/[\*#-]*/, '').replace(symbols.endImage, '').replace(symbols.endLink, ' $1 ');
+        text = text.replace(/[\*#]*/g, '').replace(symbols.endImage, '').replace(symbols.endLink, ' $1 ');
 
         if (text == ''){
             continue;
         }
 
         //add line break
-        if (_options.linebreak){
+        if (_options.basehtml){
             text = text + '<br />';
         }else{
             text = text + ' ';
@@ -347,5 +363,5 @@ function markedSummary(marked, options){
         linecount++;
     }
 
-    return summary;
+    return summary + '...';
 }
