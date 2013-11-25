@@ -130,7 +130,7 @@ footer .footerBox{}
 .mkn *{line-height: 1.6em;}
 .mkn p{margin:15px 0;color: #303030;}
 .mkn strong{font-weight: 700;color: #000;}
-.mkn ul, .mkn ol, .mkn h1, .mkn h2, .mkn h3, .mkn h4, .mkn h5, .mkn h6, .mkn h7{margin:20px 0;color: #000;}
+.mkn ul, .mkn ol, .mkn h1, .mkn h2, .mkn h3, .mkn h4, .mkn h5, .mkn h6, .mkn h7{margin:12px 0;color: #000;}
 .mkn h1 {font-size:1.6em;}
 .mkn h2 {font-size:1.5em;}
 .mkn h3 {font-size:1.4em;}
