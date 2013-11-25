@@ -140,7 +140,7 @@ exports.savePostList = function(summ, verb){
     var listFile = postListFile(fileIdx), postList = {};
     while(fs.existsSync(listFile)){
         postList = JSON.parse(fs.readFileSync(listFile));
-        if (summ._id > postList['minId']){
+        if (summ._id >= postList['minId']){
             break;
         }
         
@@ -185,7 +185,7 @@ exports.savePostList = function(summ, verb){
 		}
 		listArray.splice(idx, 1);
 	}
-	
+
 	if (listArray.length > listMaxPost){
 	    var moveList = listArray.splice(listArray.length-listCutPost, listCutPost);
 	    resetPostList(2, moveList);
