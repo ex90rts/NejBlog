@@ -1,6 +1,7 @@
 exports.content = {
     cancel : "放弃",
     error404 : "404! 您访问的页面不存在",
+    readmore : "阅读更多 &raquo;",
     
     pagetitle_homepage : "首页",
     pagetitle_aboutme : "关于",

@@ -40,7 +40,8 @@ exports.about = function(req, res){
 exports.rss = function(req, res){
     var postList = postModel.readPostList(1);
     var list = postList.slice(0, 20);
-    
+    var baseUrl = req.protocol + '://' + req.headers.host;
+
     res.contentType('application/xml');
-    res.render('rss', {posts: list});
+    res.render('rss', {posts: list, baseUrl: baseUrl});
 };

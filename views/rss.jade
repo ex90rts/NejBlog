@@ -1,20 +1,21 @@
 doctype xml
-rss(version='2.0')
+rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
   channel
     title= siteinfo.name
-    link(href="http://samoay.me")
+    link #{baseUrl}
+    atom:link(href="#{baseUrl}/rss", rel="self", type="application/rss+xml")
     description= siteinfo.desc
     language= siteinfo.lang
-    webMaster= siteinfo.webmaster
     if posts.length
       lastBuildDate= new Date(posts[0].created).toUTCString()
     each post in posts
       item
         title= post.title
-        link(href="http://samoay/blog/#{post._id}",rel="nofollow")
+        link #{baseUrl}/post/view/#{post._id}
         description
           | <![CDATA[
-          | #{post.summary}
+          | !{post.summary}
+          p: a(href="#{baseUrl}/post/view/#{post._id}") !{langs.readmore}
           | ]]>
         pubDate= new Date(post.created).toUTCString()
-        guid(isPermaLink='false', href="http://samoay/post/view/#{post._id}")
+        guid(isPermaLink="false", href="#{baseUrl}/post/view/#{post._id}")

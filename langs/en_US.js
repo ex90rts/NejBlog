@@ -1,6 +1,7 @@
 exports.content = {
     cancel : "Cancel",
     error404 : "404! we can't find this page",
+    readmore : "Read more &raquo;",
     
     pagetitle_homepage : "Homepage",
     pagetitle_aboutme : "About",
