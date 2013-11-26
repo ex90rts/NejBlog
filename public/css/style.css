@@ -2,7 +2,7 @@
 * {border:0;margin:0;padding:0;}
 *:focus {outline: none;}
 ol, ul {list-style: none;}
-html {background: #2C3E50;background: #2C3E50 -moz-linear-gradient(#8791A0, #2C3138) fixed;background: #2C3E50 -ms-linear-gradient(#8791A0, #2C3138) fixed;background: #2C3E50 linear-gradient(#8791A0, #2C3138) fixed;}
+html {background: #2C3E50; background: #2C3E50 linear-gradient(#8791A0, #2C3138) fixed;}
 body {margin: 0;font: 14px/1.5 Helvetica, "Microsoft Yahei", Tahoma, Arial, sans-serif;color: #2C3E50;}
 h1 {font-size: 1.6em;}
 h2 {font-size: 1.5em;}
@@ -87,14 +87,14 @@ footer .footerBox{}
 .postList td.txtcenter{text-align: center;}
 
 /*forms style*/
-.formControl{border: 2px solid #bdc3c7;color: #666;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;padding: 5px 12px;height: 26px;margin: 5px auto;-webkit-appearance: none;border-radius: 6px;-webkit-box-shadow: none;box-shadow: none;-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;transition: border .25s linear, color .25s linear, background-color .25s linear;}
+.formControl{border: 2px solid #bdc3c7;color: #666;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;padding: 5px 12px;height: 26px;margin: 5px auto;transition: border .25s linear, color .25s linear, background-color .25s linear;}
 .formControl:focus{border: 2px solid #1abc9c;}
 .mormalInput{width:60%;}
 .smallInput{width:40%;min-width: 250px;}
 .tinyInput{width: 150px;}
 .smallTextarea{height: 60px; width:90%;}
 .largeTextarea{height: 150px;width:90%;}
-.normalSelect{border: 2px solid #bdc3c7;color: #666;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;padding: 5px 12px;height: 35px;width: 180px;margin: 5px auto;border-radius: 6px;-webkit-box-shadow: none;box-shadow: none;-webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;transition: border .25s linear, color .25s linear, background-color .25s linear;}
+.normalSelect{border: 2px solid #bdc3c7;color: #666;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;padding: 5px 12px;height: 35px;width: 180px;margin: 5px auto;transition: border .25s linear, color .25s linear, background-color .25s linear;}
 .formLabel{font-size:18px;font-weight:700;display:block;}
 .formTips{font-size:0.8em;font-weight: 100; color: #999;}
 .loginForm{width: 250px;margin: 0 auto;padding: 24px 23px 20px;}
