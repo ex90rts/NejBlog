@@ -4,7 +4,7 @@ Find out more information at [NejBlog English Site](http://nejblog-en.samoay.me/
 
 NejBlog is a simple personal blog system which powered by node.js, express framework and jade template engine. The name "Nej" comes from the first letter of each main basic technical parts.
 
-**Version** 0.2.0 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
+**Version** 0.2.1 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
 
 #### Install
 
@@ -15,7 +15,7 @@ $ git clone git@github.com:samoay/NejBlog.git
 $ cd NejBlog  #change folder name if you want
 $ npm install #install dependent npm modules
 $ node server.js &
-# the default port is 3000, well you can using port from 3000 to 3009 via pass the port as argument when start node
+# the default port is 3000, well you can using port from 3000 to 3009 and 80/8080 via pass the port as argument when start node
 $ node server.js 3001 &
 ```
 
@@ -70,10 +70,13 @@ The site support google analytics tracking if you have set the google analytics 
 - crypto >= 0.0.3  For hashing admin account password
 - adm-zip >= 0.4.3 For zip and unzip
 
-#### Development plan
+#### Development plan / TODO
 
+1. Add pages feature(like Wordpress Pages), which you can 100% control the link and list page
+1. You will be able to put 5 blogs(the most) at the top of blog list page, which you want user to see first regardless the create time
+1. Give an option that you can show blog content summary in blog list page, not just title currently
 1. Update markdown editor, for making a better image upload UI
-2. More site theme for the site, multi themes config support
-3. Staticize the post page, support permalink of each post
+1. More site theme for the site, multi themes config support
+1. Staticize the post page, support permalink of each post
 
 
