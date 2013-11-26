@@ -4,6 +4,24 @@ var fs = require('fs');
 var tagModel = require('./models/tag');
 var adminModel = require('./models/admin');
 
+exports.sendResponse = function(response){
+    try{
+        response.res.setHeader('X-UA-Compatible', 'IE=Edge,chrome=1');
+        response.res.render(response.view, response.data);
+    }catch(e){
+        console.log('Send response failed: ' + e);
+    }
+};
+
+exports.setMessage = function(req, message){
+    req.app.locals.message = message;
+    setTimeout(this.clearMessage, 5000, req);
+};
+
+exports.clearMessage = function(req){
+    req.app.locals.message = '';
+};
+
 function adminPages(path){
     var paths = [
         /^\/post\/(add|upload|admin|update|delete|trash|restore|remove)/,
@@ -86,13 +104,4 @@ exports.uploadFile = function(files, name){
     });
 
     return filePath.replace('public', '');
-};
-
-exports.setMessage = function(req, message){
-    req.app.locals.message = message;
-    setTimeout(this.clearMessage, 5000, req);
-};
-
-exports.clearMessage = function(req){
-    req.app.locals.message = '';
 };

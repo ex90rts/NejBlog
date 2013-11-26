@@ -102,8 +102,8 @@ footer .footerBox{}
 .passwdForm{width: 300px;margin: 0 auto;padding: 24px 23px 20px;}
 .passwdField{border: 2px solid #BDC3C8;font-size: 17px;text-indent: 3px;display:block;}
 .admindataForm{margin: 0 auto;padding: 24px 23px 20px;}
-.submit{border-radius: 6px; border-color: transparent;font-size: 17px;text-indent: 3px;width:228px;height: 42px;display:block;background-color: #1abc9c;color: #ffffff;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;display:block;margin-top: 20px;cursor: pointer;}
-.cancel{border-radius: 6px;border-color: transparent;font-size: 17px;text-indent: 3px;width:228px;height: 42px;display:block;background-color: #DBE2E4;color: #E74C3C;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;display:block;margin-top: 20px;cursor: pointer;}
+.submit{border-color: transparent;font-size: 17px;text-indent: 3px;width:228px;height: 42px;display:block;background-color: #1abc9c;color: #ffffff;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;display:block;margin-top: 20px;cursor: pointer;}
+.cancel{border-color: transparent;font-size: 17px;text-indent: 3px;width:228px;height: 42px;display:block;background-color: #DBE2E4;color: #E74C3C;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;display:block;margin-top: 20px;cursor: pointer;}
 .postContentField{width:90%;min-height: 400px;}
 
 /*Media selectors for responsive layout support*/

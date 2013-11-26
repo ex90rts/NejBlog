@@ -13,7 +13,15 @@ exports.view = function(req, res){
     }
 
     var mdContent = marked(post.content);
-    res.render('post_view', {post: post, mdContent: mdContent, pageTitle: post.title});    
+    global.sendResponse({
+    	res : res,
+    	view : 'post_view', 
+    	data : {
+    		post: post, 
+    		mdContent: mdContent, 
+    		pageTitle: post.title
+    	}
+    });    
 };
 
 exports.admin = function(req, res){
@@ -38,11 +46,23 @@ exports.admin = function(req, res){
     }
     
     var postList = postModel.readPostList(page);
-    res.render('post_admin', {postList: postList, pageTitle: req.app.locals.langs.nav_admin_myposts, olderPage: olderPage, newerPage: newerPage});
+    global.sendResponse({
+    	res : res,
+    	view : 'post_admin',
+    	data : {
+    		postList: postList, 
+    		pageTitle: req.app.locals.langs.nav_admin_myposts, 
+    		olderPage: olderPage, newerPage: newerPage
+    	}
+    });
 };
 
 exports.add = function(req, res){
-    res.render('post_add', {pageTitle: req.app.locals.langs.nav_admin_addpost});
+    global.sendResponse({
+    	res : res,
+    	view : 'post_add', 
+    	data : {pageTitle: req.app.locals.langs.nav_admin_addpost}
+    });
 };
 
 exports.doAdd = function(req, res){
@@ -88,7 +108,14 @@ exports.doAdd = function(req, res){
 exports.update = function(req, res){
     var postData = postModel.readPostData(req.params.id);
     if (postData){
-        res.render('post_update', {post: postData, pageTitle: req.app.locals.langs.pagetitle_updatepost});
+        global.sendResponse({
+        	res : res,
+        	view : 'post_update', 
+        	data : {
+        		post: postData, 
+        		pageTitle: req.app.locals.langs.pagetitle_updatepost
+        	}
+        });
     }else{
         res.redirect('/404');
     }
@@ -173,7 +200,14 @@ exports.trash = function(req, res){
         postList = trashList;
     }
 
-    res.render('post_trash', {postList: postList, pageTitle: req.app.locals.langs.pagetitle_trash});
+    global.sendResponse({
+    	res : res,
+    	view : 'post_trash', 
+    	data : {
+    		postList: postList, 
+    		pageTitle: req.app.locals.langs.pagetitle_trash
+    	}
+    });
 };
 
 exports.doTrash = function(req, res){

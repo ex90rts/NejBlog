@@ -1,5 +1,6 @@
 var fs = require('fs');
 var marked = require('marked');
+var global = require('../global');
 var postModel = require('../models/post');
 var adminModel = require('../models/admin');
 
@@ -25,7 +26,15 @@ exports.view = function(req, res){
     }
 
     var postList = postModel.readPostList(page);
-    res.render('index', {postList: postList, pageTitle: req.app.locals.langs.pagetitle_homepage, olderPage: olderPage, newerPage: newerPage});
+    global.sendResponse({
+    	res : res,
+    	view : 'index',
+    	data : {
+    		postList: postList, 
+    		pageTitle: req.app.locals.langs.pagetitle_homepage, 
+    		olderPage: olderPage, newerPage: newerPage
+    	}
+    });
 };
 
 exports.about = function(req, res){
@@ -34,7 +43,14 @@ exports.about = function(req, res){
         about = req.app.locals.langs.tip_noaboutme;
     }
 
-    res.render('about', {about: marked(about), pageTitle: req.app.locals.langs.pagetitle_aboutme});
+    global.sendResponse({
+    	res : res,
+    	view : 'about', 
+    	data : {
+    		about: marked(about), 
+    		pageTitle: req.app.locals.langs.pagetitle_aboutme
+    	}
+    });
 };
 
 exports.rss = function(req, res){
@@ -42,6 +58,6 @@ exports.rss = function(req, res){
     var list = postList.slice(0, 20);
     var baseUrl = req.protocol + '://' + req.headers.host;
 
-    res.contentType('application/xml');
+    res.setHeader('Content-Type', 'application/xml');
     res.render('rss', {posts: list, baseUrl: baseUrl});
 };

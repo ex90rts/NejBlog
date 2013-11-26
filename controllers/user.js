@@ -8,7 +8,14 @@ exports.default = function(req, res){
 
 exports.login = function(req, res){
     var referer = req.session.referer ? req.session.referer : '';
-    res.render('user_login', {referer: referer, pageTitle: req.app.locals.langs.nav_admin_login});
+    global.sendResponse({
+    	res : res,
+    	view : 'user_login', 
+    	data : {
+    		referer: referer, 
+    		pageTitle: req.app.locals.langs.nav_admin_login
+    	}
+    });
 };
 
 exports.doLogin = function(req, res){
@@ -71,7 +78,14 @@ exports.checkLogin = function(req, res, next){
 
 exports.passwd = function(req, res){
     var user = userModel.readUserData();
-    res.render('user_passwd', {username: user.username, pageTitle: req.app.locals.langs.pagetitle_password});
+    global.sendResponse({
+    	res : res,
+    	view : 'user_passwd',
+    	data : {
+    		username: user.username, 
+    		pageTitle: req.app.locals.langs.pagetitle_password
+    	}
+    });
 };
 
 exports.doPasswd = function(req, res){
@@ -110,7 +124,11 @@ exports.doPasswd = function(req, res){
     
     if (error != ''){
         global.setMessage(req, error);
-        res.render('user_passwd', {username: user.username});
+        global.sendResponse({
+        	res : res,
+        	view : 'user_passwd', 
+        	data : {username: user.username}
+        });
     }else{
         global.setMessage(req, langs.password_changed);
         res.redirect('/');

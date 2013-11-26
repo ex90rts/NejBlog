@@ -1,3 +1,4 @@
+var global = require('../global');
 var tagModel = require('../models/tag');
 
 exports.view = function(req, res){
@@ -7,6 +8,14 @@ exports.view = function(req, res){
 	    res.redirect('/404');
     }
 
-    res.render('tag_view', {tag: tag, postList: tagData, pageTitle: tag});
+    global.sendResponse({
+    	res : res,
+    	view : 'tag_view', 
+    	data : {
+    		tag: tag, 
+    		postList: tagData, 
+    		pageTitle: tag
+    	}
+    });
 }
     
