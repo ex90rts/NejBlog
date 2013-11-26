@@ -3,7 +3,7 @@ exports.config = {
     port : 3000,
     encoding : 'utf8',
     siteinfo : {
-        lang : 'zh_CN',
+        lang : 'en-US',
         name : "NejBlog by Samoay",
         desc : "A simple personal blog system powered by node.js and express framework",
         keywords : "blog,node.js,javascript,express,jade,html5",

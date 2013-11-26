@@ -42,8 +42,8 @@ app.use(express.cookieParser(app.get('salt')));
 app.use(express.cookieSession());
 
 var settings = adminModel.readSetting();
-var langs = require('./langs/en_US');
-if (settings.siteinfo.lang != 'en_US'){
+var langs = require('./langs/en-US');
+if (settings.siteinfo.lang != 'en-US'){
     if (fs.existsSync('./langs/' + settings.siteinfo.lang + '.js')){
         langs = require('./langs/' + settings.siteinfo.lang);
     }

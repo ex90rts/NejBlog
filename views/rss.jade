@@ -18,4 +18,4 @@ rss(version="2.0", xmlns:atom="http://www.w3.org/2005/Atom")
           p: a(href="#{baseUrl}/post/view/#{post._id}") !{langs.readmore}
           | ]]>
         pubDate= new Date(post.created).toUTCString()
-        guid(isPermaLink="false", href="#{baseUrl}/post/view/#{post._id}")
+        guid(isPermaLink="false") #{baseUrl}/post/view/#{post._id}
