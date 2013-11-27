@@ -69,6 +69,7 @@ exports.content = {
     post_content_tip: "支持全部Markdown语法以及表格",
     post_created: "创建日期",
     post_created_tip: "留空使用系统当前时间",
+    post_created_tip_update: "留空使用原创建时间不修改",
     post_submit: "提交",
 
     mypost_admin: "博文管理",

@@ -69,6 +69,7 @@ exports.content = {
     post_content_tip: "Support all markdown syntax include table",
     post_created: "Created Date",
     post_created_tip: "Leave this empty to use current datetime",
+    post_created_tip_update: "Leave this empty to keep old created time not change",
     post_submit: "Submit",
 
     mypost_admin: "Post Admin",

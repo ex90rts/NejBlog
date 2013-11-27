@@ -168,6 +168,8 @@ exports.doUpdate = function(req, res){
         if (tags.indexOf(oldTags[i]) == -1){
             delTags.push(oldTags[i]);
             tagModel.saveTagData(oldTags[i], summ, 'remove');
+        }else{
+            tagModel.saveTagData(oldTags[i], summ, 'update');
         }
     }
     for (var i=0; i<tags.length; i++){

@@ -26,19 +26,23 @@ exports.saveTagData = function(tag, post, verb){
         tagData.unshift(post);
     }else{
         var idx = -1;
-	for(var i=0; i<tagData.length; i++){
+	    for(var i=0; i<tagData.length; i++){
             if (tagData[i]._id == post._id){
-		idx = i;
+		        idx = i;
+	        }
 	    }
-	}
-	if (idx > -1){
-            tagData.splice(idx, 1);
-	}
+	    if (idx > -1){
+            if (verb == 'update'){
+                tagData[idx] = post;
+            }else{
+                tagData.splice(idx, 1);
+            }
+	    }
     }
     if (tagData.length > 0){
         return fs.writeFileSync(dataFile, JSON.stringify(tagData));
     }else{
-	return fs.unlinkSync(dataFile);
+        return fs.unlinkSync(dataFile);
     }
 };
 
