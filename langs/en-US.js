@@ -87,6 +87,8 @@ exports.content = {
     mypost_remove_tip: "Are u sure u want to remove this post forever? It is not cancelable!",
     mypost_adminlink: "Admin",
     mypost_trashlink: "Trash",
+    mypost_addtop: "Add Top",
+    mypost_deltop: "Del Top",
 
     password_username: "Username",
     password_oldpassword: "Old Password",

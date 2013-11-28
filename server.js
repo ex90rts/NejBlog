@@ -62,6 +62,8 @@ app.get('/post/view/:id', routes.post.view);
 app.get('/post/add', routes.post.add);
 app.get('/post/admin\/?(:page)?', routes.post.admin);
 app.get('/post/update/:id', routes.post.update);
+app.get('/post/addtop/:id', routes.post.addtop);
+app.get('/post/deltop/:id', routes.post.deltop);
 app.get('/post/trash', routes.post.trash);
 app.get('/post/trash/:id', routes.post.doTrash);
 app.get('/post/restore/:id', routes.post.restore);

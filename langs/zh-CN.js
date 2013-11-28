@@ -87,6 +87,8 @@ exports.content = {
     mypost_remove_tip: "确认彻底删除吗？删除后不可恢复哦！",
     mypost_adminlink: "管理",
     mypost_trashlink: "回收站",
+    mypost_addtop: "置顶",
+    mypost_deltop: "普通",
 
     password_username: "用户名",
     password_oldpassword: "旧密码",

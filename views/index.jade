@@ -1,9 +1,23 @@
 extend layout
 
 block content
+  if topList.length
+    h2.postYear Top List
+    
+    each post in topList
+      article
+        span.dateyear #{post.year}
+        span.datetime #{post.date}
+        a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
+    
+    hr.line
+
   if postList.length
+    - var year = ''
     each post in postList
-      //h2.postYear #{post.year}
+      - if (year != post.year)
+        h2.postYear #{post.year}
+      - year = post.year
       article
         span.dateyear #{post.year}
         span.datetime #{post.date}

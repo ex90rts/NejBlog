@@ -28,6 +28,12 @@ exports.post = {
     doUpdate: function(req, res){
         controller.post.doUpdate(req, res);
     },
+    addtop: function(req, res){
+        controller.post.addtop(req, res);
+    },
+    deltop: function(req, res){
+        controller.post.deltop(req, res);
+    },
     upload: function(req, res){
         controller.post.upload(req, res);
     },

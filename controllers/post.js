@@ -44,12 +44,19 @@ exports.admin = function(req, res){
     if ( newerPageNum > 0 && postModel.checkPostPage(newerPageNum) ){
         newerPage = newerPageNum;
     }
-    
+
+    var topIds = [];
+    var topList = postModel.readTopList();
+    for(var i=0; i<topList.length; i++){
+        topIds.push(topList[i]['_id']);
+    }
+
     var postList = postModel.readPostList(page);
     global.sendResponse({
     	res : res,
     	view : 'post_admin',
     	data : {
+            topIds: topIds,
     		postList: postList, 
     		pageTitle: req.app.locals.langs.nav_admin_myposts, 
     		olderPage: olderPage, newerPage: newerPage
@@ -275,6 +282,36 @@ exports.restore = function(req, res){
     }
 
     res.redirect('/post/admin');
+};
+
+exports.addtop = function(req, res){
+    var id = parseInt(req.params.id);
+    try{
+        var summ = postModel.readPostSumm(id);
+        if (summ){
+            postModel.saveTopList(summ, 'add');
+        }
+    }catch(e){
+        console.log('Add post to top list failed: ' + e);
+        res.send({ret: 'fail'});
+    }
+
+    res.send({ret: 'succ'});
+};
+
+exports.deltop = function(req, res){
+    var id = parseInt(req.params.id);
+    try{
+        var summ = postModel.readPostSumm(id);
+        if (summ){
+            postModel.saveTopList(summ, 'remove');
+        }
+    }catch(e){
+        console.log('Remove post from top list failed: ' + e);
+        res.send({ret: 'fail'});
+    }
+ 
+    res.send({ret: 'succ'});
 };
 
 function markedSummary(text, lineLimit){

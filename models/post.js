@@ -2,6 +2,7 @@ var fs = require('fs');
 var listMaxPost = 50;
 var listCutPost = 10;
 var dataFolderNum = 20;
+var topListCount = 5;
 
 function postIdsFile(){
     return './data/postIds.json';
@@ -351,4 +352,43 @@ exports.saveTrashList = function(post, verb){
 
     var listFile = trashListFile();
     return fs.writeFileSync(listFile, JSON.stringify(trashList));
+};
+
+function topListFile(){
+    return './data/topList.json';
+}
+
+exports.readTopList = function(){
+    var listFile = topListFile();
+    var topList = [];
+    if (fs.existsSync(listFile)){
+        try{
+            topList = JSON.parse(fs.readFileSync(listFile));
+        }catch(e){}
+    }
+
+    return topList;
+};
+
+exports.saveTopList = function(summ, verb){
+    var topList = this.readTopList();
+    if (verb == 'add'){
+        topList.unshift(summ);
+        if (topList.length > topListCount){
+            topList = topList.slice(0, topListCount);
+        }
+    }else{
+        var idx = -1;
+        for(var i=0; i<topList.length; i++){
+            if (topList[i]['_id'] == summ._id){
+                idx = i;
+                break;
+            }
+        }
+        if (idx > -1){
+            topList.splice(idx, 1);
+        }
+    }
+    var listFile = topListFile();
+    return fs.writeFileSync(listFile, JSON.stringify(topList));
 };

@@ -25,11 +25,17 @@ exports.view = function(req, res){
         newerPage = newerPageNum;
     }
 
+    var topList = [];
+    if (page == 1){
+        topList = postModel.readTopList();
+    }
+
     var postList = postModel.readPostList(page);
     global.sendResponse({
     	res : res,
     	view : 'index',
     	data : {
+            topList: topList,
     		postList: postList, 
     		pageTitle: req.app.locals.langs.pagetitle_homepage, 
     		olderPage: olderPage, newerPage: newerPage

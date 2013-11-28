@@ -24,7 +24,7 @@ exports.clearMessage = function(req){
 
 function adminPages(path){
     var paths = [
-        /^\/post\/(add|upload|admin|update|delete|trash|restore|remove)/,
+        /^\/post\/(add|upload|admin|update|delete|trash|restore|remove|addtop|deltop)/,
         /^\/user\/(logout|passwd)/,
         /^\/admin\/(setting|data|backup|restore|dorestore)/
     ];

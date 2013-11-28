@@ -23,6 +23,11 @@ block content
               a(href="/post/update/#{post._id}") #{langs.mypost_action_update}
               &nbsp;|&nbsp;
               a(href="/post/trash/#{post._id}", onclick="return confirm('#{langs.mypost_trash_tip}');") #{langs.mypost_action_trash}
+              &nbsp;|&nbsp;
+              - if (topIds.indexOf(post._id) == -1)
+                a.addtop(href="javascript:void(0);", data-id="#{post._id}", data-lang="#{langs.mypost_deltop}") #{langs.mypost_addtop}
+              - else
+                a.deltop(href="javascript:void(0);", data-id="#{post._id}", data-lang="#{langs.mypost_addtop}") #{langs.mypost_deltop}
 
     div.page
       if newerPage
