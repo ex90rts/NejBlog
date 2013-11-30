@@ -4,7 +4,7 @@ Find out more information at [NejBlog English Site](http://nejblog-en.samoay.me/
 
 NejBlog is a simple personal blog system which powered by node.js, express framework and jade template engine. The name "Nej" comes from the first letter of each main basic technical parts.
 
-**Version** 0.2.1 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
+**Version** 0.3.0 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
 
 #### Install
 
@@ -30,6 +30,12 @@ The default admin account is:
     # You will find out the "Admin login" link at the nav bar
     Username: admin
     Password: 123456
+
+- You can set **basic site** info like main page title, site keywords, site description and so on
+- You can talk something about yourself by set up "**about me**" content
+- You can choose a **site theme** you like (while currently there are just two themes, more themes coming soon)
+- You can choose a code block **highlight theme** you like
+- You can choose a faster free **CDN** host for the **static** js and css file (Google,cdnjs,Yandex,Baidu,Sina supported)
 
 **Please remember to change the default password under Admin-->Password after you logged in.**
 
@@ -73,10 +79,8 @@ The site support google analytics tracking if you have set the google analytics 
 #### Development plan / TODO
 
 1. Add pages feature(like Wordpress Pages), which you can 100% control the link and list page
-1. You will be able to put 5 blogs(the most) at the top of blog list page, which you want user to see first regardless the create time
 1. Give an option that you can show blog content summary in blog list page, not just title currently
 1. Update markdown editor, for making a better image upload UI
-1. More site theme for the site, multi themes config support
 1. Staticize the post page, support permalink of each post
 
 
