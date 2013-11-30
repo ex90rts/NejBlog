@@ -8,6 +8,7 @@ block content
     - for(var i in post.tags)
       a.postTag(href='/tag/view/#{post.tags[i]}', title='#{post.tags[i]}') #{post.tags[i]}
       &nbsp;&nbsp;
+  div.created #{langs.post_created}: #{created}
  
   hr.line
   div.mkn!=mdContent

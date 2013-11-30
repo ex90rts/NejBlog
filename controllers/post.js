@@ -4,6 +4,18 @@ var global = require('../global');
 var postModel = require('../models/post');
 var tagModel = require('../models/tag');
 
+function dateFormater(datestr, lang){
+	var date = new Date(datestr);
+	var year = date.getFullYear();
+	if (lang == 'zh-CN' || lang == 'zh-TW'){
+		return year + '-' + ('0'+(date.getMonth() + 1)).substr(-2) + '-' + ('0' + date.getDate()).substr(-2);
+	}else{
+		var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    	var month = monthNames[date.getMonth()];
+    	return month + ' ' + date.getDate() + ', ' + year;
+	}
+}
+
 exports.view = function(req, res){
     var id = req.params.id;
     var post = postModel.readPostData(id);
@@ -12,12 +24,14 @@ exports.view = function(req, res){
         return;
     }
 
+	var created = dateFormater(post.created, req.app.locals.siteinfo.lang);
     var mdContent = marked(post.content);
     global.sendResponse({
     	res : res,
     	view : 'post_view', 
     	data : {
     		post: post, 
+    		created: created,
     		mdContent: mdContent, 
     		pageTitle: post.title
     	}

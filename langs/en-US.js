@@ -78,7 +78,7 @@ exports.content = {
     post_tags_tip: "Seprated by comma or semi-colon or space",
     post_content: "Content",
     post_content_tip: "Support all markdown syntax include table",
-    post_created: "Created Date",
+    post_created: "Posted Date",
     post_created_tip: "Leave this empty to use current datetime",
     post_created_tip_update: "Leave this empty to keep old created time not change",
     post_submit: "Submit",
