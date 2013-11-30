@@ -20,6 +20,7 @@ a:hover {text-decoration: underline;}
 .browsehappy{width: 100%;height: 30px;line-height: 30px;text-align: center;font-size: 1.2em;font-weight: 100;background-color:#F1C410; }
 .divider{height: 100px;}
 .line{height: 1px;width: 100%;background-color: #A5ABAC;margin-top: 10px;margin-bottom: 10px;}
+.blankline{height:20px;}
 
 /*Outer container*/
 .container { width: 96%;max-width:900px;min-width:300px;background-color:#fff; margin:0 auto;}
