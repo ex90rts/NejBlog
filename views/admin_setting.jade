@@ -55,11 +55,41 @@ block content
     div
       label.formLabel #{langs.setting_links} <span class="formTips">#{langs.setting_links_tip}</span>
       textarea.largeTextarea(name="links", class="formControl")=linksText
-
+      
     div
       label.formLabel #{langs.setting_meweb} <span class="formTips">#{langs.setting_meweb_tip}</span>
       textarea.largeTextarea(name="webinfo", class="formControl")=webinfoText
+      
+    div
+      lable.formLabel #{langs.setting_jquery_host} <span class="formTips">#{langs.setting_jquery_host_tip}</span>
+      select.normalSelect(name="siteinfo[jquery_host]")
+        option(value="local", selected=(setting.siteinfo.jquery_host=="local")) #{langs.setting_host_local}
+        option(value="http://libs.baidu.com/jquery/1.10.2/jquery.min.js", selected=(setting.siteinfo.jquery_host=="http://libs.baidu.com/jquery/1.10.2/jquery.min.js")) Baidu CDN
+        option(value="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js", selected=(setting.siteinfo.jquery_host=="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js")) Sina SAE
+        option(value="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js", selected=(setting.siteinfo.jquery_host=="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")) Google CDN
+        option(value="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js", selected=(setting.siteinfo.jquery_host=="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js")) cdnjs CDN
+        option(value="http://yandex.st/jquery/1.10.2/jquery.min.js", selected=(setting.siteinfo.jquery_host=="http://yandex.st/jquery/1.10.2/jquery.min.js")) Yandex CDN
+      |&nbsp; <a href="http://developer.baidu.com/wiki/index.php?title=docs/cplat/libs" target="_blank">Baidu CDN</a>
+      |&nbsp; <a href="http://lib.sinaapp.com/" target="_blank">Sina SAE</a>
+      |&nbsp; <a href="https://developers.google.com/speed/libraries/" target="_blank">Google CDN</a>
+      |&nbsp; <a href="http://cdnjs.com/" target="_blank">cdnjs CDN</a>
+      |&nbsp; <a href="http://api.yandex.ru/jslibs/libs.xml" target="_blank">Yandex CDN</a>
 
+    div
+      lable.formLabel #{langs.setting_hljs_host} <span class="formTips">#{langs.setting_hljs_host_tip}</span>
+      select.normalSelect(name="siteinfo[hljs_host]")
+        option(value="local", selected=(setting.siteinfo.hljs_host=="local")) #{langs.setting_host_local}
+        option(value="yandex", selected=(setting.siteinfo.hljs_host=="yandex")) Yandex CDN
+        option(value="cdnjs", selected=(setting.siteinfo.hljs_host=="cdnjs")) cdnjs CDN
+
+    div
+      lable.formLabel #{langs.setting_hljs_theme} <span class="formTips">#{langs.setting_hljs_theme_tip}</span>
+      select.normalSelect(name="siteinfo[hljs_theme]")
+        - var options = {"default": "Default", "dark": "Dark", "far": "FAR", "idea": "IDEA", "sunburst": "Sunburst", "zenburn": "Zenburn", "vs": "Visual Studio", "ascetic": "Ascetic", "magula": "Magula", "github": "GitHub", "googlecode": "Google Code", "brown_paper": "Brown Paper", "school_book": "School Book", "ir_black": "IR Black", "solarized_dark": "Solarized - Dark", "solarized_light": "Solarized - Light", "arta": "Arta", "monokai": "Monokai", "monokai_sublime": "Monokai Sublime", "xcode": "XCode", "pojoaque": "Pojoaque", "rainbow": "Rainbow", "tomorrow": "Tomorrow", "tomorrow-night": "Tomorrow Night", "tomorrow-night-bright": "Tomorrow Night Bright", "tomorrow-night-blue": "Tomorrow Night Blue", "tomorrow-night-eighties": "Tomorrow Night Eighties", "railscasts": "Railscasts", "obsidian": "Obsidian", "docco": "Docco", "mono-blue": "Mono Blue", "foundation": "Foundation"};
+        each name,value in options
+          option(value="#{value}", selected=(setting.siteinfo.hljs_theme==value)) #{name}
+      |&nbsp; <a href="http://highlightjs.org/static/test.html" target="_blank">#{langs.setting_hljs_theme_demo}</a>
+           
     div
       input.submit(type="submit", value="#{langs.setting_submit}")
 

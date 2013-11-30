@@ -12,6 +12,9 @@ exports.config = {
         comment_id : "",
         gaid : "",
         footer : 'Copyright © 2013 Powered By <a href="http://nejblog.samoay.me" target="_blank">NejBlog</a>, <a href="https://github.com/samoay/NejBlog" target="_blank">Fork me on Github</a>',
+    	hljs_host : "local",
+    	hljs_theme : "monokai_sublime",
+    	jquery_host : "local"
     },
     comments : {
         'duoshuo' : 'duoshuo.com',
@@ -25,6 +28,5 @@ exports.config = {
         password : 'e10adc3949ba59abbe56e057f20f883e' //Current is 123456, please remember to change this password!!!
     },
     webinfo : {},
-    links : {},
-    foo : ''
+    links : {}
 };

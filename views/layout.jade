@@ -9,9 +9,22 @@ html(lang="#{siteinfo.lang}")
     //if lt IE 9
       script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
     link(rel='stylesheet', href='/css/style.css')
-    link(rel='stylesheet', href='/css/monokai_sublime.min.css')
-    script(src='/js/highlight.min.js')
-    script(src='/js/jquery-1.10.2.min.js')
+    
+    if siteinfo.hljs_host == "local"
+      link(rel='stylesheet', href='/css/#{siteinfo.hljs_theme}.min.css')
+      script(src='/js/highlight.min.js')
+    else if siteinfo.hljs_host == "yandex"
+      link(rel='stylesheet', href='http://yandex.st/highlightjs/7.5/styles/#{siteinfo.hljs_theme}.min.css')
+      script(src='http://yandex.st/highlightjs/7.5/highlight.min.js')
+    else if siteinfo.hljs_host == "cdnjs"
+      link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.4/styles/#{siteinfo.hljs_theme}.min.css')
+      script(src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/7.4/highlight.min.js')
+    
+    if siteinfo.jquery_host == "local"
+      script(src='/js/jquery-1.10.2.min.js')
+    else
+      script(src='#{siteinfo.jquery_host}')
+      
     script(src='/js/main.js?v=201311151034')
     
   body
