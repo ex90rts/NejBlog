@@ -43,6 +43,12 @@ block content
       input.mormalInput(type="file", name="logofile", class="formControl", value=setting.siteinfo.logo)
 
     div
+      lable.formLabel #{langs.setting_theme} <span class="formTips">#{langs.setting_theme_tip}</span>
+      select.normalSelect(name="siteinfo[theme]")
+        option(value="style", selected=(setting.siteinfo.theme=="style")) Default narrow
+        option(value="style-wide", selected=(setting.siteinfo.theme=="style-wide")) Default wide
+        
+    div
       label.formLabel #{langs.setting_footer} <span class="formTips">#{langs.setting_footer_tip}</span>
       textarea.smallTextarea(name="siteinfo[footer]", class="formControl", required="required")=setting.siteinfo.footer
 

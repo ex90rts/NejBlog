@@ -2,7 +2,7 @@
 * {border:0;margin:0;padding:0;}
 *:focus {outline: none;}
 ol, ul {list-style: none;}
-html {background: #2C3E50; background: #2C3E50 linear-gradient(#8791A0, #2C3138) fixed;}
+html {background: #B8BDA6;}
 body {margin: 0;font: 14px/1.5 Helvetica, "Microsoft Yahei", Tahoma, Arial, sans-serif;color: #2C3E50;}
 h1 {font-size: 1.6em;}
 h2 {font-size: 1.5em;}
@@ -22,34 +22,34 @@ a:hover {text-decoration: underline;}
 .line{height: 1px;width: 100%;background-color: #A5ABAC;margin-top: 10px;margin-bottom: 10px;}
 
 /*Outer container*/
-.container { width: 96%;max-width:900px;min-width:300px;background-color:#fff; margin:2% auto;}
+.container { width: 96%;max-width:900px;min-width:300px;background-color:#fff; margin:0 auto;}
 
 /*Header section*/
-header{background-color: #fff;padding:2%;}
+header{background-color: #D9583E;padding:2%;}
 header .headerBox{}
-header .sitename{ float:left; width:60%; color:#333;}
+header .sitename{ float:left; width:60%; color:#fff;}
 header .sitename h1{font-size:1.8em;font-weight:700;}
 header .sitename h3{font-size:1em;font-weight:100;}
-header .sitelogo{ float:right; width:70px; height:70px; background-color:#BDC3C7;}
-header .sitelogo img{width:60px; height:60px; margin:5px;}
+header .sitelogo{ float:right; width:70px; height:70px; background-color:#FFFBF5;border-radius: 35px;}
+header .sitelogo img{width:60px; height:60px; margin:5px;border-radius: 30px;}
 
 /*Nav Section*/
-nav{height:40px; background-color:#34495e;}
+nav{height:38px; background-color:#396F7F;}
 nav ul{}
 nav ul li{display:block;min-width:100px;float:left;text-align:center;}
-nav ul li.on{background-color:#1ABC9C;border-bottom:2px solid #16a085;}
+nav ul li.on{background-color:#56AEC2;}
 nav ul li a{height: 38px;line-height: 38px;display: block;text-decoration:none;color:#fff;font-size:1.2em;font-weight:100;padding:0 10px;}
 nav ul li a:hover{text-decoration: none;}
-nav ul li:hover{background-color:#1ABC9C;border-bottom:2px solid #16a085;}
+nav ul li:hover{background-color:#56AEC2;}
 nav ul li.adminGate{position:relative;}
 .adminGate:hover .adminMenu{display:block;}
-.adminMenu{display:none;position: absolute;top: 40px;left:0;z-index: 999;}
-.adminMenu ul li{min-width: 100px;text-align:left;background-color:#34495e;border-bottom:2px solid #34495e;}
+.adminMenu{display:none;position: absolute;top: 38px;left:0;z-index: 999;}
+.adminMenu ul li{min-width: 100px;text-align:left;background-color:#396F7F;}
 .adminMenu ul li a{font-size: 1em;}
 .adminMenu ul li a:hover{text-decoration: none;}
 
 /*Content section*/
-section.content{min-height:200px;background-color:#FFF;padding:2%;line-height: 2em;}
+section.content{min-height:200px;background-color:#FFFBF5;padding:2%;line-height: 2em;}
 section.content .contentBox{}
 section.content article{padding-left:2%;}
 section.content article span{margin-right:1.5%;}
@@ -60,14 +60,14 @@ section.content .page{margin-top: 10px;padding-left: 2%;}
 section.content .page .newerPage{margin-right: 20px;}
 
 /*Relevant section*/
-section.relevant{min-height:200px;height:100%;border-top:5px #1ABC9C solid;}
+section.relevant{min-height:200px;height:100%;border-top:5px #56AEC2 solid;background-color:#FFFBF5;}
 section.relevant .releventBox{}
 section.relevant .tags{ width:52%;min-width: 430px;padding:1.5%;float:left;}
 section.relevant .links{ width:18%;min-width: 140px;padding:1.5%;float:right;}
 section.relevant .aboutme{ width:18%;min-width: 140px;padding:1.5%;float:right;}
 section.relevant h3{padding:0 6px;}
 section.relevant .tags a{ float:left; margin:3px 6px; text-decoration:none; color:#006699;}
-section.relevant .tags a span{display:block;width:20px;float:right;text-align:center;background-color:#E74C3C;margin-left:3px;margin-top:3px;border-radius:5px;color:#fff;font-size:0.8em;}
+section.relevant .tags a span{display:block;width:20px;float:right;text-align:center;background-color:rgba(34,59,74,.4);margin-left:3px;margin-top:3px;border-radius:5px;color:#fff;font-size:0.8em;}
 section.relevant .aboutme li{line-height:1.8em;padding-left:6px;}
 section.relevant .aboutme li a{text-decoration:none; color:#006699;}
 section.relevant .links li{line-height:1.8em;padding-left:6px;}
@@ -108,10 +108,11 @@ footer .footerBox{}
 
 /*Media selectors for responsive layout support*/
 @media(max-width:480px){
-    
+    .container{margin:2% auto;}
 }
 
 @media(max-width:899px){
+    .container{margin:2% auto;}
     nav ul li a{font-size: 1em;}
     section.relevant{height: 100%;}
     section.relevant .tags{float: none;min-width: 95%;}
@@ -120,7 +121,7 @@ footer .footerBox{}
 }
 
 @media(min-width:900px){
-    .container{margin: 2% auto;}
+    .container{margin:0 auto;}
 }
 
 /***************************************************/

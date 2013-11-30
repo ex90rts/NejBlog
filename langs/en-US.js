@@ -52,6 +52,8 @@ exports.content = {
     setting_gaid_tip: "The tracking ID of Google Analytics",
     setting_sitelogo: "Site Logo",
     setting_sitelogo_tip: "Top right image of the default theme",
+    setting_theme: "Site theme",
+    setting_theme_tip: "Choose a site theme you like",
     setting_footer: "Footer",
     setting_footer_tip: "Copyright text and so on",
     setting_aboutme: "About Me",
