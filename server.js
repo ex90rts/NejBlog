@@ -31,10 +31,7 @@ app.configure('development', function(){
     app.use(express.errorHandler());
 });
 
-app.use('/css', express.static(__dirname + '/public/css', { maxAge: 2592000000 }));
-app.use('/js', express.static(__dirname + '/public/js', { maxAge: 2592000000 }));
-app.use('/images', express.static(__dirname + '/public/images', { maxAge: 2592000000 }));
-app.use('/upload', express.static(__dirname + '/public/upload', { maxAge: 2592000000 }));
+app.use(express.static(__dirname + '/public/', {maxAge: 2592000000}));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
