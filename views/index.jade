@@ -2,7 +2,7 @@ extend layout
 
 block content
   if topList.length
-    h2.postYear #{langs.top_list}
+    h7.postYear #{langs.top_list}
     
     each post in topList
       article
@@ -18,12 +18,11 @@ block content
     - var year = ''
     each post,key in postList
       - if (year != post.year)
-        h2.postYear #{post.year}
+        h7.postYear #{post.year}
       - year = post.year
       - if (key>0 && key%5 == 0)
         .blankline
       article
-        span.dateyear #{post.year}
         span.datetime #{post.date}
         a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
         each tag in post.tags

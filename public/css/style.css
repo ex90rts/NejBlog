@@ -55,7 +55,7 @@ section.content{min-height:200px;background-color:#FFFBF5;padding:2%;line-height
 section.content .contentBox{}
 section.content article{padding-left:2%;}
 section.content article span{margin-right:1.5%;}
-section.content article span.dateyear {font-weight:700;margin-right:1%;color:#000;}
+section.content article span.dateyear {font-weight:100;margin-right:1%;color:#000;}
 section.content article a{text-decoration:none;color:#069;}
 section.content .postTags{height: 30px;line-height:30px;margin-top:10px;}
 section.content .page{margin-top: 10px;padding-left: 2%;}

@@ -2,7 +2,12 @@ extend layout
 
 block content
     h1=tag
-    - for(var i in postList)
+    each post,key in postList
+      - if (key>0 && key%5 == 0)
+        .blankline
       article
-        span(class='datetime') #{postList[i].year}-#{postList[i].date}
-        a.title(href='/post/view/#{postList[i]._id}', title='#{postList[i].title}') #{postList[i].title}
+        span.dateyear #{post.year}
+        span.datetime #{post.date}
+        a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
+        each tag in post.tags
+          h2.k #{tag}
