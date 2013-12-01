@@ -83,6 +83,8 @@ app.post('/admin/setting', routes.admin.doSetting);
 app.post('/admin/restore', routes.admin.restore);
 app.post('/admin/dorestore', routes.admin.doRestore);
 
+app.get('*', routes.errors.pageNotFound);
+
 var dataDirs = ['data', 'data/post', 'data/tag', 'data/trash', 'public/upload'];
 for(var i=0; i<dataDirs.length; i++){
     if (!fs.existsSync(dataDirs[i])){
