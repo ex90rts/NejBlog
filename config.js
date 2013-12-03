@@ -14,7 +14,7 @@ exports.config = {
         footer : 'Copyright © 2013 Powered By <a href="http://nejblog.samoay.me" target="_blank">NejBlog</a>, <a href="https://github.com/samoay/NejBlog" target="_blank">Fork me on Github</a>',
     	theme : "style-github",
     	hljs_host : "local",
-    	hljs_theme : "monokai_sublime",
+    	hljs_theme : "github",
     	jquery_host : "local"
     },
     comments : {
