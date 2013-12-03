@@ -1,0 +1,164 @@
+/*CSS reset*/
+* {border:0;margin:0;padding:0;}
+*:focus {outline: none;}
+ol, ul {list-style: none;}
+html {background: #FFF;}
+body {margin: 0;font: 14px/1.5 Helvetica, "Microsoft Yahei", Tahoma, Arial, sans-serif;color: #2C3E50;}
+h1 {font-size: 1.6em;}
+h2 {font-size: 1.5em;}
+h3 {font-size: 1.4em;}
+a {color: #4183c4;text-decoration: none;}
+a:hover {text-decoration: underline;}
+
+/*Global styles*/
+.clear{clear:both;}
+.show{display: block;}
+.hide{display: none;}
+.bcenter{margin-left: auto;margin-right: auto;}
+.red{color: #E74C3C;}
+.message{position: absolute;top: 10px;background-color: #F1C40F;color: #000;height: 30px;line-height: 30px;width: 50%;max-width: 500px;min-width:300px;margin: 0 auto;text-align: center;border-radius: 5px;}
+.browsehappy{width: 100%;height: 30px;line-height: 30px;text-align: center;font-size: 1.2em;font-weight: 100;background-color:#F1C410; }
+.divider{height: 100px;}
+.line{height: 1px;width: 100%;background-color: #e5e5e5;margin-top: 10px;margin-bottom: 10px;}
+.blankline{height:20px;}
+.k{display:inline;font-size:1em;font-weight:100;color:#999;margin-left:2px;}
+
+/*Outer container*/
+.container { background-color:#FFF; margin:0 auto;}
+
+/*Header section*/
+header{background-color: #FFF;padding:2%;border-bottom:1px solid #e5e5e5;margin-bottom:20px;}
+header .headerBox{width: 96%;max-width:900px;min-width:300px; margin:0 auto;}
+header .sitename{ float:left; width:60%; color:#333333;}
+header .sitename h1{font-size:2.2em;font-weight:700;}
+header .sitename h3{font-size:1.2em;font-weight:100;}
+header .sitelogo{ float:right; width:70px; height:70px; background-color:#CCC;border-radius: 35px;}
+header .sitelogo img{width:60px; height:60px; margin:5px;border-radius: 30px;}
+
+/*Nav Section*/
+nav{height:39px; background-color:#FFF;}
+nav ul{width: 96%;max-width:900px;min-width:300px;height:38px;margin:0 auto;border-bottom:1px solid #ddd;}
+nav ul li{display:block;min-width:100px;float:left;text-align:center; }
+nav ul li.on{background-color:#FFF;border:1px solid #ddd;border-radius:3px 3px 0 0;border-bottom:none;}
+nav ul li a{height: 38px;line-height: 38px;display: block;text-decoration:none;color:#333;font-size:1.2em;font-weight:300;padding:0 10px;}
+nav ul li a:hover{text-decoration: none; color:#4183c4;}
+nav ul li:hover{}
+nav ul li.adminGate{position:relative;}
+.adminGate:hover .adminMenu{display:block;}
+.adminMenu{display:none;position: absolute;top: 38px;left:0;z-index: 999;border:1px solid #e5e5e5;border-top:none;}
+.adminMenu ul{min-width: 100px;}
+.adminMenu ul li{text-align:left;background-color:#FFF;}
+.adminMenu ul li a{font-size: 1em;}
+.adminMenu ul li a:hover{text-decoration: none;}
+
+/*Content section*/
+section.content{width: 96%;max-width:900px;min-width:300px;margin:0 auto; margin-top:15px;min-height:300px;background-color:#FFF;line-height: 2em;}
+section.content .contentBox{padding:2% 0;}
+section.content .postYear{font-weight:700;font-size:1.5em;}
+section.content article{padding-left:2%;}
+section.content article span{margin-right:1.5%;}
+section.content article span.dateyear {margin-right:1%;}
+section.content article a{text-decoration:none;}
+section.content .postTags{height: 30px;line-height:30px;margin-top:10px;}
+section.content .created{color:#999;font-size:0.9em;}
+section.content .page{margin-top: 10px;padding-left: 2%;}
+section.content .page .newerPage{margin-right: 20px;}
+
+/*Relevant section*/
+section.relevant{width: 96%;max-width:900px;min-width:300px;min-height:200px;height:100%;border-top:1px solid #e5e5e5;background-color:#FFF;margin:0 auto;margin-top:30px;}
+section.relevant .releventBox{}
+section.relevant .tags{ width:52%;min-width: 430px;padding:1.5% 0;float:left;}
+section.relevant .links{ width:18%;min-width: 140px;padding:1.5%;float:right;}
+section.relevant .aboutme{ width:18%;min-width: 140px;padding:1.5% 0;float:right;}
+section.relevant h3{padding:0 6px;}
+section.relevant .tags a{ float:left; margin:3px 6px; text-decoration:none;}
+section.relevant .tags a span{display:block;width:20px;float:right;text-align:center;background-color:#80C06A;margin-left:3px;margin-top:3px;border-radius:5px;color:#fff;font-size:0.8em;}
+section.relevant .aboutme li{line-height:1.8em;padding-left:6px;}
+section.relevant .aboutme li a{text-decoration:none;}
+section.relevant .links li{line-height:1.8em;padding-left:6px;}
+section.relevant .links li a{text-decoration:none;}
+
+/*Footer section*/
+footer {border-top:1px solid #e5e5e5;width: 96%;max-width:900px;min-width:300px; margin:0 auto;margin-top:30px;padding:30px 0; text-align:center; background-color:#fff;font-size: 0.9em;}
+footer .footerBox{}
+
+/*Post admin table style*/
+.postList{width: 100%;border-collapse:collapse;}
+.postList tr{background-color: #fff;}
+.postList tr:nth-child(2n){background-color: #f8f8f8;}
+.postList th, .postList td{padding: 4px 5px;}
+.postList th{text-align: center;background-color: #E4FCFE;color: #000;font-weight: 700;font-family: Arial;border: 1px solid #ddd;}
+.postList td{border: 1px solid #ddd;background-color: transparent;color: #666;}
+.postList td.txtcenter{text-align: center;}
+
+/*forms style*/
+.formControl{border: 1px solid #bdc3c7; border-radius:3px;color: #666;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;padding: 5px 12px;height: 26px;margin: 5px auto;transition: border .25s linear, color .25s linear, background-color .25s linear;}
+.formControl:focus{border: 1px solid #4463DF;}
+.mormalInput{width:60%;}
+.smallInput{width:40%;min-width: 250px;}
+.tinyInput{width: 150px;}
+.smallTextarea{height: 60px; width:90%;}
+.largeTextarea{height: 150px;width:90%;}
+.normalSelect{border: 2px solid #bdc3c7;color: #666;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;padding: 5px 12px;height: 35px;width: 180px;margin: 5px auto;transition: border .25s linear, color .25s linear, background-color .25s linear;}
+.formLabel{font-size:18px;font-weight:700;display:block;}
+.formTips{font-size:0.8em;font-weight: 100; color: #999;}
+.loginForm{width: 250px;margin: 0 auto;padding: 24px 23px 20px;}
+.loginField{border: 2px solid #BDC3C8;font-size: 17px;text-indent: 3px;width:200px;display:block;}
+.passwdForm{width: 300px;margin: 0 auto;padding: 24px 23px 20px;}
+.passwdField{border: 2px solid #BDC3C8;font-size: 17px;text-indent: 3px;display:block;}
+.admindataForm{margin: 0 auto;padding: 24px 23px 20px;}
+.submit{border-color: transparent;font-size: 17px;text-indent: 3px;width:228px;height: 42px;display:block;background-color: #569e3d;color: #ffffff;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;display:block;margin-top: 20px;cursor: pointer;border-radius:3px;border-color:#4a993e;background-image:linear-gradient(#79d858, #569e3d);}
+.cancel{border-color: transparent;font-size: 17px;text-indent: 3px;width:228px;height: 42px;display:block;background-color: #DBE2E4;color: #E74C3C;font-family: "Lato", Helvetica, Arial, sans-serif;font-size: 15px;display:block;margin-top: 20px;cursor: pointer;border-radius:3px;}
+.postContentField{width:90%;min-height: 400px;}
+
+/*Media selectors for responsive layout support*/
+@media(max-width:480px){
+    
+}
+
+@media(max-width:899px){
+    nav ul li a{font-size: 1em;}
+    section.relevant{height: 100%;}
+    section.relevant .tags{float: none;min-width: 95%;}
+    section.relevant .links{float: none;min-width: 95%;}
+    section.relevant .aboutme{float: none;min-width: 95%;}
+}
+
+@media(min-width:900px){
+    .container{margin:0 auto;}
+}
+
+/***************************************************/
+/************** CSS for markdown content ***********/
+/***************************************************/
+.mkn{margin-bottom: 100px;}
+.mkn *{line-height: 1.6em;}
+.mkn p{margin:15px 0;color: #303030;}
+.mkn strong{font-weight: 700;color: #000;}
+.mkn ul, .mkn ol, .mkn h1, .mkn h2, .mkn h3, .mkn h4, .mkn h5, .mkn h6, .mkn h7{margin:12px 0;color: #000;}
+.mkn h1 {font-size:1.6em;}
+.mkn h2 {font-size:1.5em;}
+.mkn h3 {font-size:1.4em;}
+.mkn h4 {font-size:1.3em;}
+.mkn h5 {font-size:1.2em;}
+.mkn h6 {font-size:1.1em;}
+.mkn h7 {font-size:1.0em;}
+.mkn ol, .mkn ul{margin-left: 35px;color: #666666;}
+.mkn ol{list-style-type: decimal;}
+.mkn ul{list-style-type: disc;}
+.mkn blockquote{padding: 10px; margin: 15px auto;background:#f3f3f3;border-left:4px solid #009a61;}
+.mkn pre{margin: 15px auto;border-radius:4px;padding:4px;background-color:#eee;}
+.mkn code{line-height: 1.2em;overflow-x: scroll;border:1px solid #CCC;}
+.mkn p code{background:#ECD1D1;margin:0 5px;}
+.mkn a{color: #4985F0;text-decoration: none;}
+.mkn a:hover{text-decoration: underline;}
+.mkn hr{display: block;box-sizing: content-box;height: 0;margin: 20px auto 40px;border: 0;text-align: center;font-size: 16px;color: #999;}
+.mkn hr:before{content: '* * *';}
+.mkn img{max-width: 90%;}
+.mkn table{width: 80%;border-collapse:collapse;}
+.mkn table tr{background-color: #fff;}
+.mkn table tr:nth-child(2n){background-color: #f8f8f8;}
+.mkn table th, .mkn table td{padding: 4px 5px;}
+.mkn table th{text-align: center;background-color: #E4FCFE;color: #000;font-weight: 700;font-family: Arial;border: 1px solid #ddd;}
+.mkn table td{border: 1px solid #ddd;background-color: transparent;color: #666;}
+.mkn table td.txtcenter{text-align: center;}
