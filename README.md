@@ -4,7 +4,7 @@ Find out more information at [NejBlog English Site](http://nejblog-en.samoay.me/
 
 NejBlog is a simple personal blog system which powered by node.js, express framework and jade template engine. The name "Nej" comes from the first letter of each main basic technical parts.
 
-**Version** 0.3.0 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
+**Version** 0.3.1 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
 
 #### Install
 
