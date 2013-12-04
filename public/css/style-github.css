@@ -68,7 +68,7 @@ section.content .page .newerPage{margin-right: 20px;}
 section.relevant{width: 96%;max-width:900px;min-width:300px;min-height:200px;height:100%;border-top:1px solid #e5e5e5;background-color:#FFF;margin:0 auto;margin-top:30px;}
 section.relevant .releventBox{}
 section.relevant .tags{ width:52%;min-width: 430px;padding:1.5% 0;float:left;}
-section.relevant .links{ width:18%;min-width: 140px;padding:1.5%;float:right;}
+section.relevant .links{ width:18%;min-width: 140px;padding:1.5% 0;float:right;}
 section.relevant .aboutme{ width:18%;min-width: 140px;padding:1.5% 0;float:right;}
 section.relevant h3{padding:0 6px;}
 section.relevant .tags a{ float:left; margin:3px 6px; text-decoration:none;}
@@ -113,7 +113,8 @@ footer .footerBox{}
 
 /*Media selectors for responsive layout support*/
 @media(max-width:480px){
-    
+    header .sitename h1{font-size:1.5em;font-weight:700;}
+	header .sitename h3{font-size:1em;font-weight:100;}
 }
 
 @media(max-width:899px){
