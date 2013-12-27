@@ -28,7 +28,7 @@ a:hover {text-decoration: underline;}
 
 /*Header section*/
 header{background-color: #FFF;padding:2%;border-bottom:1px solid #e5e5e5;margin-bottom:20px;}
-header .headerBox{width: 96%;max-width:900px;min-width:300px; margin:0 auto;}
+header .headerBox{width: 96%;max-width:800px;min-width:300px; margin:0 auto;}
 header .sitename{ float:left; width:60%; color:#333333;}
 header .sitename h1{font-size:2.2em;font-weight:700;}
 header .sitename h3{font-size:1.2em;font-weight:100;}
@@ -37,7 +37,7 @@ header .sitelogo img{width:60px; height:60px; margin:5px;border-radius: 30px;}
 
 /*Nav Section*/
 nav{height:39px; background-color:#FFF;}
-nav ul{width: 96%;max-width:900px;min-width:300px;height:38px;margin:0 auto;border-bottom:1px solid #ddd;}
+nav ul{width: 96%;max-width:800px;min-width:300px;height:38px;margin:0 auto;border-bottom:1px solid #ddd;}
 nav ul li{display:block;min-width:100px;float:left;text-align:center; }
 nav ul li.on{background-color:#FFF;border:1px solid #ddd;border-radius:3px 3px 0 0;border-bottom:none;}
 nav ul li a{height: 38px;line-height: 38px;display: block;text-decoration:none;color:#333;font-size:1.2em;font-weight:300;padding:0 10px;}
@@ -52,7 +52,7 @@ nav ul li.adminGate{position:relative;}
 .adminMenu ul li a:hover{text-decoration: none;}
 
 /*Content section*/
-section.content{width: 96%;max-width:900px;min-width:300px;margin:0 auto; margin-top:15px;min-height:300px;background-color:#FFF;line-height: 2em;}
+section.content{width: 96%;max-width:800px;min-width:300px;margin:0 auto; margin-top:15px;min-height:300px;background-color:#FFF;line-height: 2em;}
 section.content .contentBox{padding:2% 0;}
 section.content .postYear{font-weight:700;font-size:1.5em;}
 section.content article{padding-left:2%;}
@@ -65,7 +65,7 @@ section.content .page{margin-top: 10px;padding-left: 2%;}
 section.content .page .newerPage{margin-right: 20px;}
 
 /*Relevant section*/
-section.relevant{width: 96%;max-width:900px;min-width:300px;min-height:200px;height:100%;border-top:1px solid #e5e5e5;background-color:#FFF;margin:0 auto;margin-top:30px;}
+section.relevant{width: 96%;max-width:800px;min-width:300px;min-height:200px;height:100%;border-top:1px solid #e5e5e5;background-color:#FFF;margin:0 auto;margin-top:30px;}
 section.relevant .releventBox{}
 section.relevant .tags{ width:52%;min-width: 430px;padding:1.5% 0;float:left;}
 section.relevant .links{ width:18%;min-width: 140px;padding:1.5% 0;float:right;}
@@ -79,7 +79,7 @@ section.relevant .links li{line-height:1.8em;padding-left:6px;}
 section.relevant .links li a{text-decoration:none;}
 
 /*Footer section*/
-footer {border-top:1px solid #e5e5e5;width: 96%;max-width:900px;min-width:300px; margin:0 auto;margin-top:30px;padding:30px 0; text-align:center; background-color:#fff;font-size: 0.9em;}
+footer {border-top:1px solid #e5e5e5;width: 96%;max-width:800px;min-width:300px; margin:0 auto;margin-top:30px;padding:30px 0; text-align:center; background-color:#fff;font-size: 0.9em;}
 footer .footerBox{}
 
 /*Post admin table style*/
@@ -133,7 +133,7 @@ footer .footerBox{}
 /************** CSS for markdown content ***********/
 /***************************************************/
 .mkn{margin-bottom: 100px;}
-.mkn *{line-height: 1.6em;}
+.mkn *{line-height: 1.8em; font-size:1.2em;}
 .mkn p{margin:15px 0;color: #303030;}
 .mkn strong{font-weight: 700;color: #000;}
 .mkn ul, .mkn ol, .mkn h1, .mkn h2, .mkn h3, .mkn h4, .mkn h5, .mkn h6, .mkn h7{margin:12px 0;color: #000;}
