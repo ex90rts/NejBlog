@@ -3,7 +3,7 @@
 *:focus {outline: none;}
 ol, ul {list-style: none;}
 html {background: #FFF;}
-body {margin: 0;font: 14px/1.5 Helvetica, "Microsoft Yahei", Tahoma, Arial, sans-serif;color: #2C3E50;}
+body {margin: 0;font: normal 14px/1.5 'helvetica neue','hiragino sans gb',stheiti,'wenquanyi micro hei',\5FAE\8F6F\96C5\9ED1,\5B8B\4F53,sans-serif;}
 h1 {font-size: 1.6em;}
 h2 {font-size: 1.5em;}
 h3 {font-size: 1.4em;}
@@ -21,16 +21,16 @@ a:hover {text-decoration: underline;}
 .divider{height: 100px;}
 .line{height: 1px;width: 100%;background-color: #e5e5e5;margin-top: 10px;margin-bottom: 10px;}
 .blankline{height:20px;}
-.k{display:inline;font-size:1em;font-weight:100;color:#999;margin-left:2px;}
+.k{display:inline;font-size:1em;color:#999;margin-left:5px;}
 
 /*Outer container*/
 .container { background-color:#FFF; margin:0 auto;}
 
 /*Header section*/
-header{background-color: #FFF;padding:2%;border-bottom:1px solid #e5e5e5;margin-bottom:20px;}
+header{background-color: #f3f6f5;padding:2%;border-bottom:1px solid #e5e5e5;margin-bottom:20px;}
 header .headerBox{width: 96%;max-width:800px;min-width:300px; margin:0 auto;}
 header .sitename{ float:left; width:60%; color:#333333;}
-header .sitename h1{font-size:2.2em;font-weight:700;}
+header .sitename h1{font-size:2.2em;font-weight:100;}
 header .sitename h3{font-size:1.2em;font-weight:100;}
 header .sitelogo{ float:right; width:70px; height:70px; background-color:#CCC;border-radius: 35px;}
 header .sitelogo img{width:60px; height:60px; margin:5px;border-radius: 30px;}
@@ -38,8 +38,8 @@ header .sitelogo img{width:60px; height:60px; margin:5px;border-radius: 30px;}
 /*Nav Section*/
 nav{height:39px; background-color:#FFF;}
 nav ul{width: 96%;max-width:800px;min-width:300px;height:38px;margin:0 auto;border-bottom:1px solid #ddd;}
-nav ul li{display:block;min-width:100px;float:left;text-align:center; }
-nav ul li.on{background-color:#FFF;border:1px solid #ddd;border-radius:3px 3px 0 0;border-bottom:none;}
+nav ul li{display:block;min-width:100px;float:left;text-align:center;height:37px;}
+nav ul li.on{background-color:#FFF;border:1px solid #ddd;border-radius:3px 3px 0 0;border-bottom:1px solid #fff;}
 nav ul li a{height: 38px;line-height: 38px;display: block;text-decoration:none;color:#333;font-size:1.2em;font-weight:300;padding:0 10px;}
 nav ul li a:hover{text-decoration: none; color:#4183c4;}
 nav ul li:hover{}
@@ -71,15 +71,15 @@ section.relevant .tags{ width:52%;min-width: 430px;padding:1.5% 0;float:left;}
 section.relevant .links{ width:18%;min-width: 140px;padding:1.5% 0;float:right;}
 section.relevant .aboutme{ width:18%;min-width: 140px;padding:1.5% 0;float:right;}
 section.relevant h3{padding:0 6px;}
-section.relevant .tags a{ float:left; margin:3px 6px; text-decoration:none;}
-section.relevant .tags a span{display:block;width:20px;float:right;text-align:center;background-color:#80C06A;margin-left:3px;margin-top:3px;border-radius:5px;color:#fff;font-size:0.8em;}
+section.relevant .tags a{ float:left; margin:3px 6px; text-decoration:none;text-transform:capitalize;}
+section.relevant .tags a span{display:block;width:20px;float:right;text-align:center;background-color:#e5e5e5;margin-left:3px;margin-top:3px;border-radius:5px;color:#4C95B1;font-size:0.8em;}
 section.relevant .aboutme li{line-height:1.8em;padding-left:6px;}
 section.relevant .aboutme li a{text-decoration:none;}
 section.relevant .links li{line-height:1.8em;padding-left:6px;}
 section.relevant .links li a{text-decoration:none;}
 
 /*Footer section*/
-footer {border-top:1px solid #e5e5e5;width: 96%;max-width:800px;min-width:300px; margin:0 auto;margin-top:30px;padding:30px 0; text-align:center; background-color:#fff;font-size: 0.9em;}
+footer {border-top:1px solid #e5e5e5;width: 96%;max-width:800px;min-width:300px; margin:0 auto;margin-top:30px;padding:30px 0; text-align:center; background-color:#fff;font-size: 1.0em;}
 footer .footerBox{}
 
 /*Post admin table style*/
