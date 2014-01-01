@@ -10,7 +10,7 @@ block content
         span.datetime #{post.date}
         a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
         each tag in post.tags
-          a.k #{tag}
+          h2.k #{tag}
           
     hr.line
 
@@ -26,7 +26,7 @@ block content
         span.datetime #{post.date}
         a.title(href='/post/view/#{post._id}', title='#{post.title}') #{post.title}
         each tag in post.tags
-          a.k #{tag}
+          h2.k #{tag}
       
   else
     p #{langs.tip_nopost}<a href="/post/add">#{langs.nav_admin_addpost}</a>

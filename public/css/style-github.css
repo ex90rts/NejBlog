@@ -21,7 +21,7 @@ a:hover {text-decoration: underline;}
 .divider{height: 100px;}
 .line{height: 1px;width: 100%;background-color: #e5e5e5;margin-top: 10px;margin-bottom: 10px;}
 .blankline{height:20px;}
-.k{display:inline;font-size:1em;color:#999;margin-left:5px;}
+.k{display:inline;font-size:1em;font-weight:400;color:#999;margin-left:5px;}
 
 /*Outer container*/
 .container { background-color:#FFF; margin:0 auto;}
