@@ -4,6 +4,7 @@ Find out more information at [NejBlog English Site](http://nejblog-en.samoay.me/
 
 NejBlog is a simple personal blog system which powered by node.js, express framework and jade template engine. The name "Nej" comes from the first letter of each main basic technical parts.
 
+**Version** 0.4.0 released, update express support to v4.6.1, other depend packages version updated too
 **Version** 0.3.1 released, all fundamental features were settled, you can build your own site via NejBlog now ;)  Please feel free to report issues or comments here !
 
 #### Install
@@ -70,8 +71,8 @@ The site support google analytics tracking if you have set the google analytics 
 
 #### Project dependencies
 
-- express >= 3.4.4  The main project framework
-- jade >= 0.35.0  The template enging
+- express >= 4.x  The main project framework
+- jade >= 1.x  The template enging
 - marked >= 0.2.10  The markdown text parser
 - crypto >= 0.0.3  For hashing admin account password
 - adm-zip >= 0.4.3 For zip and unzip
