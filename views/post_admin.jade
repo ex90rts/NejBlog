@@ -21,9 +21,9 @@ block content
             td.txtcenter #{post.created}
             td.txtcenter
               a(href="/post/update/#{post._id}") #{langs.mypost_action_update}
-              &nbsp;|&nbsp;
+              | &nbsp;|&nbsp;
               a(href="/post/trash/#{post._id}", onclick="return confirm('#{langs.mypost_trash_tip}');") #{langs.mypost_action_trash}
-              &nbsp;|&nbsp;
+              | &nbsp;|&nbsp;
               - if (topIds.indexOf(post._id) == -1)
                 a.addtop(href="javascript:void(0);", data-id="#{post._id}", data-lang="#{langs.mypost_deltop}") #{langs.mypost_addtop}
               - else

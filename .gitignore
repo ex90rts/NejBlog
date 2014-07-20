@@ -1,6 +1,9 @@
+.idea
 .svn
+.DS_Store
 data
 public/upload
 *.swp
+node_modules
 node_modules/*
 temp

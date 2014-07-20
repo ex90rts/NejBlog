@@ -1,4 +1,3 @@
-var crypto = require('crypto');
 var jade = require('jade');
 var fs = require('fs');
 var tagModel = require('./models/tag');

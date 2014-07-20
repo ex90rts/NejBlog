@@ -1,9 +1,8 @@
-var VERSION = '0.3.0';
+var VERSION = '0.4.0';
 
 var fs = require('fs');
 var http = require('http');
 var express = require('express');
-var path = require('path');
 var global = require('./global');
 var routes = require('./routes');
 var config = require('./config').config;
@@ -26,17 +25,29 @@ app.set('view engine', 'jade');
 app.set('salt', config.salt);
 app.set('admin cookie', config.user.cookie);
 
-app.configure('development', function(){
+var env = process.env.NODE_ENV || 'production';
+if ('development' == env) {
     app.locals.pretty = true;
-    app.use(express.errorHandler());
-});
+
+    var errorhandler = require('errorhandler')
+    app.use(errorhandler());
+}
+
+var favicon = require('serve-favicon');
+var morgan  = require('morgan');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('cookie-session')
+var multipart = require('connect-multiparty');
 
 app.use(express.static(__dirname + '/public/', {maxAge: 2592000000}));
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.cookieParser(app.get('salt')));
-app.use(express.cookieSession());
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(morgan({format: 'dev'}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(multipart());
+app.use(cookieParser(app.get('salt')));
+app.use(session({signed: false}));
 
 var settings = adminModel.readSetting();
 var langs = require('./langs/en-US');

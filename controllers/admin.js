@@ -38,7 +38,7 @@ exports.doSetting = function(req, res){
             links[rows[0]] = rows[1];
         }
     }
-    
+
     var webinfo = {};
     var lines = req.body.webinfo.split(/[\r\n]+/);
     for(var i=0; i<lines.length; i++){
